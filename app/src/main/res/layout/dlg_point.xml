@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/comment_round_corners_white_sp"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/three_magin"
+    android:paddingLeft="@dimen/double_magin"
+    android:paddingRight="@dimen/double_magin"
+    android:paddingTop="@dimen/three_magin">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/double_magin"
+        android:text="Redemption Details"
+        android:textColor="@color/black_dark"
+        android:textSize="@dimen/big_text_size" />
+
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/grey_dark"
+        android:textSize="@dimen/normal_text_size" />
+
+    <TextView
+        android:id="@+id/tv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/grey_dark"
+        android:textSize="@dimen/normal_text_size" />
+
+    <TextView
+        android:id="@+id/tv3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/grey_dark"
+        android:textSize="@dimen/normal_text_size" />
+
+    <TextView
+        android:id="@+id/tv4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/grey_dark"
+        android:textSize="@dimen/normal_text_size" />
+
+    <TextView
+        android:id="@+id/tv5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/grey_dark"
+        android:textSize="@dimen/normal_text_size" />
+
+    <TextView
+        android:id="@+id/tv_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/double_magin"
+        android:background="@mipmap/close"
+        android:gravity="center"
+        android:text="Close"
+        android:textColor="@color/white"
+        android:textSize="@dimen/big_text_size" />
+</LinearLayout>

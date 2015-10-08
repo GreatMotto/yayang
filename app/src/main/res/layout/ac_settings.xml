@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/titlebar" />
+
+    <include layout="@layout/titlebar_below" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@mipmap/sep" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/four_magin"
+        android:layout_marginLeft="@dimen/double_magin"
+        android:layout_marginRight="@dimen/double_magin"
+        android:layout_marginTop="@dimen/four_magin"
+        android:text="Set your push notifications on to receive the latest Eau Thermale Avène promotions and offers."
+        android:textColor="@color/item_content_color"
+        android:textSize="@dimen/normal_text_size" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@mipmap/sep" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/three_magin"
+        android:layout_marginLeft="@dimen/double_magin"
+        android:layout_marginRight="@dimen/double_magin"
+        android:layout_marginTop="@dimen/three_magin"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Push Notification"
+            android:textColor="@color/login_text_forgot"
+            android:textSize="@dimen/big_text_size" />
+
+        <RelativeLayout
+            android:id="@+id/rl_push"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/rl_push_on"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/on_btn">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="@dimen/magin"
+                    android:text="ON"
+                    android:textColor="@color/login_text_forgot"
+                    android:textSize="@dimen/big_text_size" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_push_off"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/off_btn"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/four_magin"
+                    android:text="OFF"
+                    android:textColor="@color/login_text_forgot"
+                    android:textSize="@dimen/big_text_size" />
+
+            </RelativeLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@mipmap/sep" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/three_magin"
+        android:layout_marginLeft="@dimen/double_magin"
+        android:layout_marginRight="@dimen/double_magin"
+        android:layout_marginTop="@dimen/three_magin"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Receive SMS"
+            android:textColor="@color/login_text_forgot"
+            android:textSize="@dimen/big_text_size" />
+
+        <RelativeLayout
+            android:id="@+id/rl_SMS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/rl_SMS_on"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:background="@mipmap/on_btn">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="@dimen/magin"
+                    android:text="ON"
+                    android:textColor="@color/login_text_forgot"
+                    android:textSize="@dimen/big_text_size" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_SMS_off"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/off_btn">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/four_magin"
+                    android:text="OFF"
+                    android:textColor="@color/login_text_forgot"
+                    android:textSize="@dimen/big_text_size" />
+
+            </RelativeLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@mipmap/sep" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/three_magin"
+        android:layout_marginLeft="@dimen/double_magin"
+        android:layout_marginRight="@dimen/double_magin"
+        android:layout_marginTop="@dimen/three_magin"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Receive Email"
+            android:textColor="@color/login_text_forgot"
+            android:textSize="@dimen/big_text_size" />
+
+        <RelativeLayout
+            android:id="@+id/rl_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/rl_email_on"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/on_btn">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="@dimen/magin"
+                    android:text="ON"
+                    android:textColor="@color/login_text_forgot"
+                    android:textSize="@dimen/big_text_size" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_email_off"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/off_btn"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/four_magin"
+                    android:text="OFF"
+                    android:textColor="@color/login_text_forgot"
+                    android:textSize="@dimen/big_text_size" />
+
+            </RelativeLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@mipmap/sep" />
+
+</LinearLayout>

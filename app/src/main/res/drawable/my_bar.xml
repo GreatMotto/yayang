@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 定义轨道背景-->
+    <item android:id="@android:id/background">
+
+        <shape>
+            <corners android:radius="0dip" />
+            <gradient
+                android:endColor="@color/grey_light"
+                android:startColor="@color/grey_light"
+                />
+        </shape>
+    </item>
+
+    <!-- 定义已完成部分样式-->
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape>
+                <corners android:radius="0dip" />
+                <gradient
+                    android:endColor="@color/normal_orange"
+                    android:startColor="@color/normal_orange" />
+            </shape>
+        </clip>
+    </item>
+
+</layer-list>

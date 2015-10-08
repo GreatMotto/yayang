@@ -1,0 +1,69 @@
+<resources>
+    <string name="app_name">Avène</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="more_tip">没有更多了</string>
+    <string name="load_tip">正在加载</string>
+
+    <!--首页 -->
+    <string name="app_logo">Avène</string>
+    <string name="app_logo_up">EAU THERMALE</string>
+    <string name="welcome">Welcome Vivien</string>
+    <string name="viewall">View All</string>
+    <string name="point">My Points</string>
+    <string name="allpoint">Points Available:</string>
+    <!-- 登录-->
+    <string name="login">Login</string>
+
+    <!-- 注册-->
+    <string name="step_process">Simply follow our 5-step process to join the CLUB</string>
+    <string name="redeem_gifts">You will then be able to easily submit additional purchases to accumulate more points and redeem great gifts!</string>
+    <string name="find_ean_code">You can find the EAN code on your product as shown below.</string>
+    <string name="manual_input">If you prefer to submit it via manual input, please click below.</string>
+    <string name="key_ean_code">Please key in the EAN code as shown below.</string>
+    <string name="unique_code">Please key in the 13 characters of the Unique Code. You will find it on your product as shown below.</string>
+    <string name="hydrance_optimale">Hydrance Optimale Hydrating</string>
+    <string name="answer_question">Please answer below questions about your purchase.</string>
+    <string name="complete_fields">Please complete all the fields below.</string>
+    <string name="agree">I have read and agree to the user agreement and privacy policy of the CLUB Terms and Conditions.</string>
+    <string name="send_password">A One-Time Password has just been sent to your mobile via SMS. Please enter this password in below field.</string>
+    <string name="click_send_password">Click here for One-Time Password to be resent</string>
+    <string name="indicate_contact">Please indicate how you would prefer to be contacted:</string>
+    <string name="receive_email">I would like to receive your program updates, activities and other promotions via e-mail.</string>
+    <string name="receive_SMS">I would like to receive your program updates, activities and other promotions via SMS.</string>
+    <string name="bottom_info">I affirmatively consent and authorize the use or disclosure by
+        THE Club in any manner and for any purpose any information or data disclosed
+        by me in this form to any person, including for the purposes of sending commercial
+        messages to me by THE Club. I understand I am entitled to withdraw such consent
+        in the procedure prescribed by THE Club from time to time.</string>
+
+    <!--我的积分-->
+    <string name="point_p1">Purchase Period</string>
+    <string name="point_p2">Redemption Period</string>
+    <string name="point_p3">Expiry Period</string>
+
+    <!--个人信息 -->
+    <string name="profile_title">Complete 100% of your profile to get additional 50 bounds points</string>
+    <string name="profile_dlg1">\tbounds points will be Credited to you account.</string>
+    <string name="profile_dlg2">Thank you,we have acknowledged your update.</string>
+    <string name="test">The Oil Control Form pufifiles oily skin and leaves a pleasant fresh sensation on the skin with no tightness.\n\n  ·Rich
+        and pearly foaming cream,adapted for the needs of oily skin.\n  ·Cleanses
+        and removes make-up.\n  ·Fragrance-free\n\nBenefits\n-Avene
+        Thermal Spring Water for soothing.\n-Cucurbita Pepo for
+        sebum-regulating\n-Zinc Gluconate for anti-inflammatory\n-CTAB for
+        anti-bacterial\n-Salicylic acid for keratolytic\n-Plant-based surfactants</string>
+
+    <!-- 促销产品-->
+    <string name="promotion_news_title">How You Can Achieve Flawless Skin in just 30 Days!</string>
+    <string name="promotion_news_detail">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+        Aenean commodo ligula eget dolor. Aenean massa.
+        Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+        Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
+        Nulla consequat massa quis enim.
+    </string>
+
+    <string name="test1">Your order has been placed.You will receive an email on the collection details.\n\nRedemption Order No.:\n</string>
+    <string name="test2">Refind Hair Spa,Level 2
+        OG Orchard Point 160 Orchard Road\nSingapore 238842\nContact:</string>
+</resources>

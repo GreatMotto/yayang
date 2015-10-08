@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@null">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/notice_bg">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/double_magin"
+                android:gravity="center_horizontal"
+                android:text="Congratulations!\nYou are now part of"
+                android:textColor="@color/item_content_color"
+                android:textSize="@dimen/normal_text_size" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/double_magin"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/logo" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/double_magin"
+                android:gravity="center_horizontal"
+                android:text="Allow up to 48 hours for your first points to be\ncredited to your account."
+                android:textColor="@color/item_content_color"
+                android:textSize="@dimen/normal_text_size" />
+
+            <TextView
+                android:id="@+id/tv_bonus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/double_magin"
+                android:gravity="center_horizontal"
+                android:text=""
+                android:textColor="@color/item_content_color"
+                android:textSize="@dimen/normal_text_size" />
+
+            <TextView
+                android:id="@+id/tv_btnText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/three_magin"
+                android:layout_marginLeft="@dimen/double_magin"
+                android:layout_marginRight="@dimen/double_magin"
+                android:layout_marginTop="@dimen/double_magin"
+                android:background="@mipmap/button"
+                android:gravity="center"
+                android:text="Complete Profile"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/big_text_size" />
+
+            <TextView
+                android:id="@+id/tv_complete_later"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginBottom="@dimen/three_magin"
+                android:text="I will complete my profile later"
+                android:textColor="@color/item_content_color"
+                android:textSize="@dimen/normal_text_size" />
+        </LinearLayout>
+    </RelativeLayout>
+</ScrollView>

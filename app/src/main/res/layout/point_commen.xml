@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rl_all"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/double_magin"
+        android:background="@mipmap/rectangle">
+
+        <TextView
+            android:id="@+id/tv_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/half_magin"
+            android:layout_marginLeft="@dimen/magin"
+            android:layout_marginTop="@dimen/half_magin"
+            android:text="Date"
+            android:textColor="@color/normal_orange"
+            android:textSize="@dimen/small_text_size" />
+
+        <ImageView
+            android:id="@+id/iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_data"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/line" />
+
+        <ListView
+            android:id="@+id/lv_data"
+            android:layout_width="300dp"
+            android:layout_height="150dp"
+            android:layout_below="@id/iv"
+            android:layout_marginLeft="@dimen/half_magin"
+            android:background="@color/transparent"
+            android:cacheColorHint="@color/transparent"
+            android:divider="@null"
+            android:fadingEdge="none"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:listSelector="#00000000"
+            android:scrollbars="none"/>
+
+        <ImageView
+            android:id="@+id/iv_line1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/v_line" />
+
+        <TextView
+            android:id="@+id/tv_des"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/half_magin"
+            android:layout_marginLeft="@dimen/magin"
+            android:layout_marginTop="@dimen/half_magin"
+            android:layout_toRightOf="@id/iv_line1"
+            android:text="Description"
+            android:textColor="@color/normal_orange"
+            android:textSize="@dimen/small_text_size" />
+
+        <ImageView
+            android:id="@+id/iv_line2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/v_line" />
+
+        <TextView
+            android:id="@+id/tv_point"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/half_magin"
+            android:layout_marginLeft="@dimen/magin"
+            android:layout_marginTop="@dimen/half_magin"
+            android:layout_toRightOf="@id/iv_line2"
+            android:gravity="start"
+            android:text="Points"
+            android:textColor="@color/normal_orange"
+            android:textSize="@dimen/small_text_size" />
+
+        <ImageView
+            android:id="@+id/iv_line3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/v_line" />
+
+        <TextView
+            android:id="@+id/tv_point3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/half_magin"
+            android:layout_marginLeft="@dimen/half_magin"
+            android:layout_marginTop="@dimen/half_magin"
+            android:layout_toRightOf="@id/iv_line3"
+            android:gravity="start"
+            android:text="Qty"
+            android:textColor="@color/normal_orange"
+            android:textSize="@dimen/small_text_size" />
+
+        <ImageView
+            android:id="@+id/iv_line4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/v_line" />
+
+        <TextView
+            android:id="@+id/tv_point4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/half_magin"
+            android:layout_marginLeft="@dimen/magin"
+            android:layout_marginTop="@dimen/half_magin"
+            android:layout_toRightOf="@id/iv_line4"
+            android:gravity="start"
+            android:text="Points"
+            android:textColor="@color/normal_orange"
+            android:textSize="@dimen/small_text_size" />
+
+        <ImageView
+            android:id="@+id/iv_line5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/v_line" />
+
+        <LinearLayout
+            android:id="@+id/ll_plus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/magin"
+            android:layout_marginTop="@dimen/magin"
+            android:layout_toRightOf="@id/iv_line5"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/jiahao" />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

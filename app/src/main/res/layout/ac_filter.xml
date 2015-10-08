@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <include
+        android:id="@+id/title"
+        layout="@layout/titlebar" />
+
+    <include
+        android:id="@+id/title_below"
+        layout="@layout/titlebar_below"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/title" />
+
+    <include
+        android:id="@+id/title_commen"
+        layout="@layout/catalogue_title_commen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title_below" />
+
+    <RelativeLayout
+        android:id="@+id/rl_filter_calalogue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title_commen"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="@dimen/double_magin"
+        android:layout_marginRight="@dimen/double_magin"
+        android:layout_marginTop="@dimen/double_magin"
+        android:background="@mipmap/rounded_red"
+        android:paddingRight="@dimen/double_magin">
+
+        <TextView
+            android:id="@+id/tv_center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:drawableLeft="@mipmap/category_ico"
+            android:drawablePadding="@dimen/magin"
+            android:gravity="center_vertical"
+            android:text="Filter by catalogue"
+            android:textColor="@color/white"
+            android:textSize="@dimen/normal_text_size" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/arrow_below" />
+    </RelativeLayout>
+
+    <!--<RefreshLayout
+        android:id="@+id/swipe_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/rl_filter_calalogue"
+        android:layout_marginBottom="@dimen/double_magin"
+        android:layout_marginLeft="@dimen/magin"
+        android:layout_marginRight="@dimen/magin"
+        >-->
+        <GridView
+            android:id="@+id/gridview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/rl_filter_calalogue"
+            android:layout_marginBottom="@dimen/double_magin"
+            android:layout_marginLeft="@dimen/magin"
+            android:layout_marginRight="@dimen/magin"
+            android:paddingTop="@dimen/double_magin"
+            android:cacheColorHint="#00000000"
+            android:fadingEdge="none"
+            android:horizontalSpacing="2dp"
+            android:listSelector="#00000000"
+            android:numColumns="2"
+            android:scrollbars="none"
+            android:verticalSpacing="4dp" />
+    <!--</RefreshLayout>-->
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/line_bottom" />
+</RelativeLayout>

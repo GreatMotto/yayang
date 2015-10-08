@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <include layout="@layout/titlebar" />
+
+        <include layout="@layout/titlebar_below" />
+
+        <include layout="@layout/catalogue_title_commen" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/double_magin"
+            android:layout_marginTop="@dimen/double_magin"
+            android:gravity="center_vertical"
+            android:text="Rewards Catalogue"
+            android:textColor="@color/normal_orange"
+            android:textSize="@dimen/normal_text_size" />
+
+        <com.edenred.android.apps.avenesg.view.HorizontalListView
+            android:id="@+id/hlistview"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:layout_marginTop="@dimen/magin"
+            android:visibility="gone"></com.edenred.android.apps.avenesg.view.HorizontalListView>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            android:layout_marginTop="@dimen/magin"
+            android:scrollbars="none" />
+
+
+        <RelativeLayout
+            android:id="@+id/rl_filter_calalogue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="@dimen/double_magin"
+            android:layout_marginRight="@dimen/double_magin"
+            android:layout_marginTop="@dimen/double_magin"
+            android:background="@mipmap/rounded_red"
+            android:paddingRight="@dimen/double_magin">
+
+            <TextView
+                android:id="@+id/tv_center1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:drawableLeft="@mipmap/category_ico"
+                android:drawablePadding="@dimen/magin"
+                android:gravity="center_vertical"
+                android:text="Filter by Category"
+                android:textColor="@color/white"
+                android:textSize="@dimen/normal_text_size" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/arrow_below" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_filter_point"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="@dimen/double_magin"
+            android:layout_marginRight="@dimen/double_magin"
+            android:layout_marginTop="@dimen/double_magin"
+            android:background="@mipmap/rounded_red"
+            android:paddingRight="@dimen/double_magin">
+
+            <TextView
+                android:id="@+id/tv_center2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:drawableLeft="@mipmap/point_icon1"
+                android:drawablePadding="12dp"
+                android:gravity="center_vertical"
+                android:text="Filter by Points"
+                android:textColor="@color/white"
+                android:textSize="@dimen/normal_text_size" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/arrow_below" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/line_bottom" />
+</LinearLayout>

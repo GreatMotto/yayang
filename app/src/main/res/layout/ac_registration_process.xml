@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <include layout="@layout/titlebar" />
+
+        <include layout="@layout/titlebar_below" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@mipmap/sep" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
+            android:gravity="center"
+            android:lines="2"
+            android:padding="15dp"
+            android:text="@string/step_process" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@mipmap/sep" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/double_magin"
+            android:layout_marginRight="@dimen/double_magin"
+            android:orientation="vertical">
+
+            <com.edenred.android.apps.avenesg.view.HorizontalListView
+                android:layout_marginTop="@dimen/three_magin"
+                android:id="@+id/hlv_guide"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/three_magin">
+            </com.edenred.android.apps.avenesg.view.HorizontalListView>
+
+
+            <LinearLayout
+                android:id="@+id/ll_imagestep"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/magin"
+                android:orientation="horizontal">
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:background="@mipmap/sep" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="@string/redeem_gifts" />
+
+        <TextView
+            android:id="@+id/btn_start_register"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@mipmap/button"
+            android:gravity="center"
+            android:text="Start Registration Process"
+            android:textColor="@android:color/white"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/line_bottom" />
+</LinearLayout>

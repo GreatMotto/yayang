@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/notice_bg"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_margin="@dimen/magin"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/cuo" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_productname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/double_magin"
+                android:text="Contact Us"
+                android:textColor="@android:color/black"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/tv_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/half_magin"
+                android:layout_marginTop="@dimen/double_magin"
+                android:drawableLeft="@mipmap/email"
+                android:drawablePadding="@dimen/magin"
+                android:text="admin@colorplay.com.sg"
+                android:textColor="@color/item_content_color"
+                android:textSize="@dimen/normal_text_size" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/five_magin"
+                android:layout_marginRight="@dimen/double_magin"
+                android:layout_marginTop="@dimen/three_magin"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/address" />
+
+                <TextView
+                    android:id="@+id/tv_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/magin"
+                    android:layout_marginRight="@dimen/six_magin"
+                    android:text="Color Play Enterprise Pte Ltd"
+                    android:textColor="@color/item_content_color"
+                    android:textSize="@dimen/normal_text_size" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_address2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="220 Tagore Lane #03-13\nLiberty Warehouse\nSingapore 787600"
+                android:textColor="@color/item_content_color"
+                android:visibility="gone"
+                android:textSize="@dimen/normal_text_size" />
+
+            <TextView
+                android:id="@+id/tv_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="@dimen/three_magin"
+                android:layout_marginLeft="@dimen/half_magin"
+                android:layout_marginTop="@dimen/double_magin"
+                android:drawableLeft="@mipmap/mobile"
+                android:drawablePadding="@dimen/magin"
+                android:text="+65 6453 4955"
+                android:textColor="@color/item_content_color"
+                android:textSize="@dimen/normal_text_size" />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

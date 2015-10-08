@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#ffffff</color>
+    <color name="transparent">#00000000</color>
+    <color name="normal_orange">#f58774</color>
+    <color name="grey_light">#e5e5e5</color>
+    <color name="grey_dark">#6d6e71</color>
+    <color name="grey_guide">#939393</color>
+    <color name="black_dark">#323232</color>
+    <color name="black_light">#979797</color>
+    <color name="light">#00000000</color>
+    <color name="submit">#818285</color>
+    <color name="item_content_color">#666666</color>
+    <color name="orange">#f58774</color>
+    <color name="select_bg">#a8a9ad</color>
+    <color name="myreward_bg">#6c6f71</color>
+
+    <!-- 二维码 -->
+    <color name="white1">#fff</color>
+    <color name="transparent1">#00ffffff</color>
+    <color name="title_bar_background">#165893</color>
+    <color name="translucence">#b0000000</color><!-- 半透明 -->
+    <color name="translucence_half">#000000ff</color><!-- 半透明 -->
+    <color name="possible_result_points">#c0ffbd21</color>
+
+    <!-- 登录界面字体颜色-->
+    <color name="login_text_forgot">#888888</color>
+    <color name="hint_color">#818285</color>
+    <color name="normal_text">#000000</color>
+</resources>
