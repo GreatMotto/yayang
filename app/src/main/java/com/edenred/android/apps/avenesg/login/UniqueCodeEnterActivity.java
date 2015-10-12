@@ -1,4 +1,4 @@
-package login;
+package com.edenred.android.apps.avenesg.login;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -13,8 +13,6 @@ import com.edenred.android.apps.avenesg.BaseActivity;
 import com.edenred.android.apps.avenesg.R;
 import com.edenred.android.apps.avenesg.constant.Constant;
 import com.edenred.android.apps.avenesg.constant.Urls;
-import com.edenred.android.apps.avenesg.login.TransactionDetailsEnterActivity;
-import com.edenred.android.apps.avenesg.login.UniqueAdapter;
 import com.edenred.android.apps.avenesg.utils.DialogUtils;
 import com.edenred.android.apps.avenesg.utils.ErrorUtils;
 import com.edenred.android.apps.avenesg.utils.FontManager;
