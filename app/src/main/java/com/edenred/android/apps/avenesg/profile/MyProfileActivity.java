@@ -92,7 +92,7 @@ public class MyProfileActivity extends BaseActivity implements View.OnFocusChang
             occupation = "", concerns = "", select = "", range = "", sensitivity = "", types = "", status = "";
     private int per;
     private String chainText, areaText;
-    private String bounds = "";
+    private String bonus = "";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -104,7 +104,6 @@ public class MyProfileActivity extends BaseActivity implements View.OnFocusChang
         sp = AveneApplication.getInstance().getSp();
         initTitle("My Profile");
         initView();
-        bounds = AveneApplication.getInstance().dialogBean.bonus;
     }
 
     private void initView() {
@@ -169,7 +168,8 @@ public class MyProfileActivity extends BaseActivity implements View.OnFocusChang
     }
 
     private void initData() {
-        tv_bonus_text.setText("Complete 100% of your profile to get additional " + bounds + " bounds points");
+        bonus = AveneApplication.getInstance().dialogBean.bonus;
+        tv_bonus_text.setText("Complete 100% of your profile to get additional " + bonus + " bonus points");
         tvAreaCode.setText(sp.getValue(Constant.AREACODE));
         tvMobile.setText(sp.getValue(Constant.PHONE));
         showPD("Upload...");
@@ -939,11 +939,11 @@ public class MyProfileActivity extends BaseActivity implements View.OnFocusChang
             }
             if (per == 100) {
                 DialogUtils.ProfileDlg(this, "100%  Completed", "Thank you! You have completed 100% of your profile.\n" +
-                        "Award of " + bounds + " bonus points is limited only to the 1st completion of 100% of your profile.\n" +
+                        "Award of " + bonus + " bonus points is limited only to the 1st completion of 100% of your profile.\n" +
                         "Bonus points will be credited to your account within 48 hours. ", 1, 0);
             } else {
                 DialogUtils.ProfileDlg(this, String.valueOf(per) + "%  Completed", "Your profile has been updated successfully. Thank you.\n" +
-                        "Complete 100% of your profile to receive a ONE-OFF " + bounds + " bonus points.", 2, 0);
+                        "Complete 100% of your profile to receive a ONE-OFF " + bonus + " bonus points.", 2, 0);
             }
         } catch (XmlPullParserException e) {
             e.printStackTrace();
