@@ -13,6 +13,7 @@ import com.edenred.android.apps.avenesg.constant.Urls;
 import com.edenred.android.apps.avenesg.utils.ErrorUtils;
 import com.edenred.android.apps.avenesg.utils.FontManager;
 import com.edenred.android.apps.avenesg.utils.HttpUtils;
+import com.edenred.android.apps.avenesg.utils.NumbersFormat;
 import com.edenred.android.apps.avenesg.utils.SharedPreferencesHelper;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -35,6 +36,7 @@ public class NewsAndPromotionsActivity extends BaseActivity {
     private PromotionListAdapter adapter;
     private List<NotifyMessageBean> mlist1;
     private SharedPreferencesHelper sp;
+    private int tag = 0;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,8 +44,13 @@ public class NewsAndPromotionsActivity extends BaseActivity {
         setContentView(com.edenred.android.apps.avenesg.R.layout.ac_promotion_and_product);
         FontManager.applyFont(this, getWindow().getDecorView().findViewById(android.R.id.content), Constant.TTFNAME);
         AveneApplication.getInstance().addActivity(this);
-        initLogo();
         sp= AveneApplication.getInstance().getSp();
+        tag = getIntent().getIntExtra(Constant.TAG, 0);
+        if (tag == 8){
+            initLogo();
+        }else {
+            initLogo2();
+        }
         initTitle("News and Promotions");
         initView();
         initData();
@@ -57,7 +64,7 @@ public class NewsAndPromotionsActivity extends BaseActivity {
     private void initData() {
         if (sp.getValue(Constant.ACCOUNTBALANCE) != null) {
             tv_allpoint.setText(getResources().getString(com.edenred.android.apps.avenesg.R.string.allpoint) +
-                    sp.getValue(Constant.ACCOUNTBALANCE));
+                    NumbersFormat.thousand(sp.getValue(Constant.ACCOUNTBALANCE)));
         }
         setTextSize(tv_allpoint.getText().toString(),
                 tv_allpoint, 17, 16, tv_allpoint.getText().length());
@@ -151,7 +158,7 @@ public class NewsAndPromotionsActivity extends BaseActivity {
                 eventType = parser.next();
             }
 
-            adapter = new PromotionListAdapter(this, mlist1);
+            adapter = new PromotionListAdapter(this, mlist1, tag);
             gv_detail.setAdapter(adapter);
 
         } catch (XmlPullParserException e) {

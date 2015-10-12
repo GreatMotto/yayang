@@ -22,6 +22,7 @@ import android.view.animation.ScaleAnimation;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.TextView;
@@ -29,6 +30,7 @@ import android.widget.TextView;
 import com.edenred.android.apps.avenesg.constant.Constant;
 import com.edenred.android.apps.avenesg.home.HomeActivity;
 import com.edenred.android.apps.avenesg.utils.DisplayUtil;
+import com.edenred.android.apps.avenesg.utils.NumbersFormat;
 import com.edenred.android.apps.avenesg.utils.SpantoActivity;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.jeremyfeinstein.slidingmenu.lib.app.SlidingFragmentActivity;
@@ -44,6 +46,7 @@ public class BaseActivity extends SlidingFragmentActivity implements View.OnClic
 
     private int x, y;
     private LinearLayout ll_back, ll_to_home;
+    private ImageView iv_to_home;
     private TextView tv_content;
     private ProgressDialog pd;
     private String str;
@@ -75,9 +78,15 @@ public class BaseActivity extends SlidingFragmentActivity implements View.OnClic
         ll_back.setOnClickListener(this);
         tv_content.setText(content);
     }
+
     public void initLogo() {
         ll_to_home = (LinearLayout) findViewById(R.id.ll_to_home);
         ll_to_home.setOnClickListener(this);
+    }
+
+    public void initLogo2() {
+        iv_to_home = (ImageView) findViewById(R.id.iv_to_home);
+        iv_to_home.setOnClickListener(this);
     }
 
     // 返回时关闭软键盘
@@ -176,6 +185,22 @@ public class BaseActivity extends SlidingFragmentActivity implements View.OnClic
         Intent intent = new Intent();
         intent.setClass(this, cls);
         intent.putExtra(Constant.FLAG, flag);
+        startActivity(intent);
+    }
+
+    // 带两个参数跳转到其他Activity
+    public void goto2OtherActivity(Class<?> cls, int flag, int tag) {
+        Intent intent = new Intent();
+        intent.setClass(this, cls);
+        intent.putExtra(Constant.FLAG, flag);
+        intent.putExtra(Constant.TAG, tag);
+        startActivity(intent);
+    }
+
+    public void goto1AnotherActivity(Class<?> cls, int tag) {
+        Intent intent = new Intent();
+        intent.setClass(this, cls);
+        intent.putExtra(Constant.TAG, tag);
         startActivity(intent);
     }
 
@@ -307,7 +332,6 @@ public class BaseActivity extends SlidingFragmentActivity implements View.OnClic
 
     /**
      * 获取系统当前月份并转换成英文
-     *
      * @return
      */
     public void ChangeMonth2English(TextView tv, String points, String date) {
@@ -358,7 +382,7 @@ public class BaseActivity extends SlidingFragmentActivity implements View.OnClic
             default:
                 break;
         }
-        tv.setText("You have " + points + " points expiring in " + str);
+        tv.setText("You have " + NumbersFormat.thousand(points) + " points expiring in " + str);
     }
 
     @Override
@@ -369,20 +393,24 @@ public class BaseActivity extends SlidingFragmentActivity implements View.OnClic
                 onBackPressed();
                 break;
             case R.id.ll_to_home:
-//                getSlidingMenu().isShown();
-//                if (getSlidingMenu().isShown()){
-                    HomeActivity.instanceHomeAc.toggleMenu();
-//                }
+                HomeActivity.instanceHomeAc.toggleMenu();
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
                         AveneApplication.getInstance().finishActivity();
                     }
-                },350);
+                }, 350);
 //                AveneApplication.getInstance().finishActivity();
 //                startActivity(new Intent(this, HomeActivity.class));
 //                this.finish();
                 break;
+            case R.id.iv_to_home:
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        AveneApplication.getInstance().finishActivity();
+                    }
+                }, 350);
             default:
                 break;
         }

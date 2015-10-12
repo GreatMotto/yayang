@@ -27,12 +27,12 @@ import java.util.List;
  * Created by wangwm on 2015/7/27.
  * 产品列表适配器
  */
-public class ProductsAdapter extends BaseAdapter {
+public class ProductsListAdapter extends BaseAdapter {
     Context mContext;
     private List<ProductBean> plist = new ArrayList<ProductBean>();
     private int title = 0, subtitle = 0;
 
-    public ProductsAdapter(Context mContext, List<ProductBean> plist) {
+    public ProductsListAdapter(Context mContext, List<ProductBean> plist) {
         this.mContext = mContext;
         this.plist = plist;
     }
@@ -62,16 +62,16 @@ public class ProductsAdapter extends BaseAdapter {
         TextView tv_name = ViewHolder.get(convertView, com.edenred.android.apps.avenesg.R.id.tv_name);
         TextView tv_prase = ViewHolder.get(convertView, com.edenred.android.apps.avenesg.R.id.tv_prase);
 
-        if (TextUtils.isEmpty(AveneApplication.getInstance().dialogBean.max_lenth.title)) {
-            title = Integer.parseInt(AveneApplication.getInstance().dialogBean.max_lenth.title);
+        if (TextUtils.isEmpty(AveneApplication.getInstance().dialogBean.title)) {
+            title = Integer.parseInt(AveneApplication.getInstance().dialogBean.title);
             if (title > 30) {
                 title = 30;
             }
             tv_name.setFilters(new InputFilter[]{new InputFilter.LengthFilter(title)});
 
         }
-        if (TextUtils.isEmpty(AveneApplication.getInstance().dialogBean.max_lenth.subtitle)) {
-            subtitle = Integer.parseInt(AveneApplication.getInstance().dialogBean.max_lenth.subtitle);
+        if (TextUtils.isEmpty(AveneApplication.getInstance().dialogBean.subtitle)) {
+            subtitle = Integer.parseInt(AveneApplication.getInstance().dialogBean.subtitle);
             if (subtitle > 55) {
                 subtitle = 55;
             }

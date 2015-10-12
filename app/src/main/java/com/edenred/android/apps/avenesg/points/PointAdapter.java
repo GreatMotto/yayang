@@ -12,6 +12,7 @@ import com.edenred.android.apps.avenesg.bean.PointBean;
 import com.edenred.android.apps.avenesg.constant.Constant;
 import com.edenred.android.apps.avenesg.utils.DialogUtils;
 import com.edenred.android.apps.avenesg.utils.FontManager;
+import com.edenred.android.apps.avenesg.utils.NumbersFormat;
 import com.edenred.android.apps.avenesg.utils.ViewHolder;
 
 import java.util.ArrayList;
@@ -68,12 +69,12 @@ public class PointAdapter extends BaseAdapter{
             tv_data.setText(data.id);
             tv_right.setText(data.description.replace("null",""));
             tv_right1.setText(data.quantity);
-            tv_right2.setText(data.point);
+            tv_right2.setText(NumbersFormat.thousand(data.point));
 
             if(!TextUtils.isEmpty(data.pointGetDate))
             {
                 String[] str=data.pointGetDate.split("-");
-                tv_center.setText(str[1]+"/"+str[2]+"/"+str[0]);
+                tv_center.setText(str[2]+"/"+str[1]+"/"+str[0]);
             }
 
             ll_plus.setTag(com.edenred.android.apps.avenesg.R.id.tv1,tv_data);
@@ -111,11 +112,11 @@ public class PointAdapter extends BaseAdapter{
                 tv_center.setVisibility(View.GONE);
             }
 
-            tv_right.setText(data.point);
+            tv_right.setText(NumbersFormat.thousand(data.point));
             if(!TextUtils.isEmpty(data.pointGetDate))
             {
                 String[] str=data.pointGetDate.split("-");
-                tv_data.setText(str[1]+"/"+str[2]+"/"+str[0]);
+                tv_data.setText(str[2]+"/"+str[1]+"/"+str[0]);
             }
 
 

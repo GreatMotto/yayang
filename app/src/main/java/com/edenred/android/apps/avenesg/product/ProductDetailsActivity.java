@@ -11,6 +11,7 @@ import com.edenred.android.apps.avenesg.bean.ProductBean;
 import com.edenred.android.apps.avenesg.constant.Constant;
 import com.edenred.android.apps.avenesg.constant.Urls;
 import com.edenred.android.apps.avenesg.utils.FontManager;
+import com.edenred.android.apps.avenesg.utils.NumbersFormat;
 import com.edenred.android.apps.avenesg.utils.SharedPreferencesHelper;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -53,7 +54,7 @@ public class ProductDetailsActivity extends BaseActivity {
         if(sp.getValue(Constant.ACCOUNTBALANCE)!=null)
         {
             tv_allpoint.setText(getResources().getString(com.edenred.android.apps.avenesg.R.string.allpoint)+
-                    sp.getValue(Constant.ACCOUNTBALANCE));
+                    NumbersFormat.thousand(sp.getValue(Constant.ACCOUNTBALANCE)));
         }
         //改变字体大小
         setTextSize(tv_allpoint.getText().toString(),

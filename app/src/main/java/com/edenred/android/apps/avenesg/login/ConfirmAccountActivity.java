@@ -66,7 +66,7 @@ public class ConfirmAccountActivity extends BaseActivity {
     }
 
     private void initView() {
-        initTitle("Registration process");
+        initTitle("Registration Process");
         FontManager.applyFont(this, findViewById(com.edenred.android.apps.avenesg.R.id.tv_bottom_info), Constant.ITTFNAME);
         hlv_guide = (HorizontalListView) findViewById(com.edenred.android.apps.avenesg.R.id.hlv_guide);
         // 提交按钮
@@ -347,7 +347,6 @@ public class ConfirmAccountActivity extends BaseActivity {
         }
     }
 
-
     private void UpdateXmlPull(String result) {
         //解析返回数据
         XmlPullParserFactory factory = null;
@@ -455,8 +454,8 @@ public class ConfirmAccountActivity extends BaseActivity {
                             sp.putValue(Constant.ACCOUNTID, db.accountId);
                             sp.putValue(Constant.REDEMEED, db.pointsRedemed);
                             sp.putValue(Constant.EXPIRED, db.pointsExpired);
-                            sp.putValue(Constant.LASTNAME, db.lastName);
-                            sp.putValue(Constant.FIRSTNAME, db.firstName);
+                            sp.putValue(Constant.LASTNAME, AveneApplication.getInstance().memberinfo.lastName);
+                            sp.putValue(Constant.FIRSTNAME, AveneApplication.getInstance().memberinfo.firstName);
                             sp.putValue(Constant.WILLEXPIRINGNEXTMON, db.willExpiringNextMon);
                         }
                         break;

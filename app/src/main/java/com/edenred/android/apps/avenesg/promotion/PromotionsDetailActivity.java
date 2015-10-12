@@ -11,6 +11,7 @@ import com.edenred.android.apps.avenesg.bean.NotifyMessageBean;
 import com.edenred.android.apps.avenesg.constant.Constant;
 import com.edenred.android.apps.avenesg.constant.Urls;
 import com.edenred.android.apps.avenesg.utils.FontManager;
+import com.edenred.android.apps.avenesg.utils.NumbersFormat;
 import com.edenred.android.apps.avenesg.utils.SharedPreferencesHelper;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -23,7 +24,7 @@ public class PromotionsDetailActivity extends BaseActivity {
     private TextView tv_title, tv_detail, tv_allpoint;
 //    private SimpleDraweeView iv_pic;
     private NotifyMessageBean data;
-    private int item = 0;
+    private int item = 0, tag = 0;
     private SharedPreferencesHelper sp;
     private ImageView iv_image_view;
 
@@ -33,9 +34,14 @@ public class PromotionsDetailActivity extends BaseActivity {
         setContentView(com.edenred.android.apps.avenesg.R.layout.ac_promotion_and_product_detail);
         FontManager.applyFont(this, getWindow().getDecorView().findViewById(android.R.id.content), Constant.TTFNAME);
         AveneApplication.getInstance().addActivity(this);
-        initLogo();
         sp = AveneApplication.getInstance().getSp();
         data = (NotifyMessageBean) getIntent().getSerializableExtra("newslist");
+        tag = getIntent().getIntExtra(Constant.TAG, 0);
+        if (tag == 8){
+            initLogo();
+        }else {
+            initLogo2();
+        }
         initTitle("News and Promotions");
         initView();
         initData();
@@ -66,7 +72,7 @@ public class PromotionsDetailActivity extends BaseActivity {
     private void initData() {
         if (sp.getValue(Constant.ACCOUNTBALANCE) != null) {
             tv_allpoint.setText(getResources().getString(com.edenred.android.apps.avenesg.R.string.allpoint) +
-                    sp.getValue(Constant.ACCOUNTBALANCE));
+                    NumbersFormat.thousand(sp.getValue(Constant.ACCOUNTBALANCE)));
         }
         setTextSize(tv_allpoint.getText().toString(),
                 tv_allpoint, 17, 16, tv_allpoint.getText().length());

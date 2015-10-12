@@ -59,7 +59,7 @@ import java.util.List;
  */
 public class MyProfileActivity extends BaseActivity implements View.OnFocusChangeListener {
 
-    private TextView tvProgressLeft, tvProgressRight, tvAreaCode, tvBirthday, tvCity,
+    private TextView tv_bonus_text,tvProgressLeft, tvProgressRight, tvAreaCode, tvBirthday, tvCity,
             tvMtatus, tvRange, tvNationality, tvTyle, tvConcerns, tvSensitivity, tvSeclect,
             tvRetailer, tvArea, tvLocation, tvUpdate, tvSex, tvMobile, tv_occupation;
     private ProgressBar progress;
@@ -97,7 +97,7 @@ public class MyProfileActivity extends BaseActivity implements View.OnFocusChang
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.edenred.android.apps.avenesg.R.layout.ac_myprofile);
+        setContentView(R.layout.ac_myprofile);
         FontManager.applyFont(this, getWindow().getDecorView().findViewById(android.R.id.content), Constant.TTFNAME);
         AveneApplication.getInstance().addActivity(this);
         initLogo();
@@ -108,6 +108,7 @@ public class MyProfileActivity extends BaseActivity implements View.OnFocusChang
     }
 
     private void initView() {
+        tv_bonus_text = (TextView) findViewById(R.id.tv_bonus_text);
         tvProgressLeft = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_progress_left);
         progress = (ProgressBar) findViewById(com.edenred.android.apps.avenesg.R.id.progress);
         tvProgressRight = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_progress_right);
@@ -168,6 +169,7 @@ public class MyProfileActivity extends BaseActivity implements View.OnFocusChang
     }
 
     private void initData() {
+        tv_bonus_text.setText("Complete 100% of your profile to get additional " + bounds + " bounds points");
         tvAreaCode.setText(sp.getValue(Constant.AREACODE));
         tvMobile.setText(sp.getValue(Constant.PHONE));
         showPD("Upload...");
@@ -341,7 +343,7 @@ public class MyProfileActivity extends BaseActivity implements View.OnFocusChang
         postcode = etPostalCode.getText().toString();
         if (!TextUtils.isEmpty(tvBirthday.getText().toString())) {
             String[] bir = tvBirthday.getText().toString().split("/");
-            birthday = bir[2] + "-" + bir[0] + "-" + bir[1];
+            birthday = bir[2] + "-" + bir[1] + "-" + bir[0];
         } else {
             birthday = "";
         }
@@ -593,7 +595,7 @@ public class MyProfileActivity extends BaseActivity implements View.OnFocusChang
         window.setGravity(Gravity.CENTER);
         alertDialog.show();
         alertDialog.setCanceledOnTouchOutside(true);
-        alertDialog.getWindow().setContentView(com.edenred.android.apps.avenesg.R.layout.dlg_data);
+        alertDialog.getWindow().setContentView(com.edenred.android.apps.avenesg.R.layout.dlg_date);
         FontManager.applyFont(mContext, alertDialog.getWindow().getDecorView().findViewById(android.R.id.content), Constant.TTFNAME);
 
         DatePicker date = (DatePicker) window.findViewById(com.edenred.android.apps.avenesg.R.id.date_picker);
@@ -604,8 +606,8 @@ public class MyProfileActivity extends BaseActivity implements View.OnFocusChang
         //初始化事件控件数据
         if (!TextUtils.isEmpty(candler)) {
             String[] str = candler.split("/");
-            int month = Integer.parseInt(str[0]) - 1;
-            int day = Integer.parseInt(str[1]);
+            int day = Integer.parseInt(str[0]);
+            int month = Integer.parseInt(str[1]) - 1;
             int year = Integer.parseInt(str[2]);
             date.updateDate(year, month, day);
         }
@@ -635,8 +637,8 @@ public class MyProfileActivity extends BaseActivity implements View.OnFocusChang
                 if (day < 10) {
                     day1 = "0" + day;
                 }
-                textView.setText(month1 + "/" + day1 + "/" + year);
-//                textView.setText(day1 + "/" + month1 + "/" + year);
+//                textView.setText(month1 + "/" + day1 + "/" + year);
+                textView.setText(day1 + "/" + month1 + "/" + year);
                 alertDialog.dismiss();
                 if (!is_select[5]) {
                     is_select[5] = true;
@@ -936,9 +938,12 @@ public class MyProfileActivity extends BaseActivity implements View.OnFocusChang
                 iv_orange_right.setVisibility(View.GONE);
             }
             if (per == 100) {
-                DialogUtils.ProfileDlg(this, "100%  Completed", "Congratulations! \n" + bounds + getResources().getString(com.edenred.android.apps.avenesg.R.string.profile_dlg1), 1, 0);
+                DialogUtils.ProfileDlg(this, "100%  Completed", "Thank you! You have completed 100% of your profile.\n" +
+                        "Award of " + bounds + " bonus points is limited only to the 1st completion of 100% of your profile.\n" +
+                        "Bonus points will be credited to your account within 48 hours. ", 1, 0);
             } else {
-                DialogUtils.ProfileDlg(this, String.valueOf(per) + "%  Completed", getResources().getString(com.edenred.android.apps.avenesg.R.string.profile_dlg2), 2, 0);
+                DialogUtils.ProfileDlg(this, String.valueOf(per) + "%  Completed", "Your profile has been updated successfully. Thank you.\n" +
+                        "Complete 100% of your profile to receive a ONE-OFF " + bounds + " bonus points.", 2, 0);
             }
         } catch (XmlPullParserException e) {
             e.printStackTrace();
@@ -1041,7 +1046,8 @@ public class MyProfileActivity extends BaseActivity implements View.OnFocusChang
                 String year = str1[0];
                 String month = str1[1];
                 String day = str1[2];
-                tvBirthday.setText(month + "/" + day + "/" + year);
+//                tvBirthday.setText(month + "/" + day + "/" + year);
+                tvBirthday.setText(day + "/" + month + "/" + year);
             }
             for (int j = 0; j < memberinfo.memberInfoPO.allSurveyList.size(); j++) {
                 Log.e("=========", memberinfo.memberInfoPO.allSurveyList.get(j).surveyQuestionName);

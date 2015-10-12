@@ -21,6 +21,7 @@ import com.edenred.android.apps.avenesg.constant.Constant;
 import com.edenred.android.apps.avenesg.constant.Urls;
 import com.edenred.android.apps.avenesg.utils.DisplayUtil;
 import com.edenred.android.apps.avenesg.utils.FontManager;
+import com.edenred.android.apps.avenesg.utils.NumbersFormat;
 import com.edenred.android.apps.avenesg.utils.SharedPreferencesHelper;
 import com.edenred.android.apps.avenesg.utils.ViewHolder;
 import com.google.gson.Gson;
@@ -89,8 +90,8 @@ public class GridviewAdapter extends BaseAdapter {
         TextView tv_prase = ViewHolder.get(convertView, com.edenred.android.apps.avenesg.R.id.tv_prase);
         TextView tv_points = ViewHolder.get(convertView, com.edenred.android.apps.avenesg.R.id.tv_points);
 
-        if (TextUtils.isEmpty(AveneApplication.getInstance().dialogBean.max_lenth.title)){
-            title = Integer.parseInt(AveneApplication.getInstance().dialogBean.max_lenth.title);
+        if (TextUtils.isEmpty(AveneApplication.getInstance().dialogBean.title)){
+            title = Integer.parseInt(AveneApplication.getInstance().dialogBean.title);
             if (title>30)
             {
                 title = 30;
@@ -98,8 +99,8 @@ public class GridviewAdapter extends BaseAdapter {
             tv_name.setFilters(new InputFilter[]{new InputFilter.LengthFilter(title)});
 
         }
-        if (TextUtils.isEmpty(AveneApplication.getInstance().dialogBean.max_lenth.subtitle)){
-            subtitle = Integer.parseInt(AveneApplication.getInstance().dialogBean.max_lenth.subtitle);
+        if (TextUtils.isEmpty(AveneApplication.getInstance().dialogBean.subtitle)){
+            subtitle = Integer.parseInt(AveneApplication.getInstance().dialogBean.subtitle);
             if (subtitle>55)
             {
                 subtitle = 55;
@@ -111,7 +112,7 @@ public class GridviewAdapter extends BaseAdapter {
         RedeemGiftBean data = mlist.get(position);
         tv_name.setText(data.articleName);
         tv_prase.setText(data.articleDesc);
-        tv_points.setText(data.articlePoint + " points");
+        tv_points.setText(NumbersFormat.thousand(data.articlePoint) + " points");
         if (TextUtils.isEmpty(data.articleDesc)) {
             tv_prase.setText("");
         } else {

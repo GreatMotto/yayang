@@ -23,6 +23,7 @@ public class Constant {
     public static final String SP_LOGIN_NAME = "login";// sp文件名
     public static final String ISLOGIN = "islogin";// 是否登录
     public static final String FLAG = "flag";// 跳转键
+    public static final String TAG = "tag";// 跳转标记
     public static final String ACCOUNTID = "accountid";// 会员ID
     public static final String PHONE="phone";//登录手机号
     public static final String AREACODE="areacode";//登录手机号区号

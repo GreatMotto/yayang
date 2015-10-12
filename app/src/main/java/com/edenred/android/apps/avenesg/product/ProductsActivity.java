@@ -19,6 +19,7 @@ import com.edenred.android.apps.avenesg.utils.DialogUtils;
 import com.edenred.android.apps.avenesg.utils.ErrorUtils;
 import com.edenred.android.apps.avenesg.utils.FontManager;
 import com.edenred.android.apps.avenesg.utils.HttpUtils;
+import com.edenred.android.apps.avenesg.utils.NumbersFormat;
 import com.edenred.android.apps.avenesg.utils.SharedPreferencesHelper;
 import com.google.gson.Gson;
 
@@ -36,11 +37,11 @@ import java.util.List;
  * Created by wangwm on 2015/7/27.
  * 产品列表页面
  */
-public class ProductListActivity extends BaseActivity {
+public class ProductsActivity extends BaseActivity {
     private RelativeLayout rl_filter;
     private GridView gv_detail;
     private TextView tv_center,tv_allpoint;
-    private ProductsAdapter adapter;
+    private ProductsListAdapter adapter;
     private List<StringBean> list = new ArrayList<StringBean>();
     private List<ProductBean> plist=new ArrayList<ProductBean>();
     private int current = 0;
@@ -81,12 +82,12 @@ public class ProductListActivity extends BaseActivity {
         if(sp.getValue(Constant.ACCOUNTBALANCE)!=null)
         {
             tv_allpoint.setText(getResources().getString(com.edenred.android.apps.avenesg.R.string.allpoint)+
-                    sp.getValue(Constant.ACCOUNTBALANCE));
+                    NumbersFormat.thousand(sp.getValue(Constant.ACCOUNTBALANCE)));
         }
         //改变字体大小
         setTextSize(tv_allpoint.getText().toString(),
                 tv_allpoint, 17, 16, tv_allpoint.getText().length());
-        adapter = new ProductsAdapter(this,plist);
+        adapter = new ProductsListAdapter(this,plist);
         gv_detail.setAdapter(adapter);
 
 
@@ -116,7 +117,7 @@ public class ProductListActivity extends BaseActivity {
                     myAsy.execute();
                 }else
                 {
-                    DialogUtils.FilterDlg(this, list, tv_center, current, listener);
+                    DialogUtils.FilterDlg(this, list, tv_center, current, listener, 0);
                 }
                 break;
             default:
@@ -168,7 +169,7 @@ public class ProductListActivity extends BaseActivity {
             super.onPostExecute(s);
             if(s.equals("error"))
             {
-                ErrorUtils.showErrorMsg(ProductListActivity.this, "404");
+                ErrorUtils.showErrorMsg(ProductsActivity.this, "404");
                 isFirstClick=false;
                 return;
             }
@@ -213,7 +214,7 @@ public class ProductListActivity extends BaseActivity {
                             if(!code.equals("0"))
                             {
                                 isFirstClick=false;
-                                ErrorUtils.showErrorMsg(ProductListActivity.this, code);
+                                ErrorUtils.showErrorMsg(ProductsActivity.this, code);
                                 adapter.notifyDataSetChanged();
                                 return;
                             }
@@ -257,7 +258,7 @@ public class ProductListActivity extends BaseActivity {
             }
             if(plist.size()<=0)
             {
-                Toast.makeText(ProductListActivity.this,"No data",Toast.LENGTH_SHORT).show();
+                Toast.makeText(ProductsActivity.this,"No data",Toast.LENGTH_SHORT).show();
             }
             isFirstClick=false;
             adapter.notifyDataSetChanged();
@@ -300,7 +301,7 @@ public class ProductListActivity extends BaseActivity {
 
                             if(!code.equals("0"))
                             {
-                                ErrorUtils.showErrorMsg(ProductListActivity.this, code);
+                                ErrorUtils.showErrorMsg(ProductsActivity.this, code);
                                 return;
                             }
                         }
@@ -331,7 +332,7 @@ public class ProductListActivity extends BaseActivity {
             if(list.size()>0)
             {
                 tv_center.setText(list.get(0).text);
-                DialogUtils.FilterDlg(ProductListActivity.this, list, tv_center, current, listener);
+                DialogUtils.FilterDlg(ProductsActivity.this, list, tv_center, current, listener, 0);
             }
 
         } catch (XmlPullParserException e) {

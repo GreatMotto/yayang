@@ -35,7 +35,7 @@ public class UniqueCodeEnterActivity extends BaseActivity {
     private EditText et_unique_code;
     private TextView btn_submit;
     private LinearLayout ll_header;
-    private int flag = 0;
+    private int flag = 0, tag = 0;
     private String str = "";
     private View view_header;
 
@@ -46,6 +46,7 @@ public class UniqueCodeEnterActivity extends BaseActivity {
         FontManager.applyFont(this, getWindow().getDecorView().findViewById(android.R.id.content), Constant.TTFNAME);
         AveneApplication.getInstance().addActivity(this);
         flag = getIntent().getIntExtra(Constant.FLAG, 0);//0,注册跳转  1/2,首页跳转
+        tag = getIntent().getIntExtra(Constant.TAG, 0);
         initView();
         initData();
     }
@@ -62,7 +63,7 @@ public class UniqueCodeEnterActivity extends BaseActivity {
     private void initData() {
         //0,注册跳转  1,首页跳转
         if (flag == 0) {
-            initTitle("Registration process");
+            initTitle("Registration Process");
             ll_header.setVisibility(View.VISIBLE);
             view_header.setVisibility(View.VISIBLE);
             HorizontalListView hlv_guide = (HorizontalListView) findViewById(com.edenred.android.apps.avenesg.R.id.hlv_guide);
@@ -70,7 +71,11 @@ public class UniqueCodeEnterActivity extends BaseActivity {
             hlv_guide.setAdapter(adapter);
 
         } else {
-            initLogo();
+            if (tag == 8){
+                initLogo();
+            }else {
+                initLogo2();
+            }
             initTitle("Enter Unique Code");
             ll_header.setVisibility(View.GONE);
             view_header.setVisibility(View.GONE);
@@ -174,7 +179,7 @@ public class UniqueCodeEnterActivity extends BaseActivity {
             }
             //得到的条形码正确
             AveneApplication.getInstance().purchaseCode = str;
-            goto1OtherActivity(TransactionDetailsEnterActivity.class, flag);
+            goto2OtherActivity(TransactionDetailsEnterActivity.class, flag, tag);
         } catch (XmlPullParserException e) {
             e.printStackTrace();
         } catch (IOException e) {

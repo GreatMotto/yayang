@@ -15,6 +15,7 @@ import com.edenred.android.apps.avenesg.bean.ShoppingCarBean;
 import com.edenred.android.apps.avenesg.constant.Constant;
 import com.edenred.android.apps.avenesg.constant.Urls;
 import com.edenred.android.apps.avenesg.utils.FontManager;
+import com.edenred.android.apps.avenesg.utils.NumbersFormat;
 import com.edenred.android.apps.avenesg.utils.SharedPreferencesHelper;
 import com.edenred.android.apps.avenesg.utils.ViewHolder;
 import com.google.gson.Gson;
@@ -85,7 +86,7 @@ public class MyRewardAdapter extends BaseAdapter {
             startpoint = Integer.parseInt(list.get(position).pointfirst);
             startpoint = startpoint / startnum;
         }
-        tv_point_true.setText(String.valueOf(startpoint));
+        tv_point_true.setText(NumbersFormat.thousand(String.valueOf(startpoint)));
 
         if (!TextUtils.isEmpty(list.get(position).imgUrl)) {
 //            iv_pic.setAspectRatio(1.5f);

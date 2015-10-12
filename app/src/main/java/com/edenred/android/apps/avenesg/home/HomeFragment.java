@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.edenred.android.apps.avenesg.AveneApplication;
 import com.edenred.android.apps.avenesg.BaseActivity;
+import com.edenred.android.apps.avenesg.R;
 import com.edenred.android.apps.avenesg.bean.NotifyMessageBean;
 import com.edenred.android.apps.avenesg.bean.RedeemGiftBean;
 import com.edenred.android.apps.avenesg.catalogue.CatalogueActivity;
@@ -28,6 +29,7 @@ import com.edenred.android.apps.avenesg.utils.DisplayUtil;
 import com.edenred.android.apps.avenesg.utils.ErrorUtils;
 import com.edenred.android.apps.avenesg.utils.FontManager;
 import com.edenred.android.apps.avenesg.utils.HttpUtils;
+import com.edenred.android.apps.avenesg.utils.NumbersFormat;
 import com.edenred.android.apps.avenesg.utils.SharedPreferencesHelper;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -48,7 +50,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     private ImageView iv_back;
     private TextView tv_allpoint, tv_allview1, tv_allview2,
-            tv_point1, tv_point2, tv_point3, tv_monthpoint,tv_welcome, tv_email;
+            tv_point1, tv_point2, tv_point3, tv_monthpoint, tv_welcome, tv_website;
     private LinearLayout ll_point1, ll_point2, ll_point3, ll_register;
     private RecyclerView recyclerView1, recyclerView2;
     private RecylerAdapter adapter1, adapter2;
@@ -69,14 +71,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         super.onResume();
         if (sp.getValue(Constant.ACCOUNTBALANCE) != null) {
             tv_allpoint.setText(getResources().getString(com.edenred.android.apps.avenesg.R.string.allpoint) +
-                    sp.getValue(Constant.ACCOUNTBALANCE));
+                    NumbersFormat.thousand(sp.getValue(Constant.ACCOUNTBALANCE)));
         }
         setTextSize(tv_allpoint.getText().toString(),
                 tv_allpoint, 17, 16, tv_allpoint.getText().length());
-        tv_welcome.setText("Welcome "+sp.getValue(Constant.FIRSTNAME));
-        tv_point1.setText(sp.getValue(Constant.EARNED));
-        tv_point2.setText(sp.getValue(Constant.REDEMEED));
-        tv_point3.setText(sp.getValue(Constant.EXPIRED));
+        tv_welcome.setText("Welcome " + sp.getValue(Constant.FIRSTNAME));
+        tv_point1.setText(NumbersFormat.thousand(sp.getValue(Constant.EARNED)));
+        tv_point2.setText(NumbersFormat.thousand(sp.getValue(Constant.REDEMEED)));
+        tv_point3.setText(NumbersFormat.thousand(sp.getValue(Constant.EXPIRED)));
 
         //获取月份显示成英文
         ((BaseActivity) getActivity()).ChangeMonth2English(tv_monthpoint, sp.getValue(Constant.WILLEXPIRINGNEXTMON), sp.getValue(Constant.EXPIRINGPOINTSDATE));
@@ -91,7 +93,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
         iv_back = (ImageView) view.findViewById(com.edenred.android.apps.avenesg.R.id.iv_back);
         tv_allpoint = (TextView) view.findViewById(com.edenred.android.apps.avenesg.R.id.tv_allpoint);
-        tv_welcome= (TextView) view.findViewById(com.edenred.android.apps.avenesg.R.id.tv_welcome);
+        tv_welcome = (TextView) view.findViewById(com.edenred.android.apps.avenesg.R.id.tv_welcome);
         ll_point1 = (LinearLayout) view.findViewById(com.edenred.android.apps.avenesg.R.id.ll_point1);//积分1
         ll_point2 = (LinearLayout) view.findViewById(com.edenred.android.apps.avenesg.R.id.ll_point2);//积分2
         ll_point3 = (LinearLayout) view.findViewById(com.edenred.android.apps.avenesg.R.id.ll_point3);//积分3
@@ -103,7 +105,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         tv_allview2 = (TextView) view.findViewById(com.edenred.android.apps.avenesg.R.id.tv_allview2);//All View2
 
         ll_register = (LinearLayout) view.findViewById(com.edenred.android.apps.avenesg.R.id.ll_register);//底部加号
-        tv_email = (TextView) view.findViewById(com.edenred.android.apps.avenesg.R.id.tv_email);
+        tv_website = (TextView) view.findViewById(R.id.tv_website);
         recyclerView1 = (RecyclerView) view.findViewById(com.edenred.android.apps.avenesg.R.id.recyclerView1);
         recyclerView2 = (RecyclerView) view.findViewById(com.edenred.android.apps.avenesg.R.id.recyclerView2);
 
@@ -157,8 +159,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 //            }
 //
 //        });
-        if (!AveneApplication.getInstance().dialogBean.contact_us.email.isEmpty()){
-            tv_email.setText(AveneApplication.getInstance().dialogBean.contact_us.email);
+        if (!AveneApplication.getInstance().dialogBean.website.isEmpty()) {
+            tv_website.setText(AveneApplication.getInstance().dialogBean.website);
         }
     }
 

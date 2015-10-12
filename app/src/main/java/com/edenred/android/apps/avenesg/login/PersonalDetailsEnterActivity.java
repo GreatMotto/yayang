@@ -17,6 +17,7 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.edenred.android.apps.avenesg.AveneApplication;
 import com.edenred.android.apps.avenesg.BaseActivity;
@@ -64,6 +65,7 @@ public class PersonalDetailsEnterActivity extends BaseActivity {
     private List<StringBean> mlist = null;
     private SharedPreferencesHelper sp;
     private PersonalAdapter adapter;
+    private String mobilecode = "", mobilenumber = "";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -79,7 +81,7 @@ public class PersonalDetailsEnterActivity extends BaseActivity {
 
 
     private void initView() {
-        initTitle("Registration process");
+        initTitle("Registration Process");
         hlv_guide = (HorizontalListView) findViewById(com.edenred.android.apps.avenesg.R.id.hlv_guide);
         btn_submit = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.btn_submit);
         // 性别
@@ -181,19 +183,12 @@ public class PersonalDetailsEnterActivity extends BaseActivity {
         switch (v.getId()) {
             case com.edenred.android.apps.avenesg.R.id.btn_submit:
                 if (canSubmit()) {
-//                    mareacode = tv_country_code.getText().toString().trim();
-//                    mphone = et_mobile.getText().toString().trim();
-//                    MyAsy myAsy = new MyAsy();
-//                    myAsy.setFlag("1");
-//                    myAsy.execute();
-                    AveneApplication.getInstance().memberinfo.firstName = et_first_name.getText().toString().trim();
-                    AveneApplication.getInstance().memberinfo.lastName = et_last_name.getText().toString().trim();
-                    AveneApplication.getInstance().memberinfo.sexId = tv_gender.getText().toString().trim();
-                    AveneApplication.getInstance().memberinfo.email = et_email.getText().toString().trim();
-                    AveneApplication.getInstance().memberinfo.mobileCode = tv_country_code.getText().toString().trim();
-                    AveneApplication.getInstance().memberinfo.mobileNumber = et_mobile.getText().toString().trim();
-                    AveneApplication.getInstance().memberinfo.password = et_create_password.getText().toString().trim();
-                    gotoOtherActivity(ConfirmAccountActivity.class);
+                    mobilecode = tv_country_code.getText().toString().trim().replace("+", "");
+                    mobilenumber = et_mobile.getText().toString().trim();
+                    MyAsy myAsy = new MyAsy();
+                    myAsy.setFlag("1");
+                    myAsy.execute();
+//                    gotoOtherActivity(ConfirmAccountActivity.class);
                 } else {
 //                  // 信息填写不完整
                     String email = et_email.getText().toString().trim();
@@ -326,21 +321,32 @@ public class PersonalDetailsEnterActivity extends BaseActivity {
     }
 
     class MyAsy extends AsyncTask<Object, Object, String> {
+        //执行耗时操作
+        public String flag = "";
+
+        public String getFlag() {
+            return flag;
+        }
+
+        public void setFlag(String flag) {
+            this.flag = flag;
+        }
 
         @Override
         protected String doInBackground(Object... params) {
+            //请求接口
+            String currentFlag = getFlag();
             String result = null;
             HttpUtils httpUtils = new HttpUtils();
             HashMap<String, String> hashMap = new HashMap<String, String>();
             hashMap.put("securityKey", "abc123$");
-//            if (currentFlag.equals("1")) {
-//                hashMap.put("mobileCode", mareacode.replace("+", ""));
-//                hashMap.put("mobileNumber", mphone);
-//                hashMap.put("sendType", "2");
-//                result = httpUtils.putParam(hashMap, Urls.SENDVERIFICATIONINFO);
-//            } else {
-            result = httpUtils.putParam(hashMap, Urls.GETCOUNTRYLIST);
-//            }
+            if (currentFlag.equals("1")){
+                hashMap.put("mobileCode", mobilecode);
+                hashMap.put("mobileNumber", mobilenumber);
+                result = httpUtils.putParam(hashMap, Urls.ISMEMBER);
+            }else {
+                result = httpUtils.putParam(hashMap, Urls.GETCOUNTRYLIST);
+            }
             return result;
         }
 
@@ -357,12 +363,60 @@ public class PersonalDetailsEnterActivity extends BaseActivity {
                 ErrorUtils.showErrorMsg(PersonalDetailsEnterActivity.this, "404");
                 return;
             }
-//            String currentFlag = getFlag();
-//            if (currentFlag.equals("1")){
-//                SendOTPXmlpull(result);
-//            }else {
-            CountryXmlPull(result);
-//            }
+            String currentFlag = getFlag();
+            if (currentFlag.equals("1")){
+                IsMemberXmlPull(result);
+            }else {
+                CountryXmlPull(result);
+            }
+        }
+    }
+
+    private void IsMemberXmlPull(String result) {
+        //解析返回数据
+        XmlPullParserFactory factory = null;
+        try {
+            factory = XmlPullParserFactory.newInstance();
+            factory.setNamespaceAware(true);
+            XmlPullParser parser = factory.newPullParser();
+            parser.setInput(new StringReader(result));
+            int eventType = parser.getEventType();
+
+            while (eventType != XmlPullParser.END_DOCUMENT) {
+                // 只要不是文档结束事件
+                switch (eventType) {
+                    // 文档开始事件,可以进行数据初始化处理
+                    case XmlPullParser.START_DOCUMENT:
+                        break;
+                    //开始读取标签
+                    case XmlPullParser.START_TAG:
+                        String name = parser.getName();// 获取解析器当前指向的元素的名称
+                        if (name.equals("exitCode")) {
+                            String code = parser.nextText();
+                            Log.e("exitCode", code);
+                            if (code.equals("-13")) {
+                                Toast.makeText(PersonalDetailsEnterActivity.this, "Mobile has been registered", Toast.LENGTH_SHORT).show();
+                                return;
+                            }
+                        }
+                        break;
+                    case XmlPullParser.END_TAG:// 结束元素事件
+                        break;
+                }
+                eventType = parser.next();
+            }
+            AveneApplication.getInstance().memberinfo.firstName = et_first_name.getText().toString().trim();
+            AveneApplication.getInstance().memberinfo.lastName = et_last_name.getText().toString().trim();
+            AveneApplication.getInstance().memberinfo.sexId = tv_gender.getText().toString().trim();
+            AveneApplication.getInstance().memberinfo.email = et_email.getText().toString().trim();
+            AveneApplication.getInstance().memberinfo.mobileCode = tv_country_code.getText().toString().trim();
+            AveneApplication.getInstance().memberinfo.mobileNumber = et_mobile.getText().toString().trim();
+            AveneApplication.getInstance().memberinfo.password = et_create_password.getText().toString().trim();
+            gotoOtherActivity(ConfirmAccountActivity.class);
+        } catch (XmlPullParserException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

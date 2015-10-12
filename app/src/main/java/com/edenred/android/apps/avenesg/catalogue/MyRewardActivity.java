@@ -20,6 +20,7 @@ import com.edenred.android.apps.avenesg.utils.DialogUtils;
 import com.edenred.android.apps.avenesg.utils.ErrorUtils;
 import com.edenred.android.apps.avenesg.utils.FontManager;
 import com.edenred.android.apps.avenesg.utils.HttpUtils;
+import com.edenred.android.apps.avenesg.utils.NumbersFormat;
 import com.edenred.android.apps.avenesg.utils.SharedPreferencesHelper;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -45,7 +46,7 @@ public class MyRewardActivity extends BaseActivity {
     private ListView lv_reward;
     private MyRewardAdapter adapter;
     private List<ShoppingCarBean> list = new ArrayList<ShoppingCarBean>();
-    private int allnum = 0, test = 0, listsize = 0, shengyu = 0;
+    private int allnum = 0, test = 0, listsize = 0, shengyu = 0, tag = 0;
     private SharedPreferencesHelper sp;
     private String orderNo="",accountBalance="",pointsEarned="",pointsRedemed="",pointsExpired="",willExpiringNextMon="";
     private String collection="",contact="";
@@ -56,11 +57,16 @@ public class MyRewardActivity extends BaseActivity {
         setContentView(com.edenred.android.apps.avenesg.R.layout.ac_myreward);
         FontManager.applyFont(this, getWindow().getDecorView().findViewById(android.R.id.content), Constant.TTFNAME);
         AveneApplication.getInstance().addActivity(this);
-        initLogo();
         sp = AveneApplication.getInstance().getSp();
+        tag = getIntent().getIntExtra(Constant.TAG, 0);
+        if (tag == 8){
+            initLogo();
+        }else {
+            initLogo2();
+        }
         initTitle("My Rewards");
-        collection=AveneApplication.getInstance().dialogBean.redemption.collection;
-        contact=AveneApplication.getInstance().dialogBean.redemption.contact;
+        collection=AveneApplication.getInstance().dialogBean.collection;
+        contact=AveneApplication.getInstance().dialogBean.contact;
         initView();
         initData();
     }
@@ -105,7 +111,7 @@ public class MyRewardActivity extends BaseActivity {
 
 
     public void resetpoint(int num, int listsize1) {
-        tv_allnum.setText(String.valueOf(num));
+        tv_allnum.setText(NumbersFormat.thousand(String.valueOf(num)));
         setButtonColor(num);
         tv_item.setText(String.valueOf(listsize1));
 
@@ -120,7 +126,7 @@ public class MyRewardActivity extends BaseActivity {
             tv_shengyu.setText("0");
             shengyu = 0;
         } else {
-            tv_shengyu.setText(String.valueOf(test - num));
+            tv_shengyu.setText(NumbersFormat.thousand(String.valueOf(test - num)));
             shengyu = test - num;
             tv_checkout.setEnabled(true);
             tv_checkout.setBackground(getResources().getDrawable(com.edenred.android.apps.avenesg.R.drawable.grey_dark_box));
@@ -133,7 +139,7 @@ public class MyRewardActivity extends BaseActivity {
         switch (v.getId()) {
             case com.edenred.android.apps.avenesg.R.id.tv_continue:
                 AveneApplication.getInstance().finishActivity();
-                gotoOtherActivity(CatalogueActivity.class);
+                goto1AnotherActivity(CatalogueActivity.class, tag);
                 break;
             case com.edenred.android.apps.avenesg.R.id.tv_checkout:
                 if (listsize <= 0) {
@@ -160,7 +166,7 @@ public class MyRewardActivity extends BaseActivity {
     private void setTitlePoint() {
         if (sp.getValue(Constant.ACCOUNTBALANCE) != null) {
             tv_allpoint.setText(getResources().getString(com.edenred.android.apps.avenesg.R.string.allpoint) +
-                    sp.getValue(Constant.ACCOUNTBALANCE));
+                    NumbersFormat.thousand(sp.getValue(Constant.ACCOUNTBALANCE)));
             test = Integer.parseInt(sp.getValue(Constant.ACCOUNTBALANCE));
         }
         setTextSize(tv_allpoint.getText().toString(),
@@ -333,7 +339,7 @@ public class MyRewardActivity extends BaseActivity {
                 eventType = parser.next();
             }
             tv_allpoint.setText(getResources().getString(com.edenred.android.apps.avenesg.R.string.allpoint) +
-                    accountBalance);
+                    NumbersFormat.thousand(accountBalance));
             setTextSize(tv_allpoint.getText().toString(),
                     tv_allpoint, 17, 16, tv_allpoint.getText().length());
             tv_allnum.setText("0");
@@ -341,7 +347,6 @@ public class MyRewardActivity extends BaseActivity {
             list.clear();
             adapter.notifyDataSetChanged();
             sp.putValue(Constant.SHOPCARLIST, new Gson().toJson(list));
-
             sp.putValue(Constant.ACCOUNTBALANCE, accountBalance);
             sp.putValue(Constant.EARNED, pointsEarned);
             sp.putValue(Constant.REDEMEED, pointsRedemed);

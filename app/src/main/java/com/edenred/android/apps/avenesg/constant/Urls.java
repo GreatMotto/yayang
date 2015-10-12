@@ -3,15 +3,16 @@ package com.edenred.android.apps.avenesg.constant;
 public interface Urls {
 
     /* 服务器地址 */
-    public final static String HOST = "http://211.152.32.174:8080/AveneSGWebservice/service/appService?wsdl";
+    public final static String HOST = "http://211.152.32.174:8080/AveneSGWebservice/service/appService?wsdl";// 上海URL
 //    public final static String HOST = "http://202.56.138.174:8080/AveneSGWebservice/service/appService?wsdl";// 新加坡URL
 
     /* 获取对话框数据 */
-    public static final String GETDIALOGNAME = "http://211.152.32.174:8080/AveneAPP/webservice/dictionary/info";
+    public static final String GETDIALOGNAME = "http://211.152.32.174:8080/AveneAPP/webservice/dictionary/info";// 上海URL
 //    public static final String GETDIALOGNAME = "http://202.56.138.174:8080/AveneAPP/webservice/dictionary/info";// 新加坡URL
+//    public static final String GETDIALOGNAME = "http://10.58.168.85:8080/avene/webservice/dictionary/info";// 本地
 
     /*图片IP和端口号*/
-    public static final String IPANDPORT = "http://211.152.32.174:8080";
+    public static final String IPANDPORT = "http://211.152.32.174:8080";// 上海
 //    public static final String IPANDPORT = "http://202.56.138.174:8080";// 新加坡
 
     /* 获取礼品分类列表 */
@@ -76,5 +77,8 @@ public interface Urls {
 
     /* 保存或更新会员设置 */
     public static final String UPDATEUSERSETTING = "updateUserSetting";
+
+    /* 验证手机号是否存在 */
+    public static final String ISMEMBER = "isMember";
 
 }

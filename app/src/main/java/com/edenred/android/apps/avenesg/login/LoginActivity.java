@@ -113,6 +113,7 @@ public class LoginActivity extends BaseActivity implements ShowPopWindow.PopList
                     new TypeToken<List<StringBean>>() {
                     }.getType());
         }
+//        Log.e("ssssssssss", NumbersFormat.noThousand("3,000,000"));
     }
 
     public boolean canLogin() {

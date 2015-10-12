@@ -17,6 +17,7 @@ import com.edenred.android.apps.avenesg.bean.ShoppingCarBean;
 import com.edenred.android.apps.avenesg.constant.Constant;
 import com.edenred.android.apps.avenesg.constant.Urls;
 import com.edenred.android.apps.avenesg.utils.FontManager;
+import com.edenred.android.apps.avenesg.utils.NumbersFormat;
 import com.edenred.android.apps.avenesg.utils.SharedPreferencesHelper;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -36,7 +37,7 @@ public class RewardDetailActivity extends BaseActivity {
     private RelativeLayout rl_right;
     private TextView tv_sum, tv_allpoint, tv_add, tv_calagolue_num, tv_point, tv_name, tv_desc;
     private LinearLayout ll_subtract, ll_plus;
-    private int num = 0, pointfirst = 0, pointnum = 0, carnum = 0,current=0,carnumfirst=0;
+    private int num = 0, pointfirst = 0, pointnum = 0, carnum = 0,current=0,carnumfirst=0, tag = 0;
     private RedeemGiftBean data;
 //    private SimpleDraweeView iv_pic;
     private ImageView iv_image_view;
@@ -50,9 +51,14 @@ public class RewardDetailActivity extends BaseActivity {
         setContentView(com.edenred.android.apps.avenesg.R.layout.ac_reward_detail);
         FontManager.applyFont(this, getWindow().getDecorView().findViewById(android.R.id.content), Constant.TTFNAME);
         AveneApplication.getInstance().addActivity(this);
-        initLogo();
         sp = AveneApplication.getInstance().getSp();
         data = (RedeemGiftBean) getIntent().getSerializableExtra("giftlist");
+        tag = getIntent().getIntExtra(Constant.TAG, 0);
+        if (tag == 8){
+            initLogo();
+        }else {
+            initLogo2();
+        }
         initTitle("Rewards Catalogue");
         initView();
         initData();
@@ -86,7 +92,7 @@ public class RewardDetailActivity extends BaseActivity {
         super.onResume();
         if (sp.getValue(Constant.ACCOUNTBALANCE) != null) {
             tv_allpoint.setText(getResources().getString(com.edenred.android.apps.avenesg.R.string.allpoint) +
-                    sp.getValue(Constant.ACCOUNTBALANCE));
+                    NumbersFormat.thousand(sp.getValue(Constant.ACCOUNTBALANCE)));
         }
         setTextSize(tv_allpoint.getText().toString(),
                 tv_allpoint, 17, 16, tv_allpoint.getText().length());
@@ -113,11 +119,9 @@ public class RewardDetailActivity extends BaseActivity {
     }
 
     private void initData() {
-
-
         tv_name.setText(data.articleName);
         tv_desc.setText(data.articleDesc);
-        tv_point.setText((data.articlePoint).replace(" points", ""));
+        tv_point.setText(NumbersFormat.thousand((data.articlePoint).replace(" points", "")));
 //        iv_pic.setAspectRatio(1.5f);
 //        iv_pic.setImageURI(Uri.parse(Urls.IPANDPORT + data.productImageURL));
         DisplayImageOptions options = new DisplayImageOptions.Builder()
@@ -131,7 +135,7 @@ public class RewardDetailActivity extends BaseActivity {
             num = Integer.parseInt(tv_calagolue_num.getText().toString());
         }
         if (!TextUtils.isEmpty(tv_point.getText().toString())) {
-            pointfirst = Integer.parseInt(tv_point.getText().toString());
+            pointfirst = Integer.parseInt(NumbersFormat.noThousand(tv_point.getText().toString()));
             pointnum = pointfirst * num;
         }
 
@@ -176,17 +180,17 @@ public class RewardDetailActivity extends BaseActivity {
                     num -= 1;
                     tv_calagolue_num.setText(String.valueOf(num));
                     pointnum = pointfirst * num;
-                    tv_point.setText(String.valueOf(pointnum));
+                    tv_point.setText(NumbersFormat.thousand(String.valueOf(pointnum)));
                 }
                 break;
             case com.edenred.android.apps.avenesg.R.id.ll_plus:
                 num += 1;
                 tv_calagolue_num.setText(String.valueOf(num));
                 pointnum = pointfirst * num;
-                tv_point.setText(String.valueOf(pointnum));
+                tv_point.setText(NumbersFormat.thousand(String.valueOf(pointnum)));
                 break;
             case com.edenred.android.apps.avenesg.R.id.rl_right:
-                gotoOtherActivity(MyRewardActivity.class);
+                goto1AnotherActivity(MyRewardActivity.class, tag);
                 break;
             default:
                 break;

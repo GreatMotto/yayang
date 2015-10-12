@@ -67,6 +67,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/magin"
                     android:layout_marginRight="@dimen/six_magin"
+                    android:gravity="center"
                     android:text="Color Play Enterprise Pte Ltd"
                     android:textColor="@color/item_content_color"
                     android:textSize="@dimen/normal_text_size" />

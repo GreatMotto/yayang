@@ -20,6 +20,7 @@ import com.edenred.android.apps.avenesg.utils.DisplayUtil;
 import com.edenred.android.apps.avenesg.utils.ErrorUtils;
 import com.edenred.android.apps.avenesg.utils.FontManager;
 import com.edenred.android.apps.avenesg.utils.HttpUtils;
+import com.edenred.android.apps.avenesg.utils.NumbersFormat;
 import com.edenred.android.apps.avenesg.utils.SharedPreferencesHelper;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -46,9 +47,10 @@ public class CatalogueActivity extends BaseActivity {
     private TextView tv_sum, tv_allpoint;
     private RecyclerView recyclerView;
     private RecylerAdapter recylerAdapter;
-    private List<RedeemGiftBean> mlist=new ArrayList<RedeemGiftBean>();
-    private List<ShoppingCarBean> shopCarList=new ArrayList<ShoppingCarBean>();
+    private List<RedeemGiftBean> mlist = new ArrayList<RedeemGiftBean>();
+    private List<ShoppingCarBean> shopCarList = new ArrayList<ShoppingCarBean>();
     private SharedPreferencesHelper sp;
+    private int tag = 0;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -56,8 +58,13 @@ public class CatalogueActivity extends BaseActivity {
         setContentView(com.edenred.android.apps.avenesg.R.layout.ac_catalogue);
         FontManager.applyFont(this, getWindow().getDecorView().findViewById(android.R.id.content), Constant.TTFNAME);
         AveneApplication.getInstance().addActivity(this);
-        initLogo();
-        sp= AveneApplication.getInstance().getSp();
+        tag = getIntent().getIntExtra(Constant.TAG, 0);
+        if (tag == 8) {
+            initLogo();
+        } else {
+            initLogo2();
+        }
+        sp = AveneApplication.getInstance().getSp();
         AveneApplication.getInstance().addActivity(this);
         initTitle("Rewards Catalogue");
         initView();
@@ -69,13 +76,12 @@ public class CatalogueActivity extends BaseActivity {
         super.onResume();
         if (sp.getValue(Constant.ACCOUNTBALANCE) != null) {
             tv_allpoint.setText(getResources().getString(com.edenred.android.apps.avenesg.R.string.allpoint) +
-                    sp.getValue(Constant.ACCOUNTBALANCE));
+                    NumbersFormat.thousand(sp.getValue(Constant.ACCOUNTBALANCE)));
         }
         setTextSize(tv_allpoint.getText().toString(),
                 tv_allpoint, 17, 16, tv_allpoint.getText().length());
 
-        if(sp.getBooleanValue(Constant.ISSHOPCARLIST))
-        {
+        if (sp.getBooleanValue(Constant.ISSHOPCARLIST)) {
             Gson gson = new Gson();
             shopCarList = gson.fromJson(sp.getValue(Constant.SHOPCARLIST),
                     new TypeToken<List<ShoppingCarBean>>() {
@@ -83,7 +89,7 @@ public class CatalogueActivity extends BaseActivity {
         }
         int carnum = shopCarList.size();
         tv_sum.setText(String.valueOf(carnum));
-        recylerAdapter.setUI(tv_sum,carnum,shopCarList);
+        recylerAdapter.setUI(tv_sum, carnum, shopCarList);
 
     }
 
@@ -108,7 +114,7 @@ public class CatalogueActivity extends BaseActivity {
 
     private void initData() {
 
-        recylerAdapter = new RecylerAdapter(this, DisplayUtil.getWidth(this) * 5 / 11, 2, mlist);
+        recylerAdapter = new RecylerAdapter(this, DisplayUtil.getWidth(this) * 5 / 11, 2, tag, mlist);
         recyclerView.setAdapter(recylerAdapter);
 
 
@@ -130,25 +136,25 @@ public class CatalogueActivity extends BaseActivity {
         switch (v.getId()) {
             case com.edenred.android.apps.avenesg.R.id.rl_filter_calalogue:
 //                goto1OtherActivity(FilterActivity.class, 1);
-                gotoFiterActivity(1);
+                gotoFiterActivity(1, tag);
                 break;
             case com.edenred.android.apps.avenesg.R.id.rl_filter_point:
-                gotoFiterActivity(2);
+                gotoFiterActivity(2, tag);
                 break;
             case com.edenred.android.apps.avenesg.R.id.rl_right:
-                gotoOtherActivity(MyRewardActivity.class);
+                goto1AnotherActivity(MyRewardActivity.class, tag);
                 break;
             default:
                 break;
         }
     }
 
-    private void gotoFiterActivity(int flag)
-    {
-        Intent intent =new Intent();
+    private void gotoFiterActivity(int flag, int tag) {
+        Intent intent = new Intent();
         intent.putExtra(Constant.FLAG, flag);
+        intent.putExtra(Constant.TAG, tag);
         intent.putExtra("list", (Serializable) mlist);
-        intent.setClass(this,FilterActivity.class);
+        intent.setClass(this, FilterActivity.class);
         startActivity(intent);
     }
 
@@ -202,8 +208,7 @@ public class CatalogueActivity extends BaseActivity {
                         String name = parser.getName();// 获取解析器当前指向的元素的名称
                         if (name.equals("exitCode")) {
                             String code = parser.nextText();
-                            if(!code.equals("0"))
-                            {
+                            if (!code.equals("0")) {
                                 ErrorUtils.showErrorMsg(CatalogueActivity.this, code);
                                 return;
                             }
@@ -243,8 +248,7 @@ public class CatalogueActivity extends BaseActivity {
                 eventType = parser.next();
             }
 
-            if(mlist.size()<=0)
-            {
+            if (mlist.size() <= 0) {
                 Toast.makeText(this, "No data", Toast.LENGTH_SHORT).show();
             }
             recylerAdapter.notifyDataSetChanged();

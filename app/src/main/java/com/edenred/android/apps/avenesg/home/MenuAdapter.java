@@ -16,7 +16,7 @@ import com.edenred.android.apps.avenesg.constant.Urls;
 import com.edenred.android.apps.avenesg.login.LoginActivity;
 import com.edenred.android.apps.avenesg.login.SubmitEANCodeActivity;
 import com.edenred.android.apps.avenesg.points.MyPointActivity;
-import com.edenred.android.apps.avenesg.product.ProductListActivity;
+import com.edenred.android.apps.avenesg.product.ProductsActivity;
 import com.edenred.android.apps.avenesg.profile.MyProfileActivity;
 import com.edenred.android.apps.avenesg.promotion.NewsAndPromotionsActivity;
 import com.edenred.android.apps.avenesg.settings.ChangePwActivity;
@@ -88,16 +88,16 @@ public class MenuAdapter extends BaseAdapter {
                         ((BaseActivity) mContext).gotoOtherActivity(MyProfileActivity.class);
                         break;
                     case 1://My Points
-                        ((BaseActivity) mContext).goto1OtherActivity(MyPointActivity.class, 1);
+                        ((BaseActivity) mContext).goto1OtherActivity(MyPointActivity.class, 0);
                         break;
                     case 2://Rewards catalogue
-                        ((BaseActivity) mContext).gotoOtherActivity(CatalogueActivity.class);
+                        ((BaseActivity) mContext).goto1AnotherActivity(CatalogueActivity.class, 8);
                         break;
                     case 3://Scan to Register Purchase
-                        ((BaseActivity) mContext).goto1OtherActivity(SubmitEANCodeActivity.class, 1);
+                        ((BaseActivity) mContext).goto2OtherActivity(SubmitEANCodeActivity.class, 1, 8);
                         break;
                     case 4://News and Promotions
-                        ((BaseActivity) mContext).gotoOtherActivity(NewsAndPromotionsActivity.class);
+                        ((BaseActivity) mContext).goto1AnotherActivity(NewsAndPromotionsActivity.class, 8);
                         break;
                     case 5://FAQ
                         Intent intent1 = new Intent(mContext, WebViewActivity.class);
@@ -106,7 +106,7 @@ public class MenuAdapter extends BaseAdapter {
                         ((BaseActivity) mContext).startActivity(intent1);
                         break;
                     case 6://Eau Thermale Avène Products
-                        ((BaseActivity) mContext).gotoOtherActivity(ProductListActivity.class);
+                        ((BaseActivity) mContext).gotoOtherActivity(ProductsActivity.class);
                         break;
                     case 7://Contract Us
                         ((BaseActivity) mContext).gotoOtherActivity(ContactUsActivity.class);

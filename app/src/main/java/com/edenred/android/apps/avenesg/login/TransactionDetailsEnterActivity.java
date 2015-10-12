@@ -50,7 +50,7 @@ public class TransactionDetailsEnterActivity extends BaseActivity implements Sho
     private RelativeLayout rl_retailer_type, rl_area, rl_store_location;
     private LinearLayout ll_header;
     private View view_header;
-    private int flag = 0;
+    private int flag = 0, tag = 0;
     private List<StringBean> chainlist = new ArrayList<StringBean>();
     private List<StringBean> arealist = new ArrayList<StringBean>();
     private List<StringBean> counterlist = new ArrayList<StringBean>();
@@ -72,6 +72,12 @@ public class TransactionDetailsEnterActivity extends BaseActivity implements Sho
         AveneApplication.getInstance().addActivity(this);
         sp = AveneApplication.getInstance().getSp();
         flag = getIntent().getIntExtra(Constant.FLAG, 0);//0,注册跳转  1/2,首页跳转
+        tag = getIntent().getIntExtra(Constant.TAG, 0);
+        if (tag == 8){
+            initLogo();
+        }else {
+            initLogo2();
+        }
         if (flag == 1){
             HomeActivity.instanceHomeAc.toggleMenu();
         }
@@ -118,7 +124,7 @@ public class TransactionDetailsEnterActivity extends BaseActivity implements Sho
         }
         //0,注册跳转  1/2,首页跳转
         if (flag == 0) {
-            initTitle("Registration process");
+            initTitle("Registration Process");
             ll_header.setVisibility(View.VISIBLE);
             view_header.setVisibility(View.VISIBLE);
             HorizontalListView hlv_guide = (HorizontalListView) findViewById(com.edenred.android.apps.avenesg.R.id.hlv_guide);
@@ -165,7 +171,7 @@ public class TransactionDetailsEnterActivity extends BaseActivity implements Sho
         switch (v.getId()) {
 
             case com.edenred.android.apps.avenesg.R.id.iv_calendar:
-                DialogUtils.DataDlg(this, tv_date_of_purchase, tv_date_of_purchase.getText().toString(), 1, null);
+                DialogUtils.DateDlg(this, tv_date_of_purchase, tv_date_of_purchase.getText().toString(), 1, null);
                 break;
 
             case com.edenred.android.apps.avenesg.R.id.btn_submit:
@@ -178,7 +184,7 @@ public class TransactionDetailsEnterActivity extends BaseActivity implements Sho
                         saveAsy.execute();
                     } else {
                         String[] str = tv_date_of_purchase.getText().toString().split("/");
-                        AveneApplication.getInstance().memberinfo.date = str[2] + "-" + str[0] + "-" + str[1];
+                        AveneApplication.getInstance().memberinfo.date = str[2] + "-" + str[1] + "-" + str[0];
                         gotoOtherActivity(PersonalDetailsEnterActivity.class);
                     }
 
@@ -251,7 +257,7 @@ public class TransactionDetailsEnterActivity extends BaseActivity implements Sho
 
     private void getTransactionInfo() {
         String[] date1 = tv_date_of_purchase.getText().toString().split("/");
-        date = date1[2] + "-" + date1[0] + "-" + date1[1];
+        date = date1[2] + "-" + date1[1] + "-" + date1[0];
     }
 
     class SaveAsy extends AsyncTask<Object, Object, String> {

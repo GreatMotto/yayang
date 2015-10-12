@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.edenred.android.apps.avenesg.AveneApplication;
 import com.edenred.android.apps.avenesg.BaseActivity;
+import com.edenred.android.apps.avenesg.R;
 import com.edenred.android.apps.avenesg.bean.StringBean;
 import com.edenred.android.apps.avenesg.catalogue.CatalogueActivity;
 import com.edenred.android.apps.avenesg.catalogue.DlgAdapter;
@@ -40,6 +41,7 @@ import java.util.List;
 public class DialogUtils {
     public static EditText et_mobile;
     public static TextView tv_country_code;
+
     /**
      * 祝贺注册成功对话框
      *
@@ -51,12 +53,12 @@ public class DialogUtils {
         window.setGravity(Gravity.CENTER);
         withMbDlg.show();
         withMbDlg.setCanceledOnTouchOutside(true);
-        withMbDlg.getWindow().setContentView(com.edenred.android.apps.avenesg.R.layout.dlg_congratulation);
-        FontManager.applyFont(mContext,withMbDlg.getWindow().getDecorView().findViewById(android.R.id.content),Constant.TTFNAME);
+        withMbDlg.getWindow().setContentView(R.layout.dlg_congratulation);
+        FontManager.applyFont(mContext, withMbDlg.getWindow().getDecorView().findViewById(android.R.id.content), Constant.TTFNAME);
 
         TextView tv_btnText = (TextView) window.findViewById(com.edenred.android.apps.avenesg.R.id.tv_btnText);
         TextView tv_bonus = (TextView) window.findViewById(com.edenred.android.apps.avenesg.R.id.tv_bonus);
-        tv_bonus.setText("To receive "+AveneApplication.getInstance().dialogBean.bonus+" bonus points now, please complete your profile.");
+        tv_bonus.setText("To receive " + AveneApplication.getInstance().dialogBean.bonus + " bonus points now, please complete your profile.");
         tv_btnText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,20 +88,20 @@ public class DialogUtils {
         withMbDlg.show();
         withMbDlg.setCanceledOnTouchOutside(true);
         withMbDlg.getWindow().setContentView(com.edenred.android.apps.avenesg.R.layout.dlg_contact_us);
-        ImageView iv_cancel= (ImageView) window.findViewById(com.edenred.android.apps.avenesg.R.id.iv_cancel);
-        TextView tv_email= (TextView) window.findViewById(com.edenred.android.apps.avenesg.R.id.tv_email);
-        TextView tv_address= (TextView) window.findViewById(com.edenred.android.apps.avenesg.R.id.tv_address);
-        TextView tv_phone= (TextView) window.findViewById(com.edenred.android.apps.avenesg.R.id.tv_phone);
+        ImageView iv_cancel = (ImageView) window.findViewById(com.edenred.android.apps.avenesg.R.id.iv_cancel);
+        TextView tv_email = (TextView) window.findViewById(com.edenred.android.apps.avenesg.R.id.tv_email);
+        TextView tv_address = (TextView) window.findViewById(com.edenred.android.apps.avenesg.R.id.tv_address);
+        TextView tv_phone = (TextView) window.findViewById(com.edenred.android.apps.avenesg.R.id.tv_phone);
         iv_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 withMbDlg.dismiss();
             }
         });
-        tv_email.setText(AveneApplication.getInstance().dialogBean.contact_us.email);
-        tv_address.setText(AveneApplication.getInstance().dialogBean.contact_us.address);
-        tv_phone.setText(AveneApplication.getInstance().dialogBean.contact_us.phone);
-        FontManager.applyFont(mContext,withMbDlg.getWindow().getDecorView().findViewById(android.R.id.content),Constant.TTFNAME);
+        tv_email.setText(AveneApplication.getInstance().dialogBean.email);
+        tv_address.setText(AveneApplication.getInstance().dialogBean.address);
+        tv_phone.setText(AveneApplication.getInstance().dialogBean.phone);
+        FontManager.applyFont(mContext, withMbDlg.getWindow().getDecorView().findViewById(android.R.id.content), Constant.TTFNAME);
 
     }
 
@@ -168,13 +170,15 @@ public class DialogUtils {
             tv_btnText.setText(btn_next);
             tv_btnText.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    if (tv_country_code.getText().toString().trim().replace("+", "").equals("65")){
-                        if (!et_mobile.getText().toString().trim().matches(Constant.CheckSingaporeMobile)){
+                    if (tv_country_code.getText().toString().trim().replace("+", "").equals("65")) {
+                        if (!et_mobile.getText().toString().trim().matches(Constant.CheckSingaporeMobile)) {
                             Toast.makeText(mContext, "Invalid Mobile Number", Toast.LENGTH_LONG).show();
                             withMbDlg.cancel();
+                        } else {
+                            mListener.sendPassword(tv_country_code.getText().toString().trim(), et_mobile.getText().toString().trim());
+                            withMbDlg.cancel();
                         }
-                    }
-                    else {
+                    } else {
                         mListener.sendPassword(tv_country_code.getText().toString().trim(), et_mobile.getText().toString().trim());
                         withMbDlg.cancel();
                     }
@@ -211,6 +215,7 @@ public class DialogUtils {
 
     public interface HttpListener {
         void sendPassword(String areacode, String phone);
+
         void getHttp(View v, TextView tv);
     }
 
@@ -221,25 +226,25 @@ public class DialogUtils {
      * @param tv       显示日期的textview
      * @param candler  当前textview时间
      */
-    public static void DataDlg(Context mContext, TextView tv, String candler, final int flag, final DataListener dataListener) {
+    public static void DateDlg(Context mContext, TextView tv, String candler, final int flag, final DataListener dataListener) {
         final Dialog alertDialog = new Dialog(mContext, com.edenred.android.apps.avenesg.R.style.MyDialogStyle);
         Window window = alertDialog.getWindow();
         window.setGravity(Gravity.CENTER);
         alertDialog.show();
         alertDialog.setCanceledOnTouchOutside(true);
-        alertDialog.getWindow().setContentView(com.edenred.android.apps.avenesg.R.layout.dlg_data);
-        FontManager.applyFont(mContext,alertDialog.getWindow().getDecorView().findViewById(android.R.id.content),Constant.TTFNAME);
+        alertDialog.getWindow().setContentView(com.edenred.android.apps.avenesg.R.layout.dlg_date);
+        FontManager.applyFont(mContext, alertDialog.getWindow().getDecorView().findViewById(android.R.id.content), Constant.TTFNAME);
 
         DatePicker date = (DatePicker) window.findViewById(com.edenred.android.apps.avenesg.R.id.date_picker);
         ImageView iv_cancle = (ImageView) window.findViewById(com.edenred.android.apps.avenesg.R.id.iv_cancle);
         ImageView iv_commit = (ImageView) window.findViewById(com.edenred.android.apps.avenesg.R.id.iv_commit);
 
-        ((BaseActivity)mContext).setDatePickerDividerColor(date);
+        ((BaseActivity) mContext).setDatePickerDividerColor(date);
         //初始化事件控件数据
         if (!TextUtils.isEmpty(candler)) {
             String[] str = candler.split("/");
-            int day = Integer.parseInt(str[1]);
-            int month = Integer.parseInt(str[0]) - 1;
+            int day = Integer.parseInt(str[0]);
+            int month = Integer.parseInt(str[1]) - 1;
             int year = Integer.parseInt(str[2]);
             date.updateDate(year, month, day);
         }
@@ -263,19 +268,17 @@ public class DialogUtils {
                 int day = picker.getDayOfMonth();
                 String data = "";
                 String textdata = "";
-                String month1=String.valueOf(month);
-                String day1=String.valueOf(day);
-                if(month<10)
-                {
-                    month1="0"+month;
+                String month1 = String.valueOf(month);
+                String day1 = String.valueOf(day);
+                if (month < 10) {
+                    month1 = "0" + month;
                 }
-                if(day<10)
-                {
-                    day1="0"+day;
+                if (day < 10) {
+                    day1 = "0" + day;
                 }
                 data = year + "-" + month1 + "-" + day1;
-                textdata = month1 + "/" + day1 + "/" + year;
-//                textdata = day1 + "/" + month1 + "/" + year;
+//                textdata = month1 + "/" + day1 + "/" + year;
+                textdata = day1 + "/" + month1 + "/" + year;
 
                 textView.setText(textdata);
                 if (flag == 0) {
@@ -289,7 +292,6 @@ public class DialogUtils {
     public interface DataListener {
         void getDataHttp(String time);
     }
-
 
 
     /**
@@ -310,7 +312,7 @@ public class DialogUtils {
         alertDialog.show();
         alertDialog.setCanceledOnTouchOutside(true);
         alertDialog.getWindow().setContentView(com.edenred.android.apps.avenesg.R.layout.dlg_point);
-        FontManager.applyFont(mContext,alertDialog.getWindow().getDecorView().findViewById(android.R.id.content),Constant.TTFNAME);
+        FontManager.applyFont(mContext, alertDialog.getWindow().getDecorView().findViewById(android.R.id.content), Constant.TTFNAME);
 
         TextView textView1 = (TextView) window.findViewById(com.edenred.android.apps.avenesg.R.id.tv1);
         TextView textView2 = (TextView) window.findViewById(com.edenred.android.apps.avenesg.R.id.tv2);
@@ -348,7 +350,7 @@ public class DialogUtils {
         alertDialog.show();
         alertDialog.setCanceledOnTouchOutside(true);
         alertDialog.getWindow().setContentView(com.edenred.android.apps.avenesg.R.layout.dlg_profile);
-        FontManager.applyFont(mContext,alertDialog.getWindow().getDecorView().findViewById(android.R.id.content),Constant.TTFNAME);
+        FontManager.applyFont(mContext, alertDialog.getWindow().getDecorView().findViewById(android.R.id.content), Constant.TTFNAME);
 
         TextView textView1 = (TextView) window.findViewById(com.edenred.android.apps.avenesg.R.id.tv_productname);
         TextView textView2 = (TextView) window.findViewById(com.edenred.android.apps.avenesg.R.id.tv_content);
@@ -358,7 +360,7 @@ public class DialogUtils {
         textView1.setText(title);
 
         if (flag == 3) {
-            ((BaseActivity)mContext).setlineSpan(content, textView2, 156, 172, ContactUsActivity.class, 0);
+            ((BaseActivity) mContext).setlineSpan(content, textView2, 156, 172, ContactUsActivity.class, 0);
         } else {
             textView2.setText(content);
         }
@@ -366,9 +368,7 @@ public class DialogUtils {
         //1,个人信息100%  2,个人信息<100%  ,3扫描条形码  4,注册兑换商品  5,购物车成功兑换
         if (flag == 1 || flag == 5) {
             tv_back.setVisibility(View.GONE);
-            if (flag == 5) {
-                tv_close.setText("Close");
-            }
+            tv_close.setText("Close");
         } else {
             tv_back.setVisibility(View.VISIBLE);
             if (flag == 4) {
@@ -422,7 +422,7 @@ public class DialogUtils {
      * @param list     筛选数据
      * @param title    选中后标题改变
      */
-    public static void FilterDlg(final Context mContext, final List<StringBean> list, final TextView title, int current, final Listener listener) {
+    public static void FilterDlg(final Context mContext, final List<StringBean> list, final TextView title, int current, final Listener listener, final int flag) {
         final Dialog alertDialog = new Dialog(mContext, com.edenred.android.apps.avenesg.R.style.MyDialogStyle);
         Window window = alertDialog.getWindow();
         window.setGravity(Gravity.BOTTOM);
@@ -437,19 +437,27 @@ public class DialogUtils {
 
 
         alertDialog.getWindow().setContentView(com.edenred.android.apps.avenesg.R.layout.dlg_filter);
-        FontManager.applyFont(mContext,alertDialog.getWindow().getDecorView().findViewById(android.R.id.content),Constant.TTFNAME);
+        FontManager.applyFont(mContext, alertDialog.getWindow().getDecorView().findViewById(android.R.id.content), Constant.TTFNAME);
 
         ListView listView = (ListView) window.findViewById(com.edenred.android.apps.avenesg.R.id.listview);
 
-        DlgAdapter adapter = new DlgAdapter(mContext, list, current);
-        listView.setAdapter(adapter);
-
+        if (flag == 1){
+            DlgAdapter adapter = new DlgAdapter(mContext, list, current, flag);
+            listView.setAdapter(adapter);
+        }else {
+            DlgAdapter adapter = new DlgAdapter(mContext, list, current, flag);
+            listView.setAdapter(adapter);
+        }
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 listener.getPosition(position);
-                title.setText(list.get(position).text);
+                if (flag == 1){
+                    title.setText(NumbersFormat.thousand(list.get(position).text));
+                }else {
+                    title.setText(list.get(position).text);
+                }
                 alertDialog.dismiss();
             }
         });

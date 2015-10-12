@@ -34,7 +34,7 @@ public class ManualInputBarcodeActivity extends BaseActivity {
     private EditText et_barcode;
     private TextView btn_submit;
     private LinearLayout ll_header;
-    private int flag = 0;
+    private int flag = 0, tag = 0;
     private HorizontalListView hlv_guide;
     private String str = "";
     private View view_header;
@@ -47,6 +47,7 @@ public class ManualInputBarcodeActivity extends BaseActivity {
         FontManager.applyFont(this, getWindow().getDecorView().findViewById(android.R.id.content), Constant.TTFNAME);
         AveneApplication.getInstance().addActivity(this);
         flag = getIntent().getIntExtra(Constant.FLAG, 0);//0,注册跳转  1/2,首页跳转
+        tag = getIntent().getIntExtra(Constant.TAG, 0);
         initView();
         initData();
     }
@@ -64,15 +65,18 @@ public class ManualInputBarcodeActivity extends BaseActivity {
     private void initData() {
         //0,注册跳转  1,首页跳转
         if (flag == 0) {
-            initTitle("Registration process");
+            initTitle("Registration Process");
             ll_header.setVisibility(View.VISIBLE);
             view_header.setVisibility(View.VISIBLE);
             hlv_guide = (HorizontalListView) findViewById(com.edenred.android.apps.avenesg.R.id.hlv_guide);
             adapter = new BarcodeAdapter(this);
             hlv_guide.setAdapter(adapter);
-
         } else {
-            initLogo();
+            if (tag == 8){
+                initLogo();
+            }else {
+                initLogo2();
+            }
             initTitle("Manual Input");
             ll_header.setVisibility(View.GONE);
             view_header.setVisibility(View.GONE);
@@ -109,8 +113,9 @@ public class ManualInputBarcodeActivity extends BaseActivity {
                     } else {
                         DialogUtils.oneButtonDialog(
                                 "Invalid EAN Code",
-                                "You have scanned an invalid EAN code. Make sure you have selected the right code. Please try again or kindly contact our customer service.",
-                                "Close", 121, 137, this);
+                                "You have entered an invalid EAN code. Please note that bundle packs and kits are not eligible to Eau Thermale Avene points. " +
+                                        "Try again or kindly contact our customer service.",
+                                "Close", 156, 172, this);
                     }
 
                 }
@@ -206,7 +211,7 @@ public class ManualInputBarcodeActivity extends BaseActivity {
             }
 
             AveneApplication.getInstance().registerUniqueCode = str;
-            goto1OtherActivity(UniqueCodeEnterActivity.class, flag);
+            goto2OtherActivity(UniqueCodeEnterActivity.class, flag, tag);
         } catch (XmlPullParserException e) {
             e.printStackTrace();
         } catch (IOException e) {

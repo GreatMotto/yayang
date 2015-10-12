@@ -55,7 +55,7 @@ public class SweepActivity extends BaseActivity implements SurfaceHolder.Callbac
     private boolean playBeep;
     private static final float BEEP_VOLUME = 0.10f;
     private boolean vibrate;// 完成扫描时是否震动提示
-    private int flag = 0;
+    private int flag = 0, tag = 0;
     private LinearLayout ll_header;
     private String str = "";
 
@@ -69,8 +69,8 @@ public class SweepActivity extends BaseActivity implements SurfaceHolder.Callbac
         super.onCreate(savedInstanceState);
         setContentView(com.edenred.android.apps.avenesg.R.layout.ac_sweep);
         FontManager.applyFont(this, getWindow().getDecorView().findViewById(android.R.id.content), Constant.TTFNAME);
-
         flag = getIntent().getIntExtra(Constant.FLAG, 0);
+        tag = getIntent().getIntExtra(Constant.TAG, 0);
         CameraManager.init(getApplication());
         /*
          * returnButton = (ImageView) findViewById(R.id.iv_return_btn);
@@ -79,8 +79,6 @@ public class SweepActivity extends BaseActivity implements SurfaceHolder.Callbac
 		 * @Override public void onClick(View v) { SweepActivity.this.finish();
 		 * } });
 		 */
-
-        initTitle("Registration process");
         initView();
         viewfinderView = (ViewfinderView) findViewById(com.edenred.android.apps.avenesg.R.id.viewfinder_view);
         hasSurface = false;
@@ -91,11 +89,18 @@ public class SweepActivity extends BaseActivity implements SurfaceHolder.Callbac
     private void initView() {
         ll_header = (LinearLayout) findViewById(com.edenred.android.apps.avenesg.R.id.ll_header);
         if (flag == 0) {
+            initTitle("Registration Process");
             ll_header.setVisibility(View.VISIBLE);
             HorizontalListView hlv_guide = (HorizontalListView) findViewById(com.edenred.android.apps.avenesg.R.id.hlv_guide);
             BarcodeAdapter adapter = new BarcodeAdapter(this);
             hlv_guide.setAdapter(adapter);
         } else {
+            if (tag == 8) {
+                initLogo();
+            } else {
+                initLogo2();
+            }
+            initTitle("Submit EAN Code");
             ll_header.setVisibility(View.GONE);
         }
     }
@@ -299,24 +304,20 @@ public class SweepActivity extends BaseActivity implements SurfaceHolder.Callbac
                                 DialogUtils.ProfileDlg(this,
                                         "Invalid EAN Code",
                                         "You have scanned an invalid EAN code. " +
-                                        "Please note that bundle packs and kits are not eligible to Eau Thermale Avène points. " +
-                                        "Try again or kindly contact our customer service."
+                                                "Please note that bundle packs and kits are not eligible to Eau Thermale Avène points. " +
+                                                "Try again or kindly contact our customer service."
                                         , 3, flag);
                                 return;
                             }
 
-                        }else if(name.equals("productId"))
-                        {
-                            AveneApplication.getInstance().productbean.productId=parser.nextText();
-                        }else if(name.equals("imgUrl"))
-                        {
-                            AveneApplication.getInstance().productbean.productImageURL=parser.nextText();
-                        }else if(name.equals("ProductName"))
-                        {
-                            AveneApplication.getInstance().productbean.productName=parser.nextText();
-                        }else if(name.equals("ProductDescription"))
-                        {
-                            AveneApplication.getInstance().productbean.productDesc=parser.nextText();
+                        } else if (name.equals("productId")) {
+                            AveneApplication.getInstance().productbean.productId = parser.nextText();
+                        } else if (name.equals("imgUrl")) {
+                            AveneApplication.getInstance().productbean.productImageURL = parser.nextText();
+                        } else if (name.equals("ProductName")) {
+                            AveneApplication.getInstance().productbean.productName = parser.nextText();
+                        } else if (name.equals("ProductDescription")) {
+                            AveneApplication.getInstance().productbean.productDesc = parser.nextText();
                         }
                         break;
                     case XmlPullParser.END_TAG:// 结束元素事件
@@ -326,7 +327,7 @@ public class SweepActivity extends BaseActivity implements SurfaceHolder.Callbac
             }
             //得到的条形码正确
             AveneApplication.getInstance().registerUniqueCode = str;
-            goto1OtherActivity(UniqueCodeEnterActivity.class,flag);
+            goto2OtherActivity(UniqueCodeEnterActivity.class, flag, tag);
             finish();
         } catch (XmlPullParserException e) {
             e.printStackTrace();

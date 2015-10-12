@@ -20,6 +20,7 @@ import com.edenred.android.apps.avenesg.utils.DialogUtils;
 import com.edenred.android.apps.avenesg.utils.ErrorUtils;
 import com.edenred.android.apps.avenesg.utils.FontManager;
 import com.edenred.android.apps.avenesg.utils.HttpUtils;
+import com.edenred.android.apps.avenesg.utils.NumbersFormat;
 import com.edenred.android.apps.avenesg.utils.SharedPreferencesHelper;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -44,14 +45,14 @@ public class FilterActivity extends BaseActivity {
     private TextView tv_sum, tv_allpoint, tv_center;
     private GridView gridview;
     private GridviewAdapter adapter;
-    private List<StringBean> list=new ArrayList<StringBean>();
-    private int flag = 0, current = 0,carnum=0;
+    private List<StringBean> list = new ArrayList<StringBean>();
+    private int flag = 0, current = 0, carnum = 0, tag = 0;
     private List<RedeemGiftBean> mlist = new ArrayList<RedeemGiftBean>();
-    private DialogUtils.Listener listener,listener2;
+    private DialogUtils.Listener listener, listener2;
     private boolean isFirstClick;
     private SharedPreferencesHelper sp;
     private String id = "";
-    private List<ShoppingCarBean> shopCarList=new ArrayList<ShoppingCarBean>();
+    private List<ShoppingCarBean> shopCarList = new ArrayList<ShoppingCarBean>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -59,9 +60,14 @@ public class FilterActivity extends BaseActivity {
         setContentView(com.edenred.android.apps.avenesg.R.layout.ac_filter);
         FontManager.applyFont(this, getWindow().getDecorView().findViewById(android.R.id.content), Constant.TTFNAME);
         AveneApplication.getInstance().addActivity(this);
-        initLogo();
         sp = AveneApplication.getInstance().getSp();
         flag = getIntent().getIntExtra(Constant.FLAG, 1);//flag  1  商品类别筛选  2  积分筛选
+        tag = getIntent().getIntExtra(Constant.TAG, 0);
+        if (tag == 8) {
+            initLogo();
+        }else {
+            initLogo2();
+        }
         mlist = (List<RedeemGiftBean>) getIntent().getSerializableExtra("list");
         initTitle("Rewards Catalogue");
         initView();
@@ -89,13 +95,12 @@ public class FilterActivity extends BaseActivity {
         super.onResume();
         if (sp.getValue(Constant.ACCOUNTBALANCE) != null) {
             tv_allpoint.setText(getResources().getString(com.edenred.android.apps.avenesg.R.string.allpoint) +
-                    sp.getValue(Constant.ACCOUNTBALANCE));
+                    NumbersFormat.thousand(sp.getValue(Constant.ACCOUNTBALANCE)));
         }
         setTextSize(tv_allpoint.getText().toString(),
                 tv_allpoint, 17, 16, tv_allpoint.getText().length());
 
-        if(sp.getBooleanValue(Constant.ISSHOPCARLIST))
-        {
+        if (sp.getBooleanValue(Constant.ISSHOPCARLIST)) {
             Gson gson = new Gson();
             shopCarList = gson.fromJson(sp.getValue(Constant.SHOPCARLIST),
                     new TypeToken<List<ShoppingCarBean>>() {
@@ -103,7 +108,7 @@ public class FilterActivity extends BaseActivity {
         }
         carnum = shopCarList.size();
         tv_sum.setText(String.valueOf(carnum));
-        adapter.setUI(carnum,shopCarList);
+        adapter.setUI(carnum, shopCarList);
     }
 
     private void initData() {
@@ -121,7 +126,7 @@ public class FilterActivity extends BaseActivity {
             MyAsy myAsy = new MyAsy();
             myAsy.setFlag("3");
             myAsy.execute();
-            listener2=new DialogUtils.Listener() {
+            listener2 = new DialogUtils.Listener() {
 
                 @Override
                 public void getPosition(int pos) {
@@ -133,20 +138,18 @@ public class FilterActivity extends BaseActivity {
                 }
             };
             for (int i = 0; i < 2; i++) {
-                StringBean bean=new StringBean();
-                if(i==0)
-                {
-                    bean.id="3000";
-                    bean.text="3000";
-                }else
-                {
-                    bean.id="5000";
-                    bean.text="5000";
+                StringBean bean = new StringBean();
+                if (i == 0) {
+                    bean.id = "3000";
+                    bean.text = "3000";
+                } else {
+                    bean.id = "5000";
+                    bean.text = "5000";
                 }
                 list.add(bean);
             }
-            tv_center.setText(list.get(0).text);
-            DialogUtils.FilterDlg(FilterActivity.this, list, tv_center, current, listener2);
+            tv_center.setText(NumbersFormat.thousand(list.get(0).text));
+            DialogUtils.FilterDlg(FilterActivity.this, list, tv_center, current, listener2, 1);
         } else {
             MyAsy myAsy = new MyAsy();
             myAsy.setFlag("0");
@@ -177,19 +180,17 @@ public class FilterActivity extends BaseActivity {
         super.onClick(v);
         switch (v.getId()) {
             case com.edenred.android.apps.avenesg.R.id.rl_filter_calalogue:
-                if(flag==1)
-                {
+                if (flag == 1) {
                     if (list != null) {
-                        DialogUtils.FilterDlg(this, list, tv_center, current, listener);
+                        DialogUtils.FilterDlg(this, list, tv_center, current, listener, 0);
                     } else if (isFirstClick) {
                         isFirstClick = false;
                         MyAsy myAsy = new MyAsy();
                         myAsy.setFlag("0");
                         myAsy.execute();
                     }
-                }else
-                {
-                    DialogUtils.FilterDlg(this, list, tv_center, current, listener2);
+                } else {
+                    DialogUtils.FilterDlg(this, list, tv_center, current, listener2, 1);
                 }
                 break;
             case com.edenred.android.apps.avenesg.R.id.rl_right:
@@ -205,7 +206,7 @@ public class FilterActivity extends BaseActivity {
     class MyAsy extends AsyncTask<Object, Integer, String> {
 
         public String flag; // 0--获取礼品分类列表    1--获取兑换礼品列表
-                            // 2--分类筛选后兑换礼品列表  3--积分筛选后兑换礼品列表
+        // 2--分类筛选后兑换礼品列表  3--积分筛选后兑换礼品列表
 
         public String getFlag() {
             return flag;
@@ -230,8 +231,7 @@ public class FilterActivity extends BaseActivity {
 //                // 设置固定值 因为mList有问题 需要确定问题 @Test By Jason 09.30
                 hashMap.put("redeemGiftCategory", id);
             }
-            if(getFlag().equals("3"))
-            {
+            if (getFlag().equals("3")) {
                 hashMap.put("points", id);
             }
             if (getFlag().equals("0")) {
@@ -316,7 +316,7 @@ public class FilterActivity extends BaseActivity {
 
             if (list.size() > 0) {
                 tv_center.setText(list.get(0).text);
-                DialogUtils.FilterDlg(FilterActivity.this, list, tv_center, current, listener);
+                DialogUtils.FilterDlg(FilterActivity.this, list, tv_center, current, listener, 0);
                 id = list.get(0).id;
                 MyAsy myAsy = new MyAsy();
                 myAsy.setFlag("2");
@@ -352,8 +352,7 @@ public class FilterActivity extends BaseActivity {
                         String name = parser.getName();// 获取解析器当前指向的元素的名称
                         if (name.equals("exitCode")) {
                             String code = parser.nextText();
-                            if(!code.equals("0"))
-                            {
+                            if (!code.equals("0")) {
                                 ErrorUtils.showErrorMsg(FilterActivity.this, code);
                                 return;
                             }
@@ -392,9 +391,8 @@ public class FilterActivity extends BaseActivity {
                 eventType = parser.next();
             }
             adapter.notifyDataSetChanged();
-            if(mlist.size()<=0)
-            {
-                Toast.makeText(this,"No data",Toast.LENGTH_SHORT).show();
+            if (mlist.size() <= 0) {
+                Toast.makeText(this, "No data", Toast.LENGTH_SHORT).show();
             }
         } catch (XmlPullParserException e) {
             e.printStackTrace();

@@ -2,50 +2,51 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/comment_round_corners_white_sp"
     android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/three_magin"
     android:paddingLeft="@dimen/double_magin"
     android:paddingRight="@dimen/double_magin"
-    android:paddingTop="@dimen/three_magin"
-    android:paddingBottom="@dimen/three_magin"
-    android:background="@drawable/comment_round_corners_white_sp"
-    android:orientation="vertical">
+    android:paddingTop="@dimen/three_magin">
+
     <TextView
         android:id="@+id/tv_productname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
         android:layout_marginBottom="@dimen/double_magin"
-        android:textSize="@dimen/big_text_size"
-        android:textColor="@color/black_dark"/>
+        android:gravity="center_horizontal"
+        android:textColor="@color/black_dark"
+        android:textSize="@dimen/big_text_size" />
+
     <TextView
         android:id="@+id/tv_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:textSize="@dimen/normal_text_size"
-        android:textColor="@color/grey_dark"/>
+        android:textColor="@color/grey_dark"
+        android:textSize="@dimen/normal_text_size" />
 
     <TextView
         android:id="@+id/tv_close"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/double_magin"
-        android:gravity="center"
         android:background="@mipmap/close"
-        android:textColor="@color/white"
-        android:textSize="@dimen/big_text_size"
+        android:gravity="center"
         android:text="Done"
-        />
+        android:textColor="@color/white"
+        android:textSize="@dimen/big_text_size" />
+
     <TextView
         android:id="@+id/tv_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/double_magin"
-        android:gravity="center"
         android:background="@mipmap/close"
+        android:gravity="center"
+        android:text="Back to Update Profile"
         android:textColor="@color/white"
         android:textSize="@dimen/big_text_size"
-        android:text="Back to Update Profile"
-        android:visibility="gone"
-        />
+        android:visibility="gone" />
 </LinearLayout>

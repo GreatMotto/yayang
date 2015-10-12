@@ -22,6 +22,7 @@ import com.edenred.android.apps.avenesg.utils.DisplayUtil;
 import com.edenred.android.apps.avenesg.utils.ErrorUtils;
 import com.edenred.android.apps.avenesg.utils.FontManager;
 import com.edenred.android.apps.avenesg.utils.HttpUtils;
+import com.edenred.android.apps.avenesg.utils.NumbersFormat;
 import com.edenred.android.apps.avenesg.utils.SharedPreferencesHelper;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -50,7 +51,7 @@ public class MyPointActivity extends BaseActivity {
     private ListView lv_data;
     private PointAdapter adapter;
     private int current = 1;
-    private int width = 0, diswidth = 0, flag = 1;
+    private int width = 0, diswidth = 0, flag = 0;
     private String id = "0", startTime = "", endTime = "";
     private SharedPreferencesHelper sp;
     private List<PointBean> list = new ArrayList<PointBean>();
@@ -64,9 +65,13 @@ public class MyPointActivity extends BaseActivity {
         setContentView(com.edenred.android.apps.avenesg.R.layout.ac_mypoint);
         FontManager.applyFont(this, getWindow().getDecorView().findViewById(android.R.id.content), Constant.TTFNAME);
         AveneApplication.getInstance().addActivity(this);
-        initLogo();
         sp = AveneApplication.getInstance().getSp();
-        flag = getIntent().getIntExtra(Constant.FLAG, 1);
+        flag = getIntent().getIntExtra(Constant.FLAG, 0);
+        if (flag == 0) {
+            initLogo();
+        } else {
+            initLogo2();
+        }
         id = sp.getValue(Constant.ACCOUNTID);
         current = flag;
         initTitle(getResources().getString(com.edenred.android.apps.avenesg.R.string.point));
@@ -138,18 +143,18 @@ public class MyPointActivity extends BaseActivity {
     private void initData() {
         if (sp.getValue(Constant.ACCOUNTBALANCE) != null) {
             tv_allpoint.setText(getResources().getString(com.edenred.android.apps.avenesg.R.string.allpoint) +
-                    sp.getValue(Constant.ACCOUNTBALANCE));
+                    NumbersFormat.thousand(sp.getValue(Constant.ACCOUNTBALANCE)));
         }
         //改变字体大小
         setTextSize(tv_allpoint.getText().toString(),
                 tv_allpoint, 17, 16, tv_allpoint.getText().length());
 
-        tv_earned.setText(sp.getValue(Constant.EARNED));
-        tv_redemeed.setText(sp.getValue(Constant.REDEMEED));
-        tv_expired.setText(sp.getValue(Constant.EXPIRED));
+        tv_earned.setText(NumbersFormat.thousand(sp.getValue(Constant.EARNED)));
+        tv_redemeed.setText(NumbersFormat.thousand(sp.getValue(Constant.REDEMEED)));
+        tv_expired.setText(NumbersFormat.thousand(sp.getValue(Constant.EXPIRED)));
 
         //获取月份显示成英文
-        ChangeMonth2English(tv_monthpoint, sp.getValue(Constant.EXPIRED), sp.getValue(Constant.EXPIRINGPOINTSDATE));
+        ChangeMonth2English(tv_monthpoint, sp.getValue(Constant.WILLEXPIRINGNEXTMON), sp.getValue(Constant.EXPIRINGPOINTSDATE));
 
         diswidth = DisplayUtil.getWidth(this);//获取系统宽度
         rl_all.measure(0, 0);
@@ -316,7 +321,7 @@ public class MyPointActivity extends BaseActivity {
 //                adapter.notifyDataSetChanged();
                 break;
             case com.edenred.android.apps.avenesg.R.id.iv_left:
-                DialogUtils.DataDlg(this, tv_data_left, tv_data_left.getText().toString(), 0, new DialogUtils.DataListener() {
+                DialogUtils.DateDlg(this, tv_data_left, tv_data_left.getText().toString(), 0, new DialogUtils.DataListener() {
                     @Override
                     public void getDataHttp(String time) {
                         startTime = time;
@@ -328,7 +333,7 @@ public class MyPointActivity extends BaseActivity {
                 });
                 break;
             case com.edenred.android.apps.avenesg.R.id.iv_right:
-                DialogUtils.DataDlg(this, tv_data_right, tv_data_right.getText().toString(), 0, new DialogUtils.DataListener() {
+                DialogUtils.DateDlg(this, tv_data_right, tv_data_right.getText().toString(), 0, new DialogUtils.DataListener() {
                     @Override
                     public void getDataHttp(String time) {
                         endTime = time;

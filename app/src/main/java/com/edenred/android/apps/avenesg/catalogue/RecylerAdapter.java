@@ -23,6 +23,7 @@ import com.edenred.android.apps.avenesg.constant.Constant;
 import com.edenred.android.apps.avenesg.constant.Urls;
 import com.edenred.android.apps.avenesg.promotion.PromotionsDetailActivity;
 import com.edenred.android.apps.avenesg.utils.FontManager;
+import com.edenred.android.apps.avenesg.utils.NumbersFormat;
 import com.edenred.android.apps.avenesg.utils.SharedPreferencesHelper;
 import com.google.gson.Gson;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -38,7 +39,7 @@ import java.util.List;
 public class RecylerAdapter extends RecyclerView.Adapter<RecylerAdapter.ViewHolder> {
 
     private int width = 0;
-    private int flag = 0;
+    private int flag = 0, tag = 0;
     static Context mContext;
     private TextView tv;
     private List<RedeemGiftBean> list = new ArrayList<RedeemGiftBean>();
@@ -53,6 +54,19 @@ public class RecylerAdapter extends RecyclerView.Adapter<RecylerAdapter.ViewHold
         this.mContext = mContext;
         this.width = width;
         this.flag = flag;
+        if (flag == 1) {
+            this.list1 = (List<NotifyMessageBean>) list;
+        } else {
+            this.list = (List<RedeemGiftBean>) list;
+        }
+    }
+
+    public RecylerAdapter(Context mContext, int width, int flag, int tag, List<?> list) {
+        super();
+        this.mContext = mContext;
+        this.width = width;
+        this.flag = flag;
+        this.tag = tag;
         if (flag == 1) {
             this.list1 = (List<NotifyMessageBean>) list;
         } else {
@@ -83,16 +97,16 @@ public class RecylerAdapter extends RecyclerView.Adapter<RecylerAdapter.ViewHold
         // 绑定数据到ViewHolder上
 
 
-        if (TextUtils.isEmpty(AveneApplication.getInstance().dialogBean.max_lenth.title)) {
-            title = Integer.parseInt(AveneApplication.getInstance().dialogBean.max_lenth.title);
+        if (TextUtils.isEmpty(AveneApplication.getInstance().dialogBean.title)) {
+            title = Integer.parseInt(AveneApplication.getInstance().dialogBean.title);
             if (title > 30) {
                 title = 30;
             }
             viewHolder.tv_name.setFilters(new InputFilter[]{new InputFilter.LengthFilter(title)});
 
         }
-        if (TextUtils.isEmpty(AveneApplication.getInstance().dialogBean.max_lenth.subtitle)) {
-            subtitle = Integer.parseInt(AveneApplication.getInstance().dialogBean.max_lenth.subtitle);
+        if (TextUtils.isEmpty(AveneApplication.getInstance().dialogBean.subtitle)) {
+            subtitle = Integer.parseInt(AveneApplication.getInstance().dialogBean.subtitle);
             if (subtitle > 55) {
                 subtitle = 55;
             }
@@ -139,7 +153,7 @@ public class RecylerAdapter extends RecyclerView.Adapter<RecylerAdapter.ViewHold
             } else {
                 viewHolder.tv_prase.setText(list.get(i).articleDesc.replace("\n", ""));
             }
-            viewHolder.tv_points.setText(list.get(i).articlePoint + " points");
+            viewHolder.tv_points.setText(NumbersFormat.thousand(list.get(i).articlePoint) + " points");
 
 //            viewHolder.iv_pic.setAspectRatio(1.5f);
 //            viewHolder.iv_pic.setImageURI(Uri.parse(Urls.IPANDPORT + list.get(i).productImageURL));
@@ -184,6 +198,7 @@ public class RecylerAdapter extends RecyclerView.Adapter<RecylerAdapter.ViewHold
                     case 2:
                         Intent intent2 = new Intent(mContext, RewardDetailActivity.class);
                         intent2.putExtra("giftlist", list.get(i));
+                        intent2.putExtra(Constant.TAG, tag);
                         mContext.startActivity(intent2);
                         break;
                     default:

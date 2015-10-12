@@ -32,7 +32,7 @@ public class RegistrationProcessActivity extends BaseActivity {
     }
 
     private void initView() {
-        initTitle("Registration process");
+        initTitle("Registration Process");
 
         TextView btn_start_register = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.btn_start_register);
         btn_start_register.setOnClickListener(this);

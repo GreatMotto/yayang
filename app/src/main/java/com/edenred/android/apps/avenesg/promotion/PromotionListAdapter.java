@@ -30,11 +30,12 @@ import java.util.List;
 public class PromotionListAdapter extends BaseAdapter {
     Context mContext;
     List<NotifyMessageBean> list = new ArrayList<NotifyMessageBean>();
-    private int title = 0, subtitle = 0;
+    private int title = 0, subtitle = 0, tag = 0;
 
-    public PromotionListAdapter(Context mContext, List<NotifyMessageBean> list) {
+    public PromotionListAdapter(Context mContext, List<NotifyMessageBean> list, int tag) {
         this.mContext = mContext;
         this.list = list;
+        this.tag = tag;
     }
 
     @Override
@@ -63,16 +64,16 @@ public class PromotionListAdapter extends BaseAdapter {
 //        SimpleDraweeView my_image_view = ViewHolder.get(convertView, R.id.my_image_view);
         ImageView iv_image_view = ViewHolder.get(convertView, com.edenred.android.apps.avenesg.R.id.iv_image_view);
 
-        if (TextUtils.isEmpty(AveneApplication.getInstance().dialogBean.max_lenth.title)) {
-            title = Integer.parseInt(AveneApplication.getInstance().dialogBean.max_lenth.title);
+        if (TextUtils.isEmpty(AveneApplication.getInstance().dialogBean.title)) {
+            title = Integer.parseInt(AveneApplication.getInstance().dialogBean.title);
             if (title > 30) {
                 title = 30;
             }
             tv_name.setFilters(new InputFilter[]{new InputFilter.LengthFilter(title)});
 
         }
-        if (TextUtils.isEmpty(AveneApplication.getInstance().dialogBean.max_lenth.subtitle)) {
-            subtitle = Integer.parseInt(AveneApplication.getInstance().dialogBean.max_lenth.subtitle);
+        if (TextUtils.isEmpty(AveneApplication.getInstance().dialogBean.subtitle)) {
+            subtitle = Integer.parseInt(AveneApplication.getInstance().dialogBean.subtitle);
             if (subtitle > 55) {
                 subtitle = 55;
             }
@@ -98,6 +99,7 @@ public class PromotionListAdapter extends BaseAdapter {
             public void onClick(View v) {
                 Intent intent1 = new Intent(mContext, PromotionsDetailActivity.class);
                 intent1.putExtra("newslist", list.get(position));
+                intent1.putExtra(Constant.TAG, tag);
                 mContext.startActivity(intent1);
             }
         });

@@ -3,30 +3,39 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@mipmap/title_bg"
-    android:orientation="vertical">
+    android:orientation="horizontal">
 
     <LinearLayout
         android:id="@+id/ll_to_home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
         android:orientation="vertical">
 
-        <TextView
+        <ImageView
+            android:id="@+id/iv_to_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="4dp"
-            android:text="@string/app_logo_up"
-            android:textColor="@color/white"
-            android:textSize="14sp" />
+            android:src="@mipmap/top_logo"
+            android:layout_marginLeft="@dimen/magin"
+            android:layout_marginTop="@dimen/half_magin"
+            android:layout_marginBottom="@dimen/half_magin"
+            android:scaleType="centerCrop"/>
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="16dp"-->
+            <!--android:layout_marginTop="4dp"-->
+            <!--android:text="@string/app_logo_up"-->
+            <!--android:textColor="@color/white"-->
+            <!--android:textSize="14sp" />-->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="28dp"
-            android:text="@string/app_logo"
-            android:textColor="@color/white"
-            android:textSize="24sp" />
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="28dp"-->
+            <!--android:text="@string/app_logo"-->
+            <!--android:textColor="@color/white"-->
+            <!--android:textSize="24sp" />-->
     </LinearLayout>
-
 </LinearLayout>
