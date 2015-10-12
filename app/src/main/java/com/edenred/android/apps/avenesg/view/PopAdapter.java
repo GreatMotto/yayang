@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.edenred.android.apps.avenesg.R;
 import com.edenred.android.apps.avenesg.bean.StringBean;
 import com.edenred.android.apps.avenesg.constant.Constant;
 import com.edenred.android.apps.avenesg.utils.FontManager;
@@ -47,9 +48,9 @@ public class PopAdapter extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = View.inflate(mContext, com.edenred.android.apps.avenesg.R.layout.pop_item, null);
+            convertView = View.inflate(mContext, R.layout.pop_item, null);
         }
-        TextView tv_name = ViewHolder.get(convertView, com.edenred.android.apps.avenesg.R.id.tv_item_label);
+        TextView tv_name = ViewHolder.get(convertView, R.id.tv_item_label);
         tv_name.setText(list.get(position).text);
         FontManager.applyFont(mContext, convertView, Constant.TTFNAME);
         return convertView;
