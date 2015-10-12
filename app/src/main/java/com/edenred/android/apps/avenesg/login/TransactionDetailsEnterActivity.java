@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.edenred.android.apps.avenesg.AveneApplication;
 import com.edenred.android.apps.avenesg.BaseActivity;
+import com.edenred.android.apps.avenesg.R;
 import com.edenred.android.apps.avenesg.bean.StringBean;
 import com.edenred.android.apps.avenesg.constant.Constant;
 import com.edenred.android.apps.avenesg.constant.Urls;
@@ -67,7 +68,7 @@ public class TransactionDetailsEnterActivity extends BaseActivity implements Sho
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.edenred.android.apps.avenesg.R.layout.ac_transaction_details_enter);
+        setContentView(R.layout.ac_transaction_details_enter);
         FontManager.applyFont(this, getWindow().getDecorView().findViewById(android.R.id.content), Constant.TTFNAME);
         AveneApplication.getInstance().addActivity(this);
         sp = AveneApplication.getInstance().getSp();
@@ -87,21 +88,21 @@ public class TransactionDetailsEnterActivity extends BaseActivity implements Sho
     }
 
     private void initView() {
-        btn_submit = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.btn_submit);// 提交按钮
-        btn_cancel = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.btn_cancel);//取消
+        btn_submit = (TextView) findViewById(R.id.btn_submit);// 提交按钮
+        btn_cancel = (TextView) findViewById(R.id.btn_cancel);//取消
 //        iv_product = (SimpleDraweeView) findViewById(R.id.iv_product);//商品图片
-        iv_image_view = (ImageView) findViewById(com.edenred.android.apps.avenesg.R.id.iv_image_view);
-        rl_retailer_type = (RelativeLayout) findViewById(com.edenred.android.apps.avenesg.R.id.rl_retailer_type);// 零售商
-        tv_retailer_type = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_retailer_type);
-        rl_area = (RelativeLayout) findViewById(com.edenred.android.apps.avenesg.R.id.rl_area);// 区域
-        tv_area = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_area);
-        rl_store_location = (RelativeLayout) findViewById(com.edenred.android.apps.avenesg.R.id.rl_store_location);// 商店位置
-        tv_store_location = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_store_location);
-        iv_calendar = (ImageView) findViewById(com.edenred.android.apps.avenesg.R.id.iv_calendar);// 日历按钮
-        tv_date_of_purchase = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_date_of_purchase);
-        tv_title = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_productname);
-        ll_header = (LinearLayout) findViewById(com.edenred.android.apps.avenesg.R.id.ll_header);
-        view_header = findViewById(com.edenred.android.apps.avenesg.R.id.view_header);
+        iv_image_view = (ImageView) findViewById(R.id.iv_image_view);
+        rl_retailer_type = (RelativeLayout) findViewById(R.id.rl_retailer_type);// 零售商
+        tv_retailer_type = (TextView) findViewById(R.id.tv_retailer_type);
+        rl_area = (RelativeLayout) findViewById(R.id.rl_area);// 区域
+        tv_area = (TextView) findViewById(R.id.tv_area);
+        rl_store_location = (RelativeLayout) findViewById(R.id.rl_store_location);// 商店位置
+        tv_store_location = (TextView) findViewById(R.id.tv_store_location);
+        iv_calendar = (ImageView) findViewById(R.id.iv_calendar);// 日历按钮
+        tv_date_of_purchase = (TextView) findViewById(R.id.tv_date_of_purchase);
+        tv_title = (TextView) findViewById(R.id.tv_productname);
+        ll_header = (LinearLayout) findViewById(R.id.ll_header);
+        view_header = findViewById(R.id.view_header);
 
         btn_submit.setOnClickListener(this);
         btn_cancel.setOnClickListener(this);
@@ -127,7 +128,7 @@ public class TransactionDetailsEnterActivity extends BaseActivity implements Sho
             initTitle("Registration Process");
             ll_header.setVisibility(View.VISIBLE);
             view_header.setVisibility(View.VISIBLE);
-            HorizontalListView hlv_guide = (HorizontalListView) findViewById(com.edenred.android.apps.avenesg.R.id.hlv_guide);
+            HorizontalListView hlv_guide = (HorizontalListView) findViewById(R.id.hlv_guide);
             TransactionAdapter adapter = new TransactionAdapter(this);
             hlv_guide.setAdapter(adapter);
 
@@ -170,11 +171,11 @@ public class TransactionDetailsEnterActivity extends BaseActivity implements Sho
         super.onClick(v);
         switch (v.getId()) {
 
-            case com.edenred.android.apps.avenesg.R.id.iv_calendar:
+            case R.id.iv_calendar:
                 DialogUtils.DateDlg(this, tv_date_of_purchase, tv_date_of_purchase.getText().toString(), 1, null);
                 break;
 
-            case com.edenred.android.apps.avenesg.R.id.btn_submit:
+            case R.id.btn_submit:
                 if (canSubmit()) {
                     if (flag == 1||flag == 2) {
                         showPD("Upload...");
@@ -193,10 +194,10 @@ public class TransactionDetailsEnterActivity extends BaseActivity implements Sho
                     DialogUtils.oneButtonDialog("Incomplete Submission", "Please fill in all the fields.", "Close", 0, 0, this);
                 }
                 break;
-            case com.edenred.android.apps.avenesg.R.id.btn_cancel:
+            case R.id.btn_cancel:
                 AveneApplication.getInstance().finishActivity();
                 break;
-            case com.edenred.android.apps.avenesg.R.id.rl_retailer_type:
+            case R.id.rl_retailer_type:
                 if (chainlist.size() <= 0) {
                     if (!isclickmore1) {
                         isclickmore1 = true;
@@ -208,7 +209,7 @@ public class TransactionDetailsEnterActivity extends BaseActivity implements Sho
                     ShowPopWindow.showPopWindow(this, rl_retailer_type, 0, 0, tv_retailer_type, chainlist, this);
                 }
                 break;
-            case com.edenred.android.apps.avenesg.R.id.rl_area:
+            case R.id.rl_area:
                     if (!isclickmore2) {
                         isclickmore2 = true;
                         MyAsy myAsy = new MyAsy();
@@ -216,7 +217,7 @@ public class TransactionDetailsEnterActivity extends BaseActivity implements Sho
                         myAsy.execute();
                     }
                 break;
-            case com.edenred.android.apps.avenesg.R.id.rl_store_location:
+            case R.id.rl_store_location:
                     if (!isclickmore3) {
                         isclickmore3 = true;
                         MyAsy myAsy = new MyAsy();
@@ -232,7 +233,7 @@ public class TransactionDetailsEnterActivity extends BaseActivity implements Sho
     @Override
     public void getPopWindowPosition(View v, int pos, TextView tv) {
         switch (v.getId()) {
-            case com.edenred.android.apps.avenesg.R.id.rl_retailer_type:
+            case R.id.rl_retailer_type:
                 chainId = chainlist.get(pos).id;
                 chainText = tv.getText().toString();
                 if (!chainText.equals(chainlist.get(pos).text)) {
@@ -240,14 +241,14 @@ public class TransactionDetailsEnterActivity extends BaseActivity implements Sho
                     tv_store_location.setText("");
                 }
                 break;
-            case com.edenred.android.apps.avenesg.R.id.rl_area:
+            case R.id.rl_area:
                 regionId = arealist.get(pos).id;
                 areaText = tv.getText().toString();
                 if (!areaText.equals(arealist.get(pos).text)) {
                     tv_store_location.setText("");
                 }
                 break;
-            case com.edenred.android.apps.avenesg.R.id.rl_store_location:
+            case R.id.rl_store_location:
                 AveneApplication.getInstance().PurchaseCounterId = counterlist.get(pos).id;
                 break;
             default:

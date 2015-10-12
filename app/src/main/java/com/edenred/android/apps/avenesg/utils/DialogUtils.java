@@ -48,7 +48,7 @@ public class DialogUtils {
      * @param mContext
      */
     public static void congratulationDialog(final Context mContext) {
-        final Dialog withMbDlg = new Dialog(mContext, com.edenred.android.apps.avenesg.R.style.MyDialogStyle);
+        final Dialog withMbDlg = new Dialog(mContext, R.style.MyDialogStyle);
         Window window = withMbDlg.getWindow();
         window.setGravity(Gravity.CENTER);
         withMbDlg.show();
@@ -56,8 +56,8 @@ public class DialogUtils {
         withMbDlg.getWindow().setContentView(R.layout.dlg_congratulation);
         FontManager.applyFont(mContext, withMbDlg.getWindow().getDecorView().findViewById(android.R.id.content), Constant.TTFNAME);
 
-        TextView tv_btnText = (TextView) window.findViewById(com.edenred.android.apps.avenesg.R.id.tv_btnText);
-        TextView tv_bonus = (TextView) window.findViewById(com.edenred.android.apps.avenesg.R.id.tv_bonus);
+        TextView tv_btnText = (TextView) window.findViewById(R.id.tv_btnText);
+        TextView tv_bonus = (TextView) window.findViewById(R.id.tv_bonus);
         tv_bonus.setText("To receive " + AveneApplication.getInstance().dialogBean.bonus + " bonus points now, please complete your profile.");
         tv_btnText.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,7 +65,7 @@ public class DialogUtils {
                 ((BaseActivity) mContext).gotoOtherActivity(MyProfileActivity.class);
             }
         });
-        TextView tv_complete_later = (TextView) window.findViewById(com.edenred.android.apps.avenesg.R.id.tv_complete_later);
+        TextView tv_complete_later = (TextView) window.findViewById(R.id.tv_complete_later);
         tv_complete_later.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
         tv_complete_later.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,16 +82,16 @@ public class DialogUtils {
      * @param mContext
      */
     public static void contactUsDialog(Context mContext) {
-        final Dialog withMbDlg = new Dialog(mContext, com.edenred.android.apps.avenesg.R.style.MyDialogStyle);
+        final Dialog withMbDlg = new Dialog(mContext, R.style.MyDialogStyle);
         Window window = withMbDlg.getWindow();
         window.setGravity(Gravity.CENTER);
         withMbDlg.show();
         withMbDlg.setCanceledOnTouchOutside(true);
-        withMbDlg.getWindow().setContentView(com.edenred.android.apps.avenesg.R.layout.dlg_contact_us);
-        ImageView iv_cancel = (ImageView) window.findViewById(com.edenred.android.apps.avenesg.R.id.iv_cancel);
-        TextView tv_email = (TextView) window.findViewById(com.edenred.android.apps.avenesg.R.id.tv_email);
-        TextView tv_address = (TextView) window.findViewById(com.edenred.android.apps.avenesg.R.id.tv_address);
-        TextView tv_phone = (TextView) window.findViewById(com.edenred.android.apps.avenesg.R.id.tv_phone);
+        withMbDlg.getWindow().setContentView(R.layout.dlg_contact_us);
+        ImageView iv_cancel = (ImageView) window.findViewById(R.id.iv_cancel);
+        TextView tv_email = (TextView) window.findViewById(R.id.tv_email);
+        TextView tv_address = (TextView) window.findViewById(R.id.tv_address);
+        TextView tv_phone = (TextView) window.findViewById(R.id.tv_phone);
         iv_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -114,18 +114,18 @@ public class DialogUtils {
      * @param mContext
      */
     public static void oneButtonDialog(String title, String message, String btn_next, int start, int end, Context mContext) {
-        final Dialog withMbDlg = new Dialog(mContext, com.edenred.android.apps.avenesg.R.style.MyDialogStyle);
+        final Dialog withMbDlg = new Dialog(mContext, R.style.MyDialogStyle);
         Window window = withMbDlg.getWindow();
         window.setGravity(Gravity.CENTER);
         withMbDlg.show();
         withMbDlg.setCanceledOnTouchOutside(true);
-        withMbDlg.getWindow().setContentView(com.edenred.android.apps.avenesg.R.layout.dlg_one_button);
+        withMbDlg.getWindow().setContentView(R.layout.dlg_one_button);
         FontManager.applyFont(mContext, withMbDlg.getWindow().getDecorView().findViewById(android.R.id.content), Constant.TTFNAME);
 
-        TextView tv_title = (TextView) window.findViewById(com.edenred.android.apps.avenesg.R.id.title);
-        TextView tv_message = (TextView) window.findViewById(com.edenred.android.apps.avenesg.R.id.message);
+        TextView tv_title = (TextView) window.findViewById(R.id.title);
+        TextView tv_message = (TextView) window.findViewById(R.id.message);
 
-        TextView tv_btnText = (TextView) window.findViewById(com.edenred.android.apps.avenesg.R.id.tv_btnText);
+        TextView tv_btnText = (TextView) window.findViewById(R.id.tv_btnText);
         tv_title.setText(title);
         ((BaseActivity) mContext).setlineSpan(message, tv_message, start, end, ContactUsActivity.class, 2);
         if (btn_next != null) {
@@ -148,20 +148,20 @@ public class DialogUtils {
      */
     public static void withMobileDialog(String title, String message, String areacode, String phone, String btn_next,
                                         final Context mContext, final List<StringBean> list, final HttpListener mListener) {
-        final Dialog withMbDlg = new Dialog(mContext, com.edenred.android.apps.avenesg.R.style.MyDialogStyle);
+        final Dialog withMbDlg = new Dialog(mContext, R.style.MyDialogStyle);
         Window window = withMbDlg.getWindow();
         window.setGravity(Gravity.CENTER);
         withMbDlg.show();
         withMbDlg.setCanceledOnTouchOutside(true);
-        withMbDlg.getWindow().setContentView(com.edenred.android.apps.avenesg.R.layout.dlg_with_mobile);
+        withMbDlg.getWindow().setContentView(R.layout.dlg_with_mobile);
         FontManager.applyFont(mContext, withMbDlg.getWindow().getDecorView().findViewById(android.R.id.content), Constant.TTFNAME);
 
-        TextView tv_title = (TextView) window.findViewById(com.edenred.android.apps.avenesg.R.id.title);
-        TextView tv_message = (TextView) window.findViewById(com.edenred.android.apps.avenesg.R.id.message);
-        RelativeLayout rl_country_code = (RelativeLayout) window.findViewById(com.edenred.android.apps.avenesg.R.id.rl_country_code);
-        tv_country_code = (TextView) window.findViewById(com.edenred.android.apps.avenesg.R.id.tv_country_code);
-        et_mobile = (EditText) window.findViewById(com.edenred.android.apps.avenesg.R.id.et_mobile);
-        TextView tv_btnText = (TextView) window.findViewById(com.edenred.android.apps.avenesg.R.id.tv_btnText);
+        TextView tv_title = (TextView) window.findViewById(R.id.title);
+        TextView tv_message = (TextView) window.findViewById(R.id.message);
+        RelativeLayout rl_country_code = (RelativeLayout) window.findViewById(R.id.rl_country_code);
+        tv_country_code = (TextView) window.findViewById(R.id.tv_country_code);
+        et_mobile = (EditText) window.findViewById(R.id.et_mobile);
+        TextView tv_btnText = (TextView) window.findViewById(R.id.tv_btnText);
         tv_title.setText(title);
         tv_message.setText(message);
         tv_country_code.setText(areacode);
@@ -186,15 +186,15 @@ public class DialogUtils {
             });
         }
 
-        rl_country_code.setTag(com.edenred.android.apps.avenesg.R.id.pop1, et_mobile);
-        rl_country_code.setTag(com.edenred.android.apps.avenesg.R.id.pop2, tv_country_code);
-        rl_country_code.setTag(com.edenred.android.apps.avenesg.R.id.pop3, list);
+        rl_country_code.setTag(R.id.pop1, et_mobile);
+        rl_country_code.setTag(R.id.pop2, tv_country_code);
+        rl_country_code.setTag(R.id.pop3, list);
         rl_country_code.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText view = (EditText) v.getTag(com.edenred.android.apps.avenesg.R.id.pop1);
-                TextView tv = (TextView) v.getTag(com.edenred.android.apps.avenesg.R.id.pop2);
-                List<StringBean> list1 = (List<StringBean>) v.getTag(com.edenred.android.apps.avenesg.R.id.pop3);
+                EditText view = (EditText) v.getTag(R.id.pop1);
+                TextView tv = (TextView) v.getTag(R.id.pop2);
+                List<StringBean> list1 = (List<StringBean>) v.getTag(R.id.pop3);
                 view.clearFocus();
                 InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
@@ -227,17 +227,17 @@ public class DialogUtils {
      * @param candler  当前textview时间
      */
     public static void DateDlg(Context mContext, TextView tv, String candler, final int flag, final DataListener dataListener) {
-        final Dialog alertDialog = new Dialog(mContext, com.edenred.android.apps.avenesg.R.style.MyDialogStyle);
+        final Dialog alertDialog = new Dialog(mContext, R.style.MyDialogStyle);
         Window window = alertDialog.getWindow();
         window.setGravity(Gravity.CENTER);
         alertDialog.show();
         alertDialog.setCanceledOnTouchOutside(true);
-        alertDialog.getWindow().setContentView(com.edenred.android.apps.avenesg.R.layout.dlg_date);
+        alertDialog.getWindow().setContentView(R.layout.dlg_date);
         FontManager.applyFont(mContext, alertDialog.getWindow().getDecorView().findViewById(android.R.id.content), Constant.TTFNAME);
 
-        DatePicker date = (DatePicker) window.findViewById(com.edenred.android.apps.avenesg.R.id.date_picker);
-        ImageView iv_cancle = (ImageView) window.findViewById(com.edenred.android.apps.avenesg.R.id.iv_cancle);
-        ImageView iv_commit = (ImageView) window.findViewById(com.edenred.android.apps.avenesg.R.id.iv_commit);
+        DatePicker date = (DatePicker) window.findViewById(R.id.date_picker);
+        ImageView iv_cancle = (ImageView) window.findViewById(R.id.iv_cancle);
+        ImageView iv_commit = (ImageView) window.findViewById(R.id.iv_commit);
 
         ((BaseActivity) mContext).setDatePickerDividerColor(date);
         //初始化事件控件数据
@@ -256,13 +256,13 @@ public class DialogUtils {
             }
         });
         //确定
-        iv_commit.setTag(com.edenred.android.apps.avenesg.R.id.pop1, date);
-        iv_commit.setTag(com.edenred.android.apps.avenesg.R.id.pop2, tv);
+        iv_commit.setTag(R.id.pop1, date);
+        iv_commit.setTag(R.id.pop2, tv);
         iv_commit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DatePicker picker = (DatePicker) v.getTag(com.edenred.android.apps.avenesg.R.id.pop1);
-                TextView textView = (TextView) v.getTag(com.edenred.android.apps.avenesg.R.id.pop2);
+                DatePicker picker = (DatePicker) v.getTag(R.id.pop1);
+                TextView textView = (TextView) v.getTag(R.id.pop2);
                 int year = picker.getYear();
                 int month = picker.getMonth() + 1;
                 int day = picker.getDayOfMonth();
@@ -306,20 +306,20 @@ public class DialogUtils {
      */
     public static void PointDlg(Context mContext, String tv1, String tv2,
                                 String tv3, String tv4, String tv5) {
-        final Dialog alertDialog = new Dialog(mContext, com.edenred.android.apps.avenesg.R.style.MyDialogStyle);
+        final Dialog alertDialog = new Dialog(mContext, R.style.MyDialogStyle);
         Window window = alertDialog.getWindow();
         window.setGravity(Gravity.CENTER);
         alertDialog.show();
         alertDialog.setCanceledOnTouchOutside(true);
-        alertDialog.getWindow().setContentView(com.edenred.android.apps.avenesg.R.layout.dlg_point);
+        alertDialog.getWindow().setContentView(R.layout.dlg_point);
         FontManager.applyFont(mContext, alertDialog.getWindow().getDecorView().findViewById(android.R.id.content), Constant.TTFNAME);
 
-        TextView textView1 = (TextView) window.findViewById(com.edenred.android.apps.avenesg.R.id.tv1);
-        TextView textView2 = (TextView) window.findViewById(com.edenred.android.apps.avenesg.R.id.tv2);
-        TextView textView3 = (TextView) window.findViewById(com.edenred.android.apps.avenesg.R.id.tv3);
-        TextView textView4 = (TextView) window.findViewById(com.edenred.android.apps.avenesg.R.id.tv4);
-        TextView textView5 = (TextView) window.findViewById(com.edenred.android.apps.avenesg.R.id.tv5);
-        TextView tv_close = (TextView) window.findViewById(com.edenred.android.apps.avenesg.R.id.tv_close);
+        TextView textView1 = (TextView) window.findViewById(R.id.tv1);
+        TextView textView2 = (TextView) window.findViewById(R.id.tv2);
+        TextView textView3 = (TextView) window.findViewById(R.id.tv3);
+        TextView textView4 = (TextView) window.findViewById(R.id.tv4);
+        TextView textView5 = (TextView) window.findViewById(R.id.tv5);
+        TextView tv_close = (TextView) window.findViewById(R.id.tv_close);
 
         textView1.setText("Redemption no: " + tv1);
         textView2.setText("Date: " + tv2);
@@ -344,18 +344,18 @@ public class DialogUtils {
      * @param flag     显示按钮个数
      */
     public static void ProfileDlg(final Context mContext, String title, String content, final int flag, final int tag) {
-        final Dialog alertDialog = new Dialog(mContext, com.edenred.android.apps.avenesg.R.style.MyDialogStyle);
+        final Dialog alertDialog = new Dialog(mContext, R.style.MyDialogStyle);
         Window window = alertDialog.getWindow();
         window.setGravity(Gravity.CENTER);
         alertDialog.show();
         alertDialog.setCanceledOnTouchOutside(true);
-        alertDialog.getWindow().setContentView(com.edenred.android.apps.avenesg.R.layout.dlg_profile);
+        alertDialog.getWindow().setContentView(R.layout.dlg_profile);
         FontManager.applyFont(mContext, alertDialog.getWindow().getDecorView().findViewById(android.R.id.content), Constant.TTFNAME);
 
-        TextView textView1 = (TextView) window.findViewById(com.edenred.android.apps.avenesg.R.id.tv_productname);
-        TextView textView2 = (TextView) window.findViewById(com.edenred.android.apps.avenesg.R.id.tv_content);
-        TextView tv_close = (TextView) window.findViewById(com.edenred.android.apps.avenesg.R.id.tv_close);
-        TextView tv_back = (TextView) window.findViewById(com.edenred.android.apps.avenesg.R.id.tv_back);
+        TextView textView1 = (TextView) window.findViewById(R.id.tv_productname);
+        TextView textView2 = (TextView) window.findViewById(R.id.tv_content);
+        TextView tv_close = (TextView) window.findViewById(R.id.tv_close);
+        TextView tv_back = (TextView) window.findViewById(R.id.tv_back);
 
         textView1.setText(title);
 
@@ -423,7 +423,7 @@ public class DialogUtils {
      * @param title    选中后标题改变
      */
     public static void FilterDlg(final Context mContext, final List<StringBean> list, final TextView title, int current, final Listener listener, final int flag) {
-        final Dialog alertDialog = new Dialog(mContext, com.edenred.android.apps.avenesg.R.style.MyDialogStyle);
+        final Dialog alertDialog = new Dialog(mContext, R.style.MyDialogStyle);
         Window window = alertDialog.getWindow();
         window.setGravity(Gravity.BOTTOM);
         alertDialog.show();
@@ -436,10 +436,10 @@ public class DialogUtils {
         alertDialog.setCanceledOnTouchOutside(true);
 
 
-        alertDialog.getWindow().setContentView(com.edenred.android.apps.avenesg.R.layout.dlg_filter);
+        alertDialog.getWindow().setContentView(R.layout.dlg_filter);
         FontManager.applyFont(mContext, alertDialog.getWindow().getDecorView().findViewById(android.R.id.content), Constant.TTFNAME);
 
-        ListView listView = (ListView) window.findViewById(com.edenred.android.apps.avenesg.R.id.listview);
+        ListView listView = (ListView) window.findViewById(R.id.listview);
 
         if (flag == 1){
             DlgAdapter adapter = new DlgAdapter(mContext, list, current, flag);

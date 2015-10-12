@@ -14,6 +14,7 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.View;
 
+import com.edenred.android.apps.avenesg.R;
 import com.google.zxing.ResultPoint;
 
 public final class ViewfinderView extends View {
@@ -82,9 +83,9 @@ public final class ViewfinderView extends View {
 		paint = new Paint();
 
 		Resources resources = getResources();
-		transparent = resources.getColor(com.edenred.android.apps.avenesg.R.color.transparent);
-		translucence = resources.getColor(com.edenred.android.apps.avenesg.R.color.translucence);
-		resultPointColor = resources.getColor(com.edenred.android.apps.avenesg.R.color.possible_result_points);
+		transparent = resources.getColor(R.color.transparent);
+		translucence = resources.getColor(R.color.translucence);
+		resultPointColor = resources.getColor(R.color.possible_result_points);
 //		possibleResultPoints = new HashSet<ResultPoint>(5);
 
 	}
@@ -128,7 +129,7 @@ public final class ViewfinderView extends View {
 			bigRect.top = frame.top;
 			bigRect.bottom = frame.bottom;
 			Drawable drawable = getResources().getDrawable(
-					com.edenred.android.apps.avenesg.R.mipmap.crop);
+					R.mipmap.crop);
 			BitmapDrawable b = (BitmapDrawable) drawable;
 			canvas.drawBitmap(b.getBitmap(), null, bigRect, paint);
 
@@ -145,7 +146,7 @@ public final class ViewfinderView extends View {
 			lineRect.top = slideTop;
 			lineRect.bottom = slideTop + MIDDLE_LINE_PADDING;
 			canvas.drawBitmap(((BitmapDrawable) (getResources()
-					.getDrawable(com.edenred.android.apps.avenesg.R.mipmap.percentage))).getBitmap(), null,
+					.getDrawable(R.mipmap.percentage))).getBitmap(), null,
 					lineRect, paint);
 
 			// 画扫描框下面的字
@@ -154,7 +155,7 @@ public final class ViewfinderView extends View {
 			paint.setTextAlign(Align.CENTER);
 			paint.setAlpha(0x80);
 			paint.setTypeface(Typeface.create("System", Typeface.BOLD));
-			canvas.drawText(getResources().getString(com.edenred.android.apps.avenesg.R.string.app_logo),
+			canvas.drawText(getResources().getString(R.string.app_logo),
 					width / 2, frame.bottom + TEXT_PADDING_TOP * density, paint);
 
 //			Collection<ResultPoint> currentPossible = possibleResultPoints;

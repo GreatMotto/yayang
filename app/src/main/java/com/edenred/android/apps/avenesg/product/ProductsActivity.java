@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.edenred.android.apps.avenesg.AveneApplication;
 import com.edenred.android.apps.avenesg.BaseActivity;
+import com.edenred.android.apps.avenesg.R;
 import com.edenred.android.apps.avenesg.bean.ProductBean;
 import com.edenred.android.apps.avenesg.bean.StringBean;
 import com.edenred.android.apps.avenesg.constant.Constant;
@@ -53,7 +54,7 @@ public class ProductsActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.edenred.android.apps.avenesg.R.layout.ac_promotion_and_product);
+        setContentView(R.layout.ac_promotion_and_product);
         FontManager.applyFont(this, getWindow().getDecorView().findViewById(android.R.id.content), Constant.TTFNAME);
         AveneApplication.getInstance().addActivity(this);
         initLogo();
@@ -67,21 +68,21 @@ public class ProductsActivity extends BaseActivity {
     }
 
     private void initView() {
-        tv_allpoint= (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_allpoint);
-        rl_filter = (RelativeLayout) findViewById(com.edenred.android.apps.avenesg.R.id.rl_filter);
+        tv_allpoint= (TextView) findViewById(R.id.tv_allpoint);
+        rl_filter = (RelativeLayout) findViewById(R.id.rl_filter);
         rl_filter.setVisibility(View.VISIBLE);
         rl_filter.setOnClickListener(this);
 
-        tv_center = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_center);
+        tv_center = (TextView) findViewById(R.id.tv_center);
 
-        gv_detail = (GridView) findViewById(com.edenred.android.apps.avenesg.R.id.gv_detail);
+        gv_detail = (GridView) findViewById(R.id.gv_detail);
     }
 
     private void initData() {
 
         if(sp.getValue(Constant.ACCOUNTBALANCE)!=null)
         {
-            tv_allpoint.setText(getResources().getString(com.edenred.android.apps.avenesg.R.string.allpoint)+
+            tv_allpoint.setText(getResources().getString(R.string.allpoint)+
                     NumbersFormat.thousand(sp.getValue(Constant.ACCOUNTBALANCE)));
         }
         //改变字体大小
@@ -108,7 +109,7 @@ public class ProductsActivity extends BaseActivity {
     public void onClick(View v) {
         super.onClick(v);
         switch (v.getId()) {
-            case com.edenred.android.apps.avenesg.R.id.rl_filter:
+            case R.id.rl_filter:
                 if(list.size()<=0&&!isFirstClick)
                 {
                     isFirstClick=true;

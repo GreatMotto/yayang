@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.edenred.android.apps.avenesg.AveneApplication;
 import com.edenred.android.apps.avenesg.BaseActivity;
+import com.edenred.android.apps.avenesg.R;
 import com.edenred.android.apps.avenesg.bean.StringBean;
 import com.edenred.android.apps.avenesg.constant.Constant;
 import com.edenred.android.apps.avenesg.constant.Urls;
@@ -70,7 +71,7 @@ public class PersonalDetailsEnterActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.edenred.android.apps.avenesg.R.layout.ac_personal_details_enter);
+        setContentView(R.layout.ac_personal_details_enter);
         FontManager.applyFont(this, getWindow().getDecorView().findViewById(android.R.id.content), Constant.TTFNAME);
 
         AveneApplication.getInstance().addActivity(this);
@@ -82,30 +83,30 @@ public class PersonalDetailsEnterActivity extends BaseActivity {
 
     private void initView() {
         initTitle("Registration Process");
-        hlv_guide = (HorizontalListView) findViewById(com.edenred.android.apps.avenesg.R.id.hlv_guide);
-        btn_submit = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.btn_submit);
+        hlv_guide = (HorizontalListView) findViewById(R.id.hlv_guide);
+        btn_submit = (TextView) findViewById(R.id.btn_submit);
         // 性别
-        rl_gender = (RelativeLayout) findViewById(com.edenred.android.apps.avenesg.R.id.rl_gender);
-        tv_gender = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_gender);
+        rl_gender = (RelativeLayout) findViewById(R.id.rl_gender);
+        tv_gender = (TextView) findViewById(R.id.tv_gender);
         // 国家区号
-        rl_country_code = (RelativeLayout) findViewById(com.edenred.android.apps.avenesg.R.id.rl_country_code);
-        tv_country_code = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_country_code);
+        rl_country_code = (RelativeLayout) findViewById(R.id.rl_country_code);
+        tv_country_code = (TextView) findViewById(R.id.tv_country_code);
         // 姓
-        et_first_name = (EditText) findViewById(com.edenred.android.apps.avenesg.R.id.et_first_name);
+        et_first_name = (EditText) findViewById(R.id.et_first_name);
         // 名
-        et_last_name = (EditText) findViewById(com.edenred.android.apps.avenesg.R.id.et_last_name);
+        et_last_name = (EditText) findViewById(R.id.et_last_name);
         // 电子邮箱
-        et_email = (EditText) findViewById(com.edenred.android.apps.avenesg.R.id.et_email);
+        et_email = (EditText) findViewById(R.id.et_email);
         // 手机号
-        et_mobile = (EditText) findViewById(com.edenred.android.apps.avenesg.R.id.et_mobile);
+        et_mobile = (EditText) findViewById(R.id.et_mobile);
         // 创建密码
-        et_create_password = (EditText) findViewById(com.edenred.android.apps.avenesg.R.id.et_create_password);
+        et_create_password = (EditText) findViewById(R.id.et_create_password);
         // 确认密码
-        et_confirm_password = (EditText) findViewById(com.edenred.android.apps.avenesg.R.id.et_confirm_password);
+        et_confirm_password = (EditText) findViewById(R.id.et_confirm_password);
         // 同意
-        rl_agree = (RelativeLayout) findViewById(com.edenred.android.apps.avenesg.R.id.rl_agree);
-        iv_agree = (ImageView) findViewById(com.edenred.android.apps.avenesg.R.id.iv_agree);
-        tv_agree = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_agree);
+        rl_agree = (RelativeLayout) findViewById(R.id.rl_agree);
+        iv_agree = (ImageView) findViewById(R.id.iv_agree);
+        tv_agree = (TextView) findViewById(R.id.tv_agree);
 
         btn_submit.setOnClickListener(this);
         rl_gender.setOnClickListener(this);
@@ -116,7 +117,7 @@ public class PersonalDetailsEnterActivity extends BaseActivity {
     }
 
     private void initData() {
-        setlineSpan(getResources().getString(com.edenred.android.apps.avenesg.R.string.agree), tv_agree, 75, 95, WebViewActivity.class, 1);
+        setlineSpan(getResources().getString(R.string.agree), tv_agree, 75, 95, WebViewActivity.class, 1);
         adapter = new PersonalAdapter(this);
         hlv_guide.setAdapter(adapter);
         if (!sp.getBooleanValue(Constant.ISCOUNTRY)) {
@@ -181,7 +182,7 @@ public class PersonalDetailsEnterActivity extends BaseActivity {
     public void onClick(View v) {
         super.onClick(v);
         switch (v.getId()) {
-            case com.edenred.android.apps.avenesg.R.id.btn_submit:
+            case R.id.btn_submit:
                 if (canSubmit()) {
                     mobilecode = tv_country_code.getText().toString().trim().replace("+", "");
                     mobilenumber = et_mobile.getText().toString().trim();
@@ -224,11 +225,11 @@ public class PersonalDetailsEnterActivity extends BaseActivity {
                     }
                 }
                 break;
-            case com.edenred.android.apps.avenesg.R.id.rl_gender:
+            case R.id.rl_gender:
                 clearfocus();
                 showPopWindow(0, 0, tv_gender, Constant.Gender);
                 break;
-            case com.edenred.android.apps.avenesg.R.id.rl_country_code:
+            case R.id.rl_country_code:
                 clearfocus();
                 if (!sp.getBooleanValue(Constant.ISCOUNTRY)) {
                     MyAsy myAsy = new MyAsy();
@@ -242,21 +243,21 @@ public class PersonalDetailsEnterActivity extends BaseActivity {
                     });
                 }
                 break;
-            case com.edenred.android.apps.avenesg.R.id.rl_agree:
+            case R.id.rl_agree:
                 clearfocus();
                 if (!isAgree) {
                     iv_agree.setVisibility(View.VISIBLE);
-                    btn_submit.setBackground(getResources().getDrawable(com.edenred.android.apps.avenesg.R.drawable.submit_dark_box));
+                    btn_submit.setBackground(getResources().getDrawable(R.drawable.submit_dark_box));
                     btn_submit.setEnabled(true);
                     isAgree = true;
                 } else {
                     iv_agree.setVisibility(View.GONE);
-                    btn_submit.setBackground(getResources().getDrawable(com.edenred.android.apps.avenesg.R.drawable.submit_light_box));
+                    btn_submit.setBackground(getResources().getDrawable(R.drawable.submit_light_box));
                     btn_submit.setEnabled(false);
                     isAgree = false;
                 }
                 break;
-            case com.edenred.android.apps.avenesg.R.id.tv_agree:
+            case R.id.tv_agree:
                 break;
             default:
                 break;
@@ -282,7 +283,7 @@ public class PersonalDetailsEnterActivity extends BaseActivity {
     public void showPopWindow(int x, int y, final TextView tv, String[] str) {
         CloseKeyboard();
         clearfocus();
-        View popv1 = LayoutInflater.from(this).inflate(com.edenred.android.apps.avenesg.R.layout.pop, null);
+        View popv1 = LayoutInflater.from(this).inflate(R.layout.pop, null);
         if (popSort == null) {
             popSort = new PopupWindow(popv1, tv.getWidth(),
                     ViewGroup.LayoutParams.WRAP_CONTENT, true);
@@ -306,7 +307,7 @@ public class PersonalDetailsEnterActivity extends BaseActivity {
             db.text = str[i];
             listpop.add(db);
         }
-        ListView listview = (ListView) popv1.findViewById(com.edenred.android.apps.avenesg.R.id.lv_choice);
+        ListView listview = (ListView) popv1.findViewById(R.id.lv_choice);
         sortAdapter = new PopAdapter(this, listpop);
         listview.setAdapter(sortAdapter);
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {

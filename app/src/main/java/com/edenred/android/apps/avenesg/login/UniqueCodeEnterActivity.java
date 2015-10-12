@@ -1,4 +1,4 @@
-package com.edenred.android.apps.avenesg.login;
+package login;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -10,8 +10,11 @@ import android.widget.TextView;
 
 import com.edenred.android.apps.avenesg.AveneApplication;
 import com.edenred.android.apps.avenesg.BaseActivity;
+import com.edenred.android.apps.avenesg.R;
 import com.edenred.android.apps.avenesg.constant.Constant;
 import com.edenred.android.apps.avenesg.constant.Urls;
+import com.edenred.android.apps.avenesg.login.TransactionDetailsEnterActivity;
+import com.edenred.android.apps.avenesg.login.UniqueAdapter;
 import com.edenred.android.apps.avenesg.utils.DialogUtils;
 import com.edenred.android.apps.avenesg.utils.ErrorUtils;
 import com.edenred.android.apps.avenesg.utils.FontManager;
@@ -42,7 +45,7 @@ public class UniqueCodeEnterActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.edenred.android.apps.avenesg.R.layout.ac_unique_code_enter);
+        setContentView(R.layout.ac_unique_code_enter);
         FontManager.applyFont(this, getWindow().getDecorView().findViewById(android.R.id.content), Constant.TTFNAME);
         AveneApplication.getInstance().addActivity(this);
         flag = getIntent().getIntExtra(Constant.FLAG, 0);//0,注册跳转  1/2,首页跳转
@@ -52,10 +55,10 @@ public class UniqueCodeEnterActivity extends BaseActivity {
     }
 
     private void initView() {
-        et_unique_code = (EditText) findViewById(com.edenred.android.apps.avenesg.R.id.et_unique_code);
-        btn_submit = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.btn_submit);
-        ll_header = (LinearLayout) findViewById(com.edenred.android.apps.avenesg.R.id.ll_header);
-        view_header = findViewById(com.edenred.android.apps.avenesg.R.id.view_header);
+        et_unique_code = (EditText) findViewById(R.id.et_unique_code);
+        btn_submit = (TextView) findViewById(R.id.btn_submit);
+        ll_header = (LinearLayout) findViewById(R.id.ll_header);
+        view_header = findViewById(R.id.view_header);
 
         btn_submit.setOnClickListener(this);
     }
@@ -66,7 +69,7 @@ public class UniqueCodeEnterActivity extends BaseActivity {
             initTitle("Registration Process");
             ll_header.setVisibility(View.VISIBLE);
             view_header.setVisibility(View.VISIBLE);
-            HorizontalListView hlv_guide = (HorizontalListView) findViewById(com.edenred.android.apps.avenesg.R.id.hlv_guide);
+            HorizontalListView hlv_guide = (HorizontalListView) findViewById(R.id.hlv_guide);
             UniqueAdapter adapter = new UniqueAdapter(this);
             hlv_guide.setAdapter(adapter);
 
@@ -93,7 +96,7 @@ public class UniqueCodeEnterActivity extends BaseActivity {
     public void onClick(View v) {
         super.onClick(v);
         switch (v.getId()) {
-            case com.edenred.android.apps.avenesg.R.id.btn_submit:
+            case R.id.btn_submit:
                 str = et_unique_code.getText().toString().trim();
                 if (canSubmit()) {
                     showPD("Upload...");

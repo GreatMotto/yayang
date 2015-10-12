@@ -7,6 +7,7 @@ import android.widget.BaseAdapter;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.edenred.android.apps.avenesg.R;
 import com.edenred.android.apps.avenesg.constant.Constant;
 import com.edenred.android.apps.avenesg.utils.DisplayUtil;
 import com.edenred.android.apps.avenesg.utils.FontManager;
@@ -41,13 +42,13 @@ public class GuideAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = View.inflate(mContext, com.edenred.android.apps.avenesg.R.layout.item_guide, null);
+            convertView = View.inflate(mContext, R.layout.item_guide, null);
         }
-        RelativeLayout ll_circle = ViewHolder.get(convertView, com.edenred.android.apps.avenesg.R.id.ll_circle);
-        RelativeLayout ll_rectangle = ViewHolder.get(convertView, com.edenred.android.apps.avenesg.R.id.ll_rectangle);
-        RelativeLayout ll_circle_1 = ViewHolder.get(convertView, com.edenred.android.apps.avenesg.R.id.ll_circle_1);
-        TextView tv_circle_grey = ViewHolder.get(convertView, com.edenred.android.apps.avenesg.R.id.tv_circle_grey);
-        TextView tv_circle_grey_1 = ViewHolder.get(convertView, com.edenred.android.apps.avenesg.R.id.tv_circle_grey_1);
+        RelativeLayout ll_circle = ViewHolder.get(convertView, R.id.ll_circle);
+        RelativeLayout ll_rectangle = ViewHolder.get(convertView, R.id.ll_rectangle);
+        RelativeLayout ll_circle_1 = ViewHolder.get(convertView, R.id.ll_circle_1);
+        TextView tv_circle_grey = ViewHolder.get(convertView, R.id.tv_circle_grey);
+        TextView tv_circle_grey_1 = ViewHolder.get(convertView, R.id.tv_circle_grey_1);
 
         int screenwidth = DisplayUtil.getWidth(mContext);
         RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) ll_circle.getLayoutParams();

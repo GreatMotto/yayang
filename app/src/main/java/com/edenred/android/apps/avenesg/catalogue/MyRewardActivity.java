@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.edenred.android.apps.avenesg.AveneApplication;
 import com.edenred.android.apps.avenesg.BaseActivity;
+import com.edenred.android.apps.avenesg.R;
 import com.edenred.android.apps.avenesg.bean.ShoppingCarBean;
 import com.edenred.android.apps.avenesg.bean.StringBean;
 import com.edenred.android.apps.avenesg.constant.Constant;
@@ -54,7 +55,7 @@ public class MyRewardActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.edenred.android.apps.avenesg.R.layout.ac_myreward);
+        setContentView(R.layout.ac_myreward);
         FontManager.applyFont(this, getWindow().getDecorView().findViewById(android.R.id.content), Constant.TTFNAME);
         AveneApplication.getInstance().addActivity(this);
         sp = AveneApplication.getInstance().getSp();
@@ -72,14 +73,14 @@ public class MyRewardActivity extends BaseActivity {
     }
 
     private void initView() {
-        tv_allpoint = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_allpoint);
-        lv_reward = (ListView) findViewById(com.edenred.android.apps.avenesg.R.id.lv_reward);
-        tv_item = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_item);
-        tv_allnum = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_allnum);
-        tv_checkout = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_checkout);
-        tv_shengyu = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_shengyu);
-        tv_cancel = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_cancel);
-        tv_continue = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_continue);
+        tv_allpoint = (TextView) findViewById(R.id.tv_allpoint);
+        lv_reward = (ListView) findViewById(R.id.lv_reward);
+        tv_item = (TextView) findViewById(R.id.tv_item);
+        tv_allnum = (TextView) findViewById(R.id.tv_allnum);
+        tv_checkout = (TextView) findViewById(R.id.tv_checkout);
+        tv_shengyu = (TextView) findViewById(R.id.tv_shengyu);
+        tv_cancel = (TextView) findViewById(R.id.tv_cancel);
+        tv_continue = (TextView) findViewById(R.id.tv_continue);
 
         tv_continue.setOnClickListener(this);
         tv_checkout.setOnClickListener(this);
@@ -121,7 +122,7 @@ public class MyRewardActivity extends BaseActivity {
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     private void setButtonColor(int num) {
         if (test < num) {
-            tv_checkout.setBackground(getResources().getDrawable(com.edenred.android.apps.avenesg.R.drawable.grey_light_box));
+            tv_checkout.setBackground(getResources().getDrawable(R.drawable.grey_light_box));
             tv_checkout.setEnabled(false);
             tv_shengyu.setText("0");
             shengyu = 0;
@@ -129,7 +130,7 @@ public class MyRewardActivity extends BaseActivity {
             tv_shengyu.setText(NumbersFormat.thousand(String.valueOf(test - num)));
             shengyu = test - num;
             tv_checkout.setEnabled(true);
-            tv_checkout.setBackground(getResources().getDrawable(com.edenred.android.apps.avenesg.R.drawable.grey_dark_box));
+            tv_checkout.setBackground(getResources().getDrawable(R.drawable.grey_dark_box));
         }
     }
 
@@ -137,11 +138,11 @@ public class MyRewardActivity extends BaseActivity {
     public void onClick(View v) {
         super.onClick(v);
         switch (v.getId()) {
-            case com.edenred.android.apps.avenesg.R.id.tv_continue:
+            case R.id.tv_continue:
                 AveneApplication.getInstance().finishActivity();
                 goto1AnotherActivity(CatalogueActivity.class, tag);
                 break;
-            case com.edenred.android.apps.avenesg.R.id.tv_checkout:
+            case R.id.tv_checkout:
                 if (listsize <= 0) {
                     Toast.makeText(this, "Choose at least one", Toast.LENGTH_SHORT).show();
                 } else {
@@ -152,7 +153,7 @@ public class MyRewardActivity extends BaseActivity {
                 }
 
                 break;
-            case com.edenred.android.apps.avenesg.R.id.tv_cancel:
+            case R.id.tv_cancel:
                 list.clear();
                 adapter.notifyDataSetChanged();
                 sp.putValue(Constant.SHOPCARLIST, new Gson().toJson(list));
@@ -165,7 +166,7 @@ public class MyRewardActivity extends BaseActivity {
 
     private void setTitlePoint() {
         if (sp.getValue(Constant.ACCOUNTBALANCE) != null) {
-            tv_allpoint.setText(getResources().getString(com.edenred.android.apps.avenesg.R.string.allpoint) +
+            tv_allpoint.setText(getResources().getString(R.string.allpoint) +
                     NumbersFormat.thousand(sp.getValue(Constant.ACCOUNTBALANCE)));
             test = Integer.parseInt(sp.getValue(Constant.ACCOUNTBALANCE));
         }
@@ -338,7 +339,7 @@ public class MyRewardActivity extends BaseActivity {
                 }
                 eventType = parser.next();
             }
-            tv_allpoint.setText(getResources().getString(com.edenred.android.apps.avenesg.R.string.allpoint) +
+            tv_allpoint.setText(getResources().getString(R.string.allpoint) +
                     NumbersFormat.thousand(accountBalance));
             setTextSize(tv_allpoint.getText().toString(),
                     tv_allpoint, 17, 16, tv_allpoint.getText().length());
@@ -353,8 +354,8 @@ public class MyRewardActivity extends BaseActivity {
             sp.putValue(Constant.EXPIRED, pointsExpired);
             sp.putValue(Constant.WILLEXPIRINGNEXTMON, willExpiringNextMon);
             DialogUtils.ProfileDlg(this, "Thank you for \n  your redemption",
-                    getResources().getString(com.edenred.android.apps.avenesg.R.string.test1) +
-                            orderNo + "\n\nCollection Point:\n" + collection + getResources().getString(com.edenred.android.apps.avenesg.R.string.test2) + contact, 5, 0);
+                    getResources().getString(R.string.test1) +
+                            orderNo + "\n\nCollection Point:\n" + collection + getResources().getString(R.string.test2) + contact, 5, 0);
         } catch (XmlPullParserException e) {
             e.printStackTrace();
         } catch (IOException e) {

@@ -8,6 +8,7 @@ import android.text.style.ClickableSpan;
 import android.view.View;
 
 import com.edenred.android.apps.avenesg.BaseActivity;
+import com.edenred.android.apps.avenesg.R;
 
 /**
  * Created by zhaoxin on 2015/8/24.
@@ -27,7 +28,7 @@ public class SpantoActivity extends ClickableSpan implements ParcelableSpan {
     }
     @Override
     public void onClick(View widget) {
-        widget.setBackgroundColor(mContext.getResources().getColor(com.edenred.android.apps.avenesg.R.color.white));
+        widget.setBackgroundColor(mContext.getResources().getColor(R.color.white));
         Intent intent=new Intent(mContext,cls);
         if (flag == 1){
             intent.putExtra("flag", "Terms and Conditions");

@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.edenred.android.apps.avenesg.AveneApplication;
 import com.edenred.android.apps.avenesg.BaseActivity;
+import com.edenred.android.apps.avenesg.R;
 import com.edenred.android.apps.avenesg.bean.AccountInfoBean;
 import com.edenred.android.apps.avenesg.bean.StringBean;
 import com.edenred.android.apps.avenesg.constant.Constant;
@@ -57,7 +58,7 @@ public class ConfirmAccountActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.edenred.android.apps.avenesg.R.layout.ac_confirm_account);
+        setContentView(R.layout.ac_confirm_account);
         FontManager.applyFont(this, getWindow().getDecorView().findViewById(android.R.id.content), Constant.TTFNAME);
         sp = AveneApplication.getInstance().getSp();
         AveneApplication.getInstance().addActivity(this);
@@ -67,20 +68,20 @@ public class ConfirmAccountActivity extends BaseActivity {
 
     private void initView() {
         initTitle("Registration Process");
-        FontManager.applyFont(this, findViewById(com.edenred.android.apps.avenesg.R.id.tv_bottom_info), Constant.ITTFNAME);
-        hlv_guide = (HorizontalListView) findViewById(com.edenred.android.apps.avenesg.R.id.hlv_guide);
+        FontManager.applyFont(this, findViewById(R.id.tv_bottom_info), Constant.ITTFNAME);
+        hlv_guide = (HorizontalListView) findViewById(R.id.hlv_guide);
         // 提交按钮
-        btn_submit = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.btn_submit);
+        btn_submit = (TextView) findViewById(R.id.btn_submit);
         // 发送验证码
-        tv_send_OTP = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_send_OTP);
+        tv_send_OTP = (TextView) findViewById(R.id.tv_send_OTP);
         // 输入验证码
-        et_enter_OTP = (EditText) findViewById(com.edenred.android.apps.avenesg.R.id.et_enter_OTP);
+        et_enter_OTP = (EditText) findViewById(R.id.et_enter_OTP);
         // 同意发送到Email
-        rl_agree_email = (RelativeLayout) findViewById(com.edenred.android.apps.avenesg.R.id.rl_agree_email);
-        iv_agree_email = (ImageView) findViewById(com.edenred.android.apps.avenesg.R.id.iv_agree_email);
+        rl_agree_email = (RelativeLayout) findViewById(R.id.rl_agree_email);
+        iv_agree_email = (ImageView) findViewById(R.id.iv_agree_email);
         // 同意发送到SMS
-        rl_agree_SMS = (RelativeLayout) findViewById(com.edenred.android.apps.avenesg.R.id.rl_agree_SMS);
-        iv_agree_SMS = (ImageView) findViewById(com.edenred.android.apps.avenesg.R.id.iv_agree_SMS);
+        rl_agree_SMS = (RelativeLayout) findViewById(R.id.rl_agree_SMS);
+        iv_agree_SMS = (ImageView) findViewById(R.id.iv_agree_SMS);
 
         adapter = new ConfirmAdapter(this);
         hlv_guide.setAdapter(adapter);
@@ -116,7 +117,7 @@ public class ConfirmAccountActivity extends BaseActivity {
         super.onClick(v);
         switch (v.getId()) {
 
-            case com.edenred.android.apps.avenesg.R.id.tv_send_OTP:
+            case R.id.tv_send_OTP:
                 clearfocus();
                 DialogUtils.HttpListener listener = new DialogUtils.HttpListener() {
                     @Override
@@ -139,7 +140,7 @@ public class ConfirmAccountActivity extends BaseActivity {
                         "Submit", this, mlist, listener);
                 break;
 
-            case com.edenred.android.apps.avenesg.R.id.btn_submit:
+            case R.id.btn_submit:
                 if (canSubmit()) {
                     String ss = et_enter_OTP.getText().toString();
 //                    String ss1 = null;
@@ -160,7 +161,7 @@ public class ConfirmAccountActivity extends BaseActivity {
                 }
                 break;
 
-            case com.edenred.android.apps.avenesg.R.id.rl_agree_email:
+            case R.id.rl_agree_email:
                 clearfocus();
                 if (!isAgree1) {
                     iv_agree_email.setVisibility(View.GONE);
@@ -172,7 +173,7 @@ public class ConfirmAccountActivity extends BaseActivity {
                     one = "0";
                 }
                 break;
-            case com.edenred.android.apps.avenesg.R.id.rl_agree_SMS:
+            case R.id.rl_agree_SMS:
                 clearfocus();
                 if (!isAgree2) {
                     iv_agree_SMS.setVisibility(View.GONE);

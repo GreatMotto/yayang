@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.edenred.android.apps.avenesg.AveneApplication;
 import com.edenred.android.apps.avenesg.BaseActivity;
+import com.edenred.android.apps.avenesg.R;
 import com.edenred.android.apps.avenesg.bean.RedeemGiftBean;
 import com.edenred.android.apps.avenesg.bean.ShoppingCarBean;
 import com.edenred.android.apps.avenesg.bean.StringBean;
@@ -57,7 +58,7 @@ public class FilterActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.edenred.android.apps.avenesg.R.layout.ac_filter);
+        setContentView(R.layout.ac_filter);
         FontManager.applyFont(this, getWindow().getDecorView().findViewById(android.R.id.content), Constant.TTFNAME);
         AveneApplication.getInstance().addActivity(this);
         sp = AveneApplication.getInstance().getSp();
@@ -75,12 +76,12 @@ public class FilterActivity extends BaseActivity {
     }
 
     private void initView() {
-        rl_right = (RelativeLayout) findViewById(com.edenred.android.apps.avenesg.R.id.rl_right);//标题栏右边购物车
-        tv_sum = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_sum);
-        tv_allpoint = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_allpoint);
-        tv_center = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_center);
-        gridview = (GridView) findViewById(com.edenred.android.apps.avenesg.R.id.gridview);
-        rl_filter_calalogue = (RelativeLayout) findViewById(com.edenred.android.apps.avenesg.R.id.rl_filter_calalogue);
+        rl_right = (RelativeLayout) findViewById(R.id.rl_right);//标题栏右边购物车
+        tv_sum = (TextView) findViewById(R.id.tv_sum);
+        tv_allpoint = (TextView) findViewById(R.id.tv_allpoint);
+        tv_center = (TextView) findViewById(R.id.tv_center);
+        gridview = (GridView) findViewById(R.id.gridview);
+        rl_filter_calalogue = (RelativeLayout) findViewById(R.id.rl_filter_calalogue);
 
 
         rl_right.setVisibility(View.VISIBLE);
@@ -94,7 +95,7 @@ public class FilterActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         if (sp.getValue(Constant.ACCOUNTBALANCE) != null) {
-            tv_allpoint.setText(getResources().getString(com.edenred.android.apps.avenesg.R.string.allpoint) +
+            tv_allpoint.setText(getResources().getString(R.string.allpoint) +
                     NumbersFormat.thousand(sp.getValue(Constant.ACCOUNTBALANCE)));
         }
         setTextSize(tv_allpoint.getText().toString(),
@@ -118,7 +119,7 @@ public class FilterActivity extends BaseActivity {
         gridview.setAdapter(adapter);
 
         if (flag == 2) {
-            Drawable db = getResources().getDrawable(com.edenred.android.apps.avenesg.R.mipmap.point_icon1);
+            Drawable db = getResources().getDrawable(R.mipmap.point_icon1);
             db.setBounds(0, 0, db.getMinimumWidth(), db.getMinimumHeight());
             tv_center.setCompoundDrawables(db, null, null, null);
             tv_center.setCompoundDrawablePadding(16);
@@ -179,7 +180,7 @@ public class FilterActivity extends BaseActivity {
     public void onClick(View v) {
         super.onClick(v);
         switch (v.getId()) {
-            case com.edenred.android.apps.avenesg.R.id.rl_filter_calalogue:
+            case R.id.rl_filter_calalogue:
                 if (flag == 1) {
                     if (list != null) {
                         DialogUtils.FilterDlg(this, list, tv_center, current, listener, 0);
@@ -193,7 +194,7 @@ public class FilterActivity extends BaseActivity {
                     DialogUtils.FilterDlg(this, list, tv_center, current, listener2, 1);
                 }
                 break;
-            case com.edenred.android.apps.avenesg.R.id.rl_right:
+            case R.id.rl_right:
                 gotoOtherActivity(MyRewardActivity.class);
                 break;
             default:

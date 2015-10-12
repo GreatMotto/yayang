@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.edenred.android.apps.avenesg.AveneApplication;
+import com.edenred.android.apps.avenesg.R;
 import com.edenred.android.apps.avenesg.bean.ProductBean;
 import com.edenred.android.apps.avenesg.constant.Constant;
 import com.edenred.android.apps.avenesg.constant.Urls;
@@ -55,12 +56,12 @@ public class ProductsListAdapter extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = View.inflate(mContext, com.edenred.android.apps.avenesg.R.layout.item_detail, null);
+            convertView = View.inflate(mContext, R.layout.item_detail, null);
         }
 //        SimpleDraweeView iv_pic = ViewHolder.get(convertView, R.id.my_image_view);
-        ImageView iv_image_view = ViewHolder.get(convertView, com.edenred.android.apps.avenesg.R.id.iv_image_view);
-        TextView tv_name = ViewHolder.get(convertView, com.edenred.android.apps.avenesg.R.id.tv_name);
-        TextView tv_prase = ViewHolder.get(convertView, com.edenred.android.apps.avenesg.R.id.tv_prase);
+        ImageView iv_image_view = ViewHolder.get(convertView, R.id.iv_image_view);
+        TextView tv_name = ViewHolder.get(convertView, R.id.tv_name);
+        TextView tv_prase = ViewHolder.get(convertView, R.id.tv_prase);
 
         if (TextUtils.isEmpty(AveneApplication.getInstance().dialogBean.title)) {
             title = Integer.parseInt(AveneApplication.getInstance().dialogBean.title);

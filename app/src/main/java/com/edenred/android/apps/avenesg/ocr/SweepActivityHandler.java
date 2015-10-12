@@ -1,7 +1,5 @@
 package com.edenred.android.apps.avenesg.ocr;
 
-import java.util.Vector;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -11,9 +9,12 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 
+import com.edenred.android.apps.avenesg.R;
 import com.edenred.android.apps.avenesg.home.SweepActivity;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
+
+import java.util.Vector;
 
 public final class SweepActivityHandler extends Handler {
 
@@ -44,16 +45,16 @@ public final class SweepActivityHandler extends Handler {
 	@Override
 	public void handleMessage(Message message) {
 		switch (message.what) {
-		case com.edenred.android.apps.avenesg.R.id.auto_focus:
+		case R.id.auto_focus:
 			if (state == State.PREVIEW) {
-				CameraManager.get().requestAutoFocus(this, com.edenred.android.apps.avenesg.R.id.auto_focus);
+				CameraManager.get().requestAutoFocus(this, R.id.auto_focus);
 			}
 			break;
-		case com.edenred.android.apps.avenesg.R.id.restart_preview:
+		case R.id.restart_preview:
 			Log.d(TAG, "Got restart preview message");
 			restartPreviewAndDecode();
 			break;
-		case com.edenred.android.apps.avenesg.R.id.decode_succeeded:
+		case R.id.decode_succeeded:
 			Log.d(TAG, "Got decode succeeded message");
 			state = State.SUCCESS;
 			Bundle bundle = message.getData();
@@ -61,17 +62,17 @@ public final class SweepActivityHandler extends Handler {
 					.getParcelable(DecodeThread.BARCODE_BITMAP);
 			activity.handleDecode((Result) message.obj, barcode);
 			break;
-		case com.edenred.android.apps.avenesg.R.id.decode_failed:
+		case R.id.decode_failed:
 			state = State.PREVIEW;
 			CameraManager.get().requestPreviewFrame(decodeThread.getHandler(),
-					com.edenred.android.apps.avenesg.R.id.decode);
+					R.id.decode);
 			break;
-		case com.edenred.android.apps.avenesg.R.id.return_scan_result:
+		case R.id.return_scan_result:
 			Log.d(TAG, "Got return scan result message");
 			activity.setResult(Activity.RESULT_OK, (Intent) message.obj);
 			activity.finish();
 			break;
-		case com.edenred.android.apps.avenesg.R.id.launch_product_query:
+		case R.id.launch_product_query:
 			Log.d(TAG, "Got product query message");
 			String url = (String) message.obj;
 			Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
@@ -84,7 +85,7 @@ public final class SweepActivityHandler extends Handler {
 	public void quitSynchronously() {
 		state = State.DONE;
 		CameraManager.get().stopPreview();
-		Message quit = Message.obtain(decodeThread.getHandler(), com.edenred.android.apps.avenesg.R.id.quit);
+		Message quit = Message.obtain(decodeThread.getHandler(), R.id.quit);
 		quit.sendToTarget();
 		try {
 			decodeThread.join();
@@ -92,16 +93,16 @@ public final class SweepActivityHandler extends Handler {
 			// continue
 		}
 
-		removeMessages(com.edenred.android.apps.avenesg.R.id.decode_succeeded);
-		removeMessages(com.edenred.android.apps.avenesg.R.id.decode_failed);
+		removeMessages(R.id.decode_succeeded);
+		removeMessages(R.id.decode_failed);
 	}
 
 	private void restartPreviewAndDecode() {
 		if (state == State.SUCCESS) {
 			state = State.PREVIEW;
 			CameraManager.get().requestPreviewFrame(decodeThread.getHandler(),
-					com.edenred.android.apps.avenesg.R.id.decode);
-			CameraManager.get().requestAutoFocus(this, com.edenred.android.apps.avenesg.R.id.auto_focus);
+					R.id.decode);
+			CameraManager.get().requestAutoFocus(this, R.id.auto_focus);
 			activity.drawViewfinder();
 		}
 	}

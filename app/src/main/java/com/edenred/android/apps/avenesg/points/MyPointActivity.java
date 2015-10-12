@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.edenred.android.apps.avenesg.AveneApplication;
 import com.edenred.android.apps.avenesg.BaseActivity;
+import com.edenred.android.apps.avenesg.R;
 import com.edenred.android.apps.avenesg.bean.PointBean;
 import com.edenred.android.apps.avenesg.constant.Constant;
 import com.edenred.android.apps.avenesg.constant.Urls;
@@ -62,7 +63,7 @@ public class MyPointActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.edenred.android.apps.avenesg.R.layout.ac_mypoint);
+        setContentView(R.layout.ac_mypoint);
         FontManager.applyFont(this, getWindow().getDecorView().findViewById(android.R.id.content), Constant.TTFNAME);
         AveneApplication.getInstance().addActivity(this);
         sp = AveneApplication.getInstance().getSp();
@@ -74,42 +75,42 @@ public class MyPointActivity extends BaseActivity {
         }
         id = sp.getValue(Constant.ACCOUNTID);
         current = flag;
-        initTitle(getResources().getString(com.edenred.android.apps.avenesg.R.string.point));
+        initTitle(getResources().getString(R.string.point));
         initView();
     }
 
 
     private void initView() {
-        iv_line = (ImageView) findViewById(com.edenred.android.apps.avenesg.R.id.iv_line);//滚动线
-        tv_allpoint = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_allpoint);//积分字体变大
-        ll_point1 = (LinearLayout) findViewById(com.edenred.android.apps.avenesg.R.id.ll_point1);//积分1
-        ll_point2 = (LinearLayout) findViewById(com.edenred.android.apps.avenesg.R.id.ll_point2);//积分2
-        ll_point3 = (LinearLayout) findViewById(com.edenred.android.apps.avenesg.R.id.ll_point3);//积分3
-        tv_earned = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_earned);
-        tv_redemeed = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_redemeed);
-        tv_expired = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_expired);
-        tv_monthpoint = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_monthpoint);
+        iv_line = (ImageView) findViewById(R.id.iv_line);//滚动线
+        tv_allpoint = (TextView) findViewById(R.id.tv_allpoint);//积分字体变大
+        ll_point1 = (LinearLayout) findViewById(R.id.ll_point1);//积分1
+        ll_point2 = (LinearLayout) findViewById(R.id.ll_point2);//积分2
+        ll_point3 = (LinearLayout) findViewById(R.id.ll_point3);//积分3
+        tv_earned = (TextView) findViewById(R.id.tv_earned);
+        tv_redemeed = (TextView) findViewById(R.id.tv_redemeed);
+        tv_expired = (TextView) findViewById(R.id.tv_expired);
+        tv_monthpoint = (TextView) findViewById(R.id.tv_monthpoint);
 
-        tv_data_left = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_data_left);//开始日期
-        tv_data_right = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_data_right);//结束日期
-        iv_left = (ImageView) findViewById(com.edenred.android.apps.avenesg.R.id.iv_left);//开始日期按钮
-        iv_right = (ImageView) findViewById(com.edenred.android.apps.avenesg.R.id.iv_right);//结束日期按钮
+        tv_data_left = (TextView) findViewById(R.id.tv_data_left);//开始日期
+        tv_data_right = (TextView) findViewById(R.id.tv_data_right);//结束日期
+        iv_left = (ImageView) findViewById(R.id.iv_left);//开始日期按钮
+        iv_right = (ImageView) findViewById(R.id.iv_right);//结束日期按钮
 
-        rl_all = (RelativeLayout) findViewById(com.edenred.android.apps.avenesg.R.id.rl_all);
-        tv_data = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_data);
-        tv_des = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_des);
-        tv_point = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_point);
-        tv_point3 = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_point3);
-        tv_point4 = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_point4);
-        tv_time = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_time);
-        ll_plus = (LinearLayout) findViewById(com.edenred.android.apps.avenesg.R.id.ll_plus);
+        rl_all = (RelativeLayout) findViewById(R.id.rl_all);
+        tv_data = (TextView) findViewById(R.id.tv_data);
+        tv_des = (TextView) findViewById(R.id.tv_des);
+        tv_point = (TextView) findViewById(R.id.tv_point);
+        tv_point3 = (TextView) findViewById(R.id.tv_point3);
+        tv_point4 = (TextView) findViewById(R.id.tv_point4);
+        tv_time = (TextView) findViewById(R.id.tv_time);
+        ll_plus = (LinearLayout) findViewById(R.id.ll_plus);
 
-        iv_line1 = (ImageView) findViewById(com.edenred.android.apps.avenesg.R.id.iv_line1);
-        iv_line2 = (ImageView) findViewById(com.edenred.android.apps.avenesg.R.id.iv_line2);
-        iv_line3 = (ImageView) findViewById(com.edenred.android.apps.avenesg.R.id.iv_line3);
-        iv_line4 = (ImageView) findViewById(com.edenred.android.apps.avenesg.R.id.iv_line4);
-        iv_line5 = (ImageView) findViewById(com.edenred.android.apps.avenesg.R.id.iv_line5);
-        lv_data = (ListView) findViewById(com.edenred.android.apps.avenesg.R.id.lv_data);
+        iv_line1 = (ImageView) findViewById(R.id.iv_line1);
+        iv_line2 = (ImageView) findViewById(R.id.iv_line2);
+        iv_line3 = (ImageView) findViewById(R.id.iv_line3);
+        iv_line4 = (ImageView) findViewById(R.id.iv_line4);
+        iv_line5 = (ImageView) findViewById(R.id.iv_line5);
+        lv_data = (ListView) findViewById(R.id.lv_data);
 
         initData();
 
@@ -142,7 +143,7 @@ public class MyPointActivity extends BaseActivity {
 
     private void initData() {
         if (sp.getValue(Constant.ACCOUNTBALANCE) != null) {
-            tv_allpoint.setText(getResources().getString(com.edenred.android.apps.avenesg.R.string.allpoint) +
+            tv_allpoint.setText(getResources().getString(R.string.allpoint) +
                     NumbersFormat.thousand(sp.getValue(Constant.ACCOUNTBALANCE)));
         }
         //改变字体大小
@@ -181,7 +182,7 @@ public class MyPointActivity extends BaseActivity {
         tv_data.setText("Date");
         tv_des.setText("Description");
         tv_point.setText("Points");
-        tv_time.setText(getResources().getString(com.edenred.android.apps.avenesg.R.string.point_p1));
+        tv_time.setText(getResources().getString(R.string.point_p1));
         //设置两根线距左的距离
         RelativeLayout.LayoutParams lp1 = (RelativeLayout.LayoutParams) iv_line1.getLayoutParams();
         lp1.leftMargin = width * 2 / 7;
@@ -206,7 +207,7 @@ public class MyPointActivity extends BaseActivity {
         tv_point.setText("Description");
         tv_point3.setText("Qty");
         tv_point4.setText("Points");
-        tv_time.setText(getResources().getString(com.edenred.android.apps.avenesg.R.string.point_p2));
+        tv_time.setText(getResources().getString(R.string.point_p2));
         //设置5根线距左的距离
         RelativeLayout.LayoutParams lp1 = (RelativeLayout.LayoutParams) iv_line1.getLayoutParams();
         lp1.leftMargin = width / 6;
@@ -241,7 +242,7 @@ public class MyPointActivity extends BaseActivity {
         ll_plus.setVisibility(View.GONE);
         tv_data.setGravity(Gravity.CENTER);
         tv_des.setGravity(Gravity.CENTER);
-        tv_time.setText(getResources().getString(com.edenred.android.apps.avenesg.R.string.point_p3));
+        tv_time.setText(getResources().getString(R.string.point_p3));
         tv_data.setText("Date");
         tv_des.setText("Points");
         //设置1根线距左的距离
@@ -254,7 +255,7 @@ public class MyPointActivity extends BaseActivity {
     public void onClick(View v) {
         super.onClick(v);
         switch (v.getId()) {
-            case com.edenred.android.apps.avenesg.R.id.ll_point1:
+            case R.id.ll_point1:
 
                 ll_point1.setEnabled(false);
                 ll_point2.setEnabled(true);
@@ -277,7 +278,7 @@ public class MyPointActivity extends BaseActivity {
 //                adapter.setFlag(0);
 //                adapter.notifyDataSetChanged();
                 break;
-            case com.edenred.android.apps.avenesg.R.id.ll_point2:
+            case R.id.ll_point2:
 
                 ll_point2.setEnabled(false);
                 ll_point3.setEnabled(true);
@@ -299,7 +300,7 @@ public class MyPointActivity extends BaseActivity {
 //                adapter.setFlag(1);
 //                adapter.notifyDataSetChanged();
                 break;
-            case com.edenred.android.apps.avenesg.R.id.ll_point3:
+            case R.id.ll_point3:
                 ll_point3.setEnabled(false);
                 ll_point2.setEnabled(true);
                 ll_point1.setEnabled(true);
@@ -320,7 +321,7 @@ public class MyPointActivity extends BaseActivity {
 //                adapter.setFlag(2);
 //                adapter.notifyDataSetChanged();
                 break;
-            case com.edenred.android.apps.avenesg.R.id.iv_left:
+            case R.id.iv_left:
                 DialogUtils.DateDlg(this, tv_data_left, tv_data_left.getText().toString(), 0, new DialogUtils.DataListener() {
                     @Override
                     public void getDataHttp(String time) {
@@ -332,7 +333,7 @@ public class MyPointActivity extends BaseActivity {
                     }
                 });
                 break;
-            case com.edenred.android.apps.avenesg.R.id.iv_right:
+            case R.id.iv_right:
                 DialogUtils.DateDlg(this, tv_data_right, tv_data_right.getText().toString(), 0, new DialogUtils.DataListener() {
                     @Override
                     public void getDataHttp(String time) {

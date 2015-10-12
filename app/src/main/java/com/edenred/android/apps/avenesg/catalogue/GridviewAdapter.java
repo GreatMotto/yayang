@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.edenred.android.apps.avenesg.AveneApplication;
 import com.edenred.android.apps.avenesg.BaseActivity;
+import com.edenred.android.apps.avenesg.R;
 import com.edenred.android.apps.avenesg.bean.RedeemGiftBean;
 import com.edenred.android.apps.avenesg.bean.ShoppingCarBean;
 import com.edenred.android.apps.avenesg.constant.Constant;
@@ -79,16 +80,16 @@ public class GridviewAdapter extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = View.inflate(mContext, com.edenred.android.apps.avenesg.R.layout.home_item, null);
+            convertView = View.inflate(mContext, R.layout.home_item, null);
         }
 
-        RelativeLayout rl_all = ViewHolder.get(convertView, com.edenred.android.apps.avenesg.R.id.rl_all);
-        LinearLayout ll_shoppingcar = ViewHolder.get(convertView, com.edenred.android.apps.avenesg.R.id.ll_shoppingcar);
+        RelativeLayout rl_all = ViewHolder.get(convertView, R.id.rl_all);
+        LinearLayout ll_shoppingcar = ViewHolder.get(convertView, R.id.ll_shoppingcar);
 //        SimpleDraweeView iv_pic = ViewHolder.get(convertView, R.id.iv_pic);
-        ImageView iv_image_view = ViewHolder.get(convertView, com.edenred.android.apps.avenesg.R.id.iv_image_view);
-        TextView tv_name = ViewHolder.get(convertView, com.edenred.android.apps.avenesg.R.id.tv_name);
-        TextView tv_prase = ViewHolder.get(convertView, com.edenred.android.apps.avenesg.R.id.tv_prase);
-        TextView tv_points = ViewHolder.get(convertView, com.edenred.android.apps.avenesg.R.id.tv_points);
+        ImageView iv_image_view = ViewHolder.get(convertView, R.id.iv_image_view);
+        TextView tv_name = ViewHolder.get(convertView, R.id.tv_name);
+        TextView tv_prase = ViewHolder.get(convertView, R.id.tv_prase);
+        TextView tv_points = ViewHolder.get(convertView, R.id.tv_points);
 
         if (TextUtils.isEmpty(AveneApplication.getInstance().dialogBean.title)){
             title = Integer.parseInt(AveneApplication.getInstance().dialogBean.title);

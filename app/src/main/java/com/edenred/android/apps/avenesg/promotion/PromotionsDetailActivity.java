@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.edenred.android.apps.avenesg.AveneApplication;
 import com.edenred.android.apps.avenesg.BaseActivity;
+import com.edenred.android.apps.avenesg.R;
 import com.edenred.android.apps.avenesg.bean.NotifyMessageBean;
 import com.edenred.android.apps.avenesg.constant.Constant;
 import com.edenred.android.apps.avenesg.constant.Urls;
@@ -31,7 +32,7 @@ public class PromotionsDetailActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.edenred.android.apps.avenesg.R.layout.ac_promotion_and_product_detail);
+        setContentView(R.layout.ac_promotion_and_product_detail);
         FontManager.applyFont(this, getWindow().getDecorView().findViewById(android.R.id.content), Constant.TTFNAME);
         AveneApplication.getInstance().addActivity(this);
         sp = AveneApplication.getInstance().getSp();
@@ -48,8 +49,8 @@ public class PromotionsDetailActivity extends BaseActivity {
     }
 
     private void initView() {
-        tv_allpoint = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_allpoint);
-        iv_image_view = (ImageView) findViewById(com.edenred.android.apps.avenesg.R.id.iv_image_view);
+        tv_allpoint = (TextView) findViewById(R.id.tv_allpoint);
+        iv_image_view = (ImageView) findViewById(R.id.iv_image_view);
 //        iv_pic = (SimpleDraweeView) findViewById(R.id.iv_pic);
 //        iv_pic.setAspectRatio(1.5f);
 //        iv_pic.setImageURI(Uri.parse(Urls.IPANDPORT + data.messageImageUrl));
@@ -62,16 +63,16 @@ public class PromotionsDetailActivity extends BaseActivity {
         ImageLoader.getInstance().displayImage(Urls.IPANDPORT + data.messageImageUrl, iv_image_view, options);
 
 
-        tv_title = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_productname);
+        tv_title = (TextView) findViewById(R.id.tv_productname);
         tv_title.setText(data.messageTitle);
 
-        tv_detail = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_detail);
+        tv_detail = (TextView) findViewById(R.id.tv_detail);
         tv_detail.setText(data.messageContent);
     }
 
     private void initData() {
         if (sp.getValue(Constant.ACCOUNTBALANCE) != null) {
-            tv_allpoint.setText(getResources().getString(com.edenred.android.apps.avenesg.R.string.allpoint) +
+            tv_allpoint.setText(getResources().getString(R.string.allpoint) +
                     NumbersFormat.thousand(sp.getValue(Constant.ACCOUNTBALANCE)));
         }
         setTextSize(tv_allpoint.getText().toString(),

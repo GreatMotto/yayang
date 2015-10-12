@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.edenred.android.apps.avenesg.AveneApplication;
 import com.edenred.android.apps.avenesg.BaseActivity;
+import com.edenred.android.apps.avenesg.R;
 import com.edenred.android.apps.avenesg.catalogue.CatalogueActivity;
 import com.edenred.android.apps.avenesg.constant.Constant;
 import com.edenred.android.apps.avenesg.constant.Urls;
@@ -58,9 +59,9 @@ public class MenuAdapter extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = View.inflate(mContext, com.edenred.android.apps.avenesg.R.layout.item_menu, null);
+            convertView = View.inflate(mContext, R.layout.item_menu, null);
         }
-        TextView tv_item = ViewHolder.get(convertView, com.edenred.android.apps.avenesg.R.id.tv_item);
+        TextView tv_item = ViewHolder.get(convertView, R.id.tv_item);
         FontManager.applyFont(mContext, convertView, Constant.TTFNAME);
 
         Drawable db = mContext.getResources().getDrawable(Constant.Drawable[position]);
@@ -70,10 +71,10 @@ public class MenuAdapter extends BaseAdapter {
         tv_item.setText(Constant.Menu[position]);
 
         if (is_select[position]) {
-            tv_item.setBackgroundColor(mContext.getResources().getColor(com.edenred.android.apps.avenesg.R.color.select_bg));
+            tv_item.setBackgroundColor(mContext.getResources().getColor(R.color.select_bg));
             is_select[position] = false;
         } else {
-            tv_item.setBackgroundColor(mContext.getResources().getColor(com.edenred.android.apps.avenesg.R.color.grey_dark));
+            tv_item.setBackgroundColor(mContext.getResources().getColor(R.color.grey_dark));
         }
 
         convertView.setOnClickListener(new View.OnClickListener() {

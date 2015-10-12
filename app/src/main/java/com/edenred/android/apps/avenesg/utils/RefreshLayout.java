@@ -11,6 +11,8 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.edenred.android.apps.avenesg.R;
+
 /**
  * 下拉刷新
  */
@@ -41,10 +43,10 @@ public class RefreshLayout extends SwipeRefreshLayout implements AbsListView.OnS
 
     public RefreshLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
-        footView = LayoutInflater.from(context).inflate(com.edenred.android.apps.avenesg.R.layout.ac_footer, null);
+        footView = LayoutInflater.from(context).inflate(R.layout.ac_footer, null);
 
-        bottom_progressBar = (ProgressBar) footView.findViewById(com.edenred.android.apps.avenesg.R.id.bottom_progressBar);
-        tip_view = (TextView) footView.findViewById(com.edenred.android.apps.avenesg.R.id.tip_view);
+        bottom_progressBar = (ProgressBar) footView.findViewById(R.id.bottom_progressBar);
+        tip_view = (TextView) footView.findViewById(R.id.tip_view);
         footView.setVisibility(View.GONE);
     }
 
@@ -124,11 +126,11 @@ public class RefreshLayout extends SwipeRefreshLayout implements AbsListView.OnS
         if (!load_more) {
             footView.setVisibility(View.VISIBLE);
             bottom_progressBar.setVisibility(View.GONE);
-            tip_view.setText(getResources().getString(com.edenred.android.apps.avenesg.R.string.more_tip));
+            tip_view.setText(getResources().getString(R.string.more_tip));
         }
         else {
             bottom_progressBar.setVisibility(View.VISIBLE);
-            tip_view.setText(getResources().getString(com.edenred.android.apps.avenesg.R.string.load_tip));
+            tip_view.setText(getResources().getString(R.string.load_tip));
             footView.setVisibility(View.GONE);
         }
     }

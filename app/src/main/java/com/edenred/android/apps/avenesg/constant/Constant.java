@@ -1,5 +1,7 @@
 package com.edenred.android.apps.avenesg.constant;
 
+import com.edenred.android.apps.avenesg.R;
+
 /**
  * Created by zhaoxin on 2015/7/14.
  */
@@ -49,14 +51,14 @@ public class Constant {
             "Terms and Conditions", "Change Password", "Logout"};
 
     //侧滑菜单图标
-    public static final int[] Drawable = {com.edenred.android.apps.avenesg.R.mipmap.myacc_ico, com.edenred.android.apps.avenesg.R.mipmap.my_points_ico, com.edenred.android.apps.avenesg.R.mipmap.reward_ico, com.edenred.android.apps.avenesg.R.mipmap.scantoregister_ico
-            , com.edenred.android.apps.avenesg.R.mipmap.newsfeed_ico, com.edenred.android.apps.avenesg.R.mipmap.faq_ico, com.edenred.android.apps.avenesg.R.mipmap.products, com.edenred.android.apps.avenesg.R.mipmap.contact_us_ico,
-            com.edenred.android.apps.avenesg.R.mipmap.settings_ico, com.edenred.android.apps.avenesg.R.mipmap.term, com.edenred.android.apps.avenesg.R.mipmap.password, com.edenred.android.apps.avenesg.R.mipmap.logout_icon
+    public static final int[] Drawable = {R.mipmap.myacc_ico, R.mipmap.my_points_ico, R.mipmap.reward_ico, R.mipmap.scantoregister_ico
+            , R.mipmap.newsfeed_ico, R.mipmap.faq_ico, R.mipmap.products, R.mipmap.contact_us_ico,
+            R.mipmap.settings_ico, R.mipmap.term, R.mipmap.password, R.mipmap.logout_icon
     };
 
     //注册向导页面图标
-    public static final int[] RegisterImage = {com.edenred.android.apps.avenesg.R.mipmap.step_1, com.edenred.android.apps.avenesg.R.mipmap.step_2, com.edenred.android.apps.avenesg.R.mipmap.trans_details,
-            com.edenred.android.apps.avenesg.R.mipmap.personal_info, com.edenred.android.apps.avenesg.R.mipmap.verified
+    public static final int[] RegisterImage = {R.mipmap.step_1, R.mipmap.step_2, R.mipmap.trans_details,
+            R.mipmap.personal_info, R.mipmap.verified
     };
 
     // 婚姻状况

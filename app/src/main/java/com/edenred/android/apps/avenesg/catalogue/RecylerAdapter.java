@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.edenred.android.apps.avenesg.AveneApplication;
 import com.edenred.android.apps.avenesg.BaseActivity;
+import com.edenred.android.apps.avenesg.R;
 import com.edenred.android.apps.avenesg.bean.NotifyMessageBean;
 import com.edenred.android.apps.avenesg.bean.RedeemGiftBean;
 import com.edenred.android.apps.avenesg.bean.ShoppingCarBean;
@@ -84,7 +85,7 @@ public class RecylerAdapter extends RecyclerView.Adapter<RecylerAdapter.ViewHold
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         // 创建一个View，简单起见直接使用系统提供的布局
-        View view = View.inflate(mContext, com.edenred.android.apps.avenesg.R.layout.home_item, null);
+        View view = View.inflate(mContext, R.layout.home_item, null);
         FontManager.applyFont(mContext, view, Constant.TTFNAME);
         // 创建一个ViewHolder
         ViewHolder holder = new ViewHolder(view);
@@ -119,7 +120,7 @@ public class RecylerAdapter extends RecyclerView.Adapter<RecylerAdapter.ViewHold
             viewHolder.tv_points.setVisibility(View.GONE);
             viewHolder.ll_shoppingcar.setVisibility(View.GONE);
             viewHolder.iv_left.setVisibility(View.VISIBLE);
-            viewHolder.tv_detail.setBackgroundResource(com.edenred.android.apps.avenesg.R.mipmap.detailbase);
+            viewHolder.tv_detail.setBackgroundResource(R.mipmap.detailbase);
             viewHolder.tv_name.setText(list1.get(i).messageTitle);
             if (TextUtils.isEmpty(list1.get(i).messageContent)) {
                 viewHolder.tv_prase.setText("");
@@ -146,7 +147,7 @@ public class RecylerAdapter extends RecyclerView.Adapter<RecylerAdapter.ViewHold
             viewHolder.tv_points.setVisibility(View.VISIBLE);
             viewHolder.ll_shoppingcar.setVisibility(View.VISIBLE);
             viewHolder.iv_left.setVisibility(View.GONE);
-            viewHolder.tv_detail.setBackgroundResource(com.edenred.android.apps.avenesg.R.mipmap.orange_grey);
+            viewHolder.tv_detail.setBackgroundResource(R.mipmap.orange_grey);
             viewHolder.tv_name.setText(list.get(i).articleName);
             if (TextUtils.isEmpty(list.get(i).articleDesc)) {
                 viewHolder.tv_prase.setText("");
@@ -279,15 +280,15 @@ public class RecylerAdapter extends RecyclerView.Adapter<RecylerAdapter.ViewHold
 
         public ViewHolder(View itemView) {
             super(itemView);
-            rl_all = (RelativeLayout) itemView.findViewById(com.edenred.android.apps.avenesg.R.id.rl_all);
-            ll_shoppingcar = (LinearLayout) itemView.findViewById(com.edenred.android.apps.avenesg.R.id.ll_shoppingcar);
-            tv_points = (TextView) itemView.findViewById(com.edenred.android.apps.avenesg.R.id.tv_points);
-            tv_name = (TextView) itemView.findViewById(com.edenred.android.apps.avenesg.R.id.tv_name);
-            tv_prase = (TextView) itemView.findViewById(com.edenred.android.apps.avenesg.R.id.tv_prase);
-            tv_detail = (TextView) itemView.findViewById(com.edenred.android.apps.avenesg.R.id.tv_detail);
-            iv_left = (ImageView) itemView.findViewById(com.edenred.android.apps.avenesg.R.id.iv_left);
+            rl_all = (RelativeLayout) itemView.findViewById(R.id.rl_all);
+            ll_shoppingcar = (LinearLayout) itemView.findViewById(R.id.ll_shoppingcar);
+            tv_points = (TextView) itemView.findViewById(R.id.tv_points);
+            tv_name = (TextView) itemView.findViewById(R.id.tv_name);
+            tv_prase = (TextView) itemView.findViewById(R.id.tv_prase);
+            tv_detail = (TextView) itemView.findViewById(R.id.tv_detail);
+            iv_left = (ImageView) itemView.findViewById(R.id.iv_left);
 //            iv_pic = (SimpleDraweeView) itemView.findViewById(R.id.iv_pic);
-            iv_image_view = (ImageView) itemView.findViewById(com.edenred.android.apps.avenesg.R.id.iv_image_view);
+            iv_image_view = (ImageView) itemView.findViewById(R.id.iv_image_view);
 
         }
     }

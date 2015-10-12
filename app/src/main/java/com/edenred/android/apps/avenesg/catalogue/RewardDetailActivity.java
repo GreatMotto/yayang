@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.edenred.android.apps.avenesg.AveneApplication;
 import com.edenred.android.apps.avenesg.BaseActivity;
+import com.edenred.android.apps.avenesg.R;
 import com.edenred.android.apps.avenesg.bean.RedeemGiftBean;
 import com.edenred.android.apps.avenesg.bean.ShoppingCarBean;
 import com.edenred.android.apps.avenesg.constant.Constant;
@@ -48,7 +49,7 @@ public class RewardDetailActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.edenred.android.apps.avenesg.R.layout.ac_reward_detail);
+        setContentView(R.layout.ac_reward_detail);
         FontManager.applyFont(this, getWindow().getDecorView().findViewById(android.R.id.content), Constant.TTFNAME);
         AveneApplication.getInstance().addActivity(this);
         sp = AveneApplication.getInstance().getSp();
@@ -65,18 +66,18 @@ public class RewardDetailActivity extends BaseActivity {
     }
 
     private void initView() {
-        rl_right = (RelativeLayout) findViewById(com.edenred.android.apps.avenesg.R.id.rl_right);//标题栏右边购物车
-        tv_sum = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_sum);
-        tv_allpoint = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_allpoint);
-        tv_name = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_name);
-        tv_desc = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_desc);
-        tv_add = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_add);
-        ll_subtract = (LinearLayout) findViewById(com.edenred.android.apps.avenesg.R.id.ll_subtract);//数字减
-        ll_plus = (LinearLayout) findViewById(com.edenred.android.apps.avenesg.R.id.ll_plus);//数字加
-        tv_calagolue_num = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_calagolue_num);//商品数量
-        tv_point = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_point);//商品分数
+        rl_right = (RelativeLayout) findViewById(R.id.rl_right);//标题栏右边购物车
+        tv_sum = (TextView) findViewById(R.id.tv_sum);
+        tv_allpoint = (TextView) findViewById(R.id.tv_allpoint);
+        tv_name = (TextView) findViewById(R.id.tv_name);
+        tv_desc = (TextView) findViewById(R.id.tv_desc);
+        tv_add = (TextView) findViewById(R.id.tv_add);
+        ll_subtract = (LinearLayout) findViewById(R.id.ll_subtract);//数字减
+        ll_plus = (LinearLayout) findViewById(R.id.ll_plus);//数字加
+        tv_calagolue_num = (TextView) findViewById(R.id.tv_calagolue_num);//商品数量
+        tv_point = (TextView) findViewById(R.id.tv_point);//商品分数
 //        iv_pic = (SimpleDraweeView) findViewById(R.id.iv_pic);
-        iv_image_view = (ImageView) findViewById(com.edenred.android.apps.avenesg.R.id.iv_image_view);
+        iv_image_view = (ImageView) findViewById(R.id.iv_image_view);
 
         rl_right.setVisibility(View.VISIBLE);
         tv_sum.setVisibility(View.VISIBLE);
@@ -91,7 +92,7 @@ public class RewardDetailActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         if (sp.getValue(Constant.ACCOUNTBALANCE) != null) {
-            tv_allpoint.setText(getResources().getString(com.edenred.android.apps.avenesg.R.string.allpoint) +
+            tv_allpoint.setText(getResources().getString(R.string.allpoint) +
                     NumbersFormat.thousand(sp.getValue(Constant.ACCOUNTBALANCE)));
         }
         setTextSize(tv_allpoint.getText().toString(),
@@ -145,7 +146,7 @@ public class RewardDetailActivity extends BaseActivity {
     public void onClick(View v) {
         super.onClick(v);
         switch (v.getId()) {
-            case com.edenred.android.apps.avenesg.R.id.tv_add:
+            case R.id.tv_add:
                 if (isFirstAdd) {
                     startAnim(tv_sum, carnumfirst);
                     int n1=Integer.parseInt(shopCarList.get(current).num);
@@ -175,7 +176,7 @@ public class RewardDetailActivity extends BaseActivity {
                 sp.putValue(Constant.SHOPCARLIST,new Gson().toJson(shopCarList));
 
                 break;
-            case com.edenred.android.apps.avenesg.R.id.ll_subtract:
+            case R.id.ll_subtract:
                 if (num > 1) {
                     num -= 1;
                     tv_calagolue_num.setText(String.valueOf(num));
@@ -183,13 +184,13 @@ public class RewardDetailActivity extends BaseActivity {
                     tv_point.setText(NumbersFormat.thousand(String.valueOf(pointnum)));
                 }
                 break;
-            case com.edenred.android.apps.avenesg.R.id.ll_plus:
+            case R.id.ll_plus:
                 num += 1;
                 tv_calagolue_num.setText(String.valueOf(num));
                 pointnum = pointfirst * num;
                 tv_point.setText(NumbersFormat.thousand(String.valueOf(pointnum)));
                 break;
-            case com.edenred.android.apps.avenesg.R.id.rl_right:
+            case R.id.rl_right:
                 goto1AnotherActivity(MyRewardActivity.class, tag);
                 break;
             default:

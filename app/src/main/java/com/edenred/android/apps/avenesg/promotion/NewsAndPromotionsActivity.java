@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.edenred.android.apps.avenesg.AveneApplication;
 import com.edenred.android.apps.avenesg.BaseActivity;
+import com.edenred.android.apps.avenesg.R;
 import com.edenred.android.apps.avenesg.bean.NotifyMessageBean;
 import com.edenred.android.apps.avenesg.constant.Constant;
 import com.edenred.android.apps.avenesg.constant.Urls;
@@ -41,7 +42,7 @@ public class NewsAndPromotionsActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.edenred.android.apps.avenesg.R.layout.ac_promotion_and_product);
+        setContentView(R.layout.ac_promotion_and_product);
         FontManager.applyFont(this, getWindow().getDecorView().findViewById(android.R.id.content), Constant.TTFNAME);
         AveneApplication.getInstance().addActivity(this);
         sp= AveneApplication.getInstance().getSp();
@@ -57,13 +58,13 @@ public class NewsAndPromotionsActivity extends BaseActivity {
     }
 
     private void initView() {
-        gv_detail = (GridView) findViewById(com.edenred.android.apps.avenesg.R.id.gv_detail);
-        tv_allpoint = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_allpoint);
+        gv_detail = (GridView) findViewById(R.id.gv_detail);
+        tv_allpoint = (TextView) findViewById(R.id.tv_allpoint);
     }
 
     private void initData() {
         if (sp.getValue(Constant.ACCOUNTBALANCE) != null) {
-            tv_allpoint.setText(getResources().getString(com.edenred.android.apps.avenesg.R.string.allpoint) +
+            tv_allpoint.setText(getResources().getString(R.string.allpoint) +
                     NumbersFormat.thousand(sp.getValue(Constant.ACCOUNTBALANCE)));
         }
         setTextSize(tv_allpoint.getText().toString(),

@@ -141,11 +141,6 @@
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".settings.CustomerServiceActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
             android:name=".settings.WebViewActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"

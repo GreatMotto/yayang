@@ -6,6 +6,7 @@ import android.webkit.WebViewClient;
 
 import com.edenred.android.apps.avenesg.AveneApplication;
 import com.edenred.android.apps.avenesg.BaseActivity;
+import com.edenred.android.apps.avenesg.R;
 import com.edenred.android.apps.avenesg.constant.Constant;
 import com.edenred.android.apps.avenesg.utils.FontManager;
 
@@ -23,7 +24,7 @@ public class WebViewActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.edenred.android.apps.avenesg.R.layout.ac_webview);
+        setContentView(R.layout.ac_webview);
         FontManager.applyFont(this, getWindow().getDecorView().findViewById(android.R.id.content), Constant.TTFNAME);
         AveneApplication.getInstance().addActivity(this);
         initLogo();
@@ -35,7 +36,7 @@ public class WebViewActivity extends BaseActivity {
         title = getIntent().getStringExtra("flag");
         String url = getIntent().getStringExtra("url");
         initTitle(title);
-        agreement_content = (WebView) findViewById(com.edenred.android.apps.avenesg.R.id.agreement_content);
+        agreement_content = (WebView) findViewById(R.id.agreement_content);
 
         agreement_content.loadUrl(url);
 

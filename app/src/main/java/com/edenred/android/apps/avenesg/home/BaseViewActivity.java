@@ -6,6 +6,7 @@ import android.view.KeyEvent;
 import android.widget.Toast;
 
 import com.edenred.android.apps.avenesg.BaseActivity;
+import com.edenred.android.apps.avenesg.R;
 
 /**
  * Created by zhaoxin on 2015/7/15.
@@ -22,7 +23,7 @@ public abstract class BaseViewActivity extends BaseActivity{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.edenred.android.apps.avenesg.R.layout.ac_base);
+        setContentView(R.layout.ac_base);
     }
 //    /**
 //     * 跳抓其他一级页面

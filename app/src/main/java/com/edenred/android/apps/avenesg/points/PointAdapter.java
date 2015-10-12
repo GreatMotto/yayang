@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.edenred.android.apps.avenesg.R;
 import com.edenred.android.apps.avenesg.bean.PointBean;
 import com.edenred.android.apps.avenesg.constant.Constant;
 import com.edenred.android.apps.avenesg.utils.DialogUtils;
@@ -57,13 +58,13 @@ public class PointAdapter extends BaseAdapter{
     public View getView(int position, View convertView, ViewGroup parent) {
         if (flag==1)
         {
-            convertView=View.inflate(mContext, com.edenred.android.apps.avenesg.R.layout.item_point_two,null);
-            TextView tv_data= ViewHolder.get(convertView, com.edenred.android.apps.avenesg.R.id.tv_data);
-            TextView tv_center= ViewHolder.get(convertView, com.edenred.android.apps.avenesg.R.id.tv_center);
-            TextView tv_right= ViewHolder.get(convertView, com.edenred.android.apps.avenesg.R.id.tv_right);
-            TextView tv_right1= ViewHolder.get(convertView, com.edenred.android.apps.avenesg.R.id.tv_right1);
-            TextView tv_right2= ViewHolder.get(convertView, com.edenred.android.apps.avenesg.R.id.tv_right2);
-            LinearLayout ll_plus=ViewHolder.get(convertView, com.edenred.android.apps.avenesg.R.id.ll_plus);
+            convertView=View.inflate(mContext, R.layout.item_point_two,null);
+            TextView tv_data= ViewHolder.get(convertView, R.id.tv_data);
+            TextView tv_center= ViewHolder.get(convertView, R.id.tv_center);
+            TextView tv_right= ViewHolder.get(convertView, R.id.tv_right);
+            TextView tv_right1= ViewHolder.get(convertView, R.id.tv_right1);
+            TextView tv_right2= ViewHolder.get(convertView, R.id.tv_right2);
+            LinearLayout ll_plus=ViewHolder.get(convertView, R.id.ll_plus);
 
             PointBean data=list.get(position);
             tv_data.setText(data.id);
@@ -77,30 +78,30 @@ public class PointAdapter extends BaseAdapter{
                 tv_center.setText(str[2]+"/"+str[1]+"/"+str[0]);
             }
 
-            ll_plus.setTag(com.edenred.android.apps.avenesg.R.id.tv1,tv_data);
-            ll_plus.setTag(com.edenred.android.apps.avenesg.R.id.tv2,tv_center);
-            ll_plus.setTag(com.edenred.android.apps.avenesg.R.id.tv3,tv_right);
-            ll_plus.setTag(com.edenred.android.apps.avenesg.R.id.tv4,tv_right1);
-            ll_plus.setTag(com.edenred.android.apps.avenesg.R.id.tv5,tv_right2);
+            ll_plus.setTag(R.id.tv1,tv_data);
+            ll_plus.setTag(R.id.tv2,tv_center);
+            ll_plus.setTag(R.id.tv3,tv_right);
+            ll_plus.setTag(R.id.tv4,tv_right1);
+            ll_plus.setTag(R.id.tv5,tv_right2);
 
             ll_plus.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    TextView tv1= (TextView) v.getTag(com.edenred.android.apps.avenesg.R.id.tv1);
-                    TextView tv2= (TextView) v.getTag(com.edenred.android.apps.avenesg.R.id.tv2);
-                    TextView tv3= (TextView) v.getTag(com.edenred.android.apps.avenesg.R.id.tv3);
-                    TextView tv4= (TextView) v.getTag(com.edenred.android.apps.avenesg.R.id.tv4);
-                    TextView tv5= (TextView) v.getTag(com.edenred.android.apps.avenesg.R.id.tv5);
+                    TextView tv1= (TextView) v.getTag(R.id.tv1);
+                    TextView tv2= (TextView) v.getTag(R.id.tv2);
+                    TextView tv3= (TextView) v.getTag(R.id.tv3);
+                    TextView tv4= (TextView) v.getTag(R.id.tv4);
+                    TextView tv5= (TextView) v.getTag(R.id.tv5);
                     DialogUtils.PointDlg(mContext,tv1.getText().toString(),tv2.getText().toString(),
                             tv3.getText().toString(),tv4.getText().toString(),tv5.getText().toString());
                 }
             });
         }else
         {
-            convertView=View.inflate(mContext, com.edenred.android.apps.avenesg.R.layout.item_point,null);
-            TextView tv_data=ViewHolder.get(convertView, com.edenred.android.apps.avenesg.R.id.tv_data);
-            TextView tv_center= ViewHolder.get(convertView, com.edenred.android.apps.avenesg.R.id.tv_center);
-            TextView tv_right= ViewHolder.get(convertView, com.edenred.android.apps.avenesg.R.id.tv_right);
+            convertView=View.inflate(mContext, R.layout.item_point,null);
+            TextView tv_data=ViewHolder.get(convertView, R.id.tv_data);
+            TextView tv_center= ViewHolder.get(convertView, R.id.tv_center);
+            TextView tv_right= ViewHolder.get(convertView, R.id.tv_right);
             PointBean data=list.get(position);
             if(flag==0)
             {

@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.edenred.android.apps.avenesg.AveneApplication;
 import com.edenred.android.apps.avenesg.BaseActivity;
+import com.edenred.android.apps.avenesg.R;
 import com.edenred.android.apps.avenesg.constant.Constant;
 import com.edenred.android.apps.avenesg.utils.DisplayUtil;
 import com.edenred.android.apps.avenesg.utils.FontManager;
@@ -24,7 +25,7 @@ public class RegistrationProcessActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.edenred.android.apps.avenesg.R.layout.ac_registration_process);
+        setContentView(R.layout.ac_registration_process);
         FontManager.applyFont(this, getWindow().getDecorView().findViewById(android.R.id.content), Constant.TTFNAME);
 
         AveneApplication.getInstance().addActivity(this);
@@ -34,14 +35,14 @@ public class RegistrationProcessActivity extends BaseActivity {
     private void initView() {
         initTitle("Registration Process");
 
-        TextView btn_start_register = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.btn_start_register);
+        TextView btn_start_register = (TextView) findViewById(R.id.btn_start_register);
         btn_start_register.setOnClickListener(this);
 
-        HorizontalListView hlv_guide = (HorizontalListView) findViewById(com.edenred.android.apps.avenesg.R.id.hlv_guide);
+        HorizontalListView hlv_guide = (HorizontalListView) findViewById(R.id.hlv_guide);
         GuideAdapter adapter = new GuideAdapter(this);
         hlv_guide.setAdapter(adapter);
 
-        LinearLayout ll_imagestep = (LinearLayout) findViewById(com.edenred.android.apps.avenesg.R.id.ll_imagestep);
+        LinearLayout ll_imagestep = (LinearLayout) findViewById(R.id.ll_imagestep);
 
         // 设置向导图片
         screenwidth = DisplayUtil.getWidth(this);
@@ -69,7 +70,7 @@ public class RegistrationProcessActivity extends BaseActivity {
         super.onClick(v);
         switch (v.getId()) {
 
-            case com.edenred.android.apps.avenesg.R.id.btn_start_register:
+            case R.id.btn_start_register:
                 goto1OtherActivity(SubmitEANCodeActivity.class,0);
                 break;
         }

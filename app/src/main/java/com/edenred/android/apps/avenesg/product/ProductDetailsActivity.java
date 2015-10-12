@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.edenred.android.apps.avenesg.AveneApplication;
 import com.edenred.android.apps.avenesg.BaseActivity;
+import com.edenred.android.apps.avenesg.R;
 import com.edenred.android.apps.avenesg.bean.ProductBean;
 import com.edenred.android.apps.avenesg.constant.Constant;
 import com.edenred.android.apps.avenesg.constant.Urls;
@@ -31,7 +32,7 @@ public class ProductDetailsActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.edenred.android.apps.avenesg.R.layout.ac_promotion_and_product_detail);
+        setContentView(R.layout.ac_promotion_and_product_detail);
         FontManager.applyFont(this, getWindow().getDecorView().findViewById(android.R.id.content), Constant.TTFNAME);
         AveneApplication.getInstance().addActivity(this);
         initLogo();
@@ -43,17 +44,17 @@ public class ProductDetailsActivity extends BaseActivity {
     }
 
     private void initView() {
-        tv_detail = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_detail);
-        tv_allpoint= (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_allpoint);
+        tv_detail = (TextView) findViewById(R.id.tv_detail);
+        tv_allpoint= (TextView) findViewById(R.id.tv_allpoint);
 //        iv_pic= (SimpleDraweeView) findViewById(R.id.iv_pic);
-        tv_title= (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_productname);
-        iv_image_view = (ImageView) findViewById(com.edenred.android.apps.avenesg.R.id.iv_image_view);
+        tv_title= (TextView) findViewById(R.id.tv_productname);
+        iv_image_view = (ImageView) findViewById(R.id.iv_image_view);
     }
 
     private void initData() {
         if(sp.getValue(Constant.ACCOUNTBALANCE)!=null)
         {
-            tv_allpoint.setText(getResources().getString(com.edenred.android.apps.avenesg.R.string.allpoint)+
+            tv_allpoint.setText(getResources().getString(R.string.allpoint)+
                     NumbersFormat.thousand(sp.getValue(Constant.ACCOUNTBALANCE)));
         }
         //改变字体大小

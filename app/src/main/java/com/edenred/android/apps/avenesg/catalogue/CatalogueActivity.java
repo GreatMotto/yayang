@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.edenred.android.apps.avenesg.AveneApplication;
 import com.edenred.android.apps.avenesg.BaseActivity;
+import com.edenred.android.apps.avenesg.R;
 import com.edenred.android.apps.avenesg.bean.RedeemGiftBean;
 import com.edenred.android.apps.avenesg.bean.ShoppingCarBean;
 import com.edenred.android.apps.avenesg.constant.Constant;
@@ -55,7 +56,7 @@ public class CatalogueActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.edenred.android.apps.avenesg.R.layout.ac_catalogue);
+        setContentView(R.layout.ac_catalogue);
         FontManager.applyFont(this, getWindow().getDecorView().findViewById(android.R.id.content), Constant.TTFNAME);
         AveneApplication.getInstance().addActivity(this);
         tag = getIntent().getIntExtra(Constant.TAG, 0);
@@ -94,13 +95,13 @@ public class CatalogueActivity extends BaseActivity {
     }
 
     private void initView() {
-        rl_right = (RelativeLayout) findViewById(com.edenred.android.apps.avenesg.R.id.rl_right);//标题栏右边购物车
-        tv_sum = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_sum);
-        tv_allpoint = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_allpoint);
-        rl_filter_calalogue = (RelativeLayout) findViewById(com.edenred.android.apps.avenesg.R.id.rl_filter_calalogue);
-        rl_filter_point = (RelativeLayout) findViewById(com.edenred.android.apps.avenesg.R.id.rl_filter_point);
+        rl_right = (RelativeLayout) findViewById(R.id.rl_right);//标题栏右边购物车
+        tv_sum = (TextView) findViewById(R.id.tv_sum);
+        tv_allpoint = (TextView) findViewById(R.id.tv_allpoint);
+        rl_filter_calalogue = (RelativeLayout) findViewById(R.id.rl_filter_calalogue);
+        rl_filter_point = (RelativeLayout) findViewById(R.id.rl_filter_point);
 
-        recyclerView = (RecyclerView) findViewById(com.edenred.android.apps.avenesg.R.id.recyclerView);
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
 
         rl_right.setVisibility(View.VISIBLE);
         tv_sum.setVisibility(View.VISIBLE);
@@ -134,14 +135,14 @@ public class CatalogueActivity extends BaseActivity {
     public void onClick(View v) {
         super.onClick(v);
         switch (v.getId()) {
-            case com.edenred.android.apps.avenesg.R.id.rl_filter_calalogue:
+            case R.id.rl_filter_calalogue:
 //                goto1OtherActivity(FilterActivity.class, 1);
                 gotoFiterActivity(1, tag);
                 break;
-            case com.edenred.android.apps.avenesg.R.id.rl_filter_point:
+            case R.id.rl_filter_point:
                 gotoFiterActivity(2, tag);
                 break;
-            case com.edenred.android.apps.avenesg.R.id.rl_right:
+            case R.id.rl_right:
                 goto1AnotherActivity(MyRewardActivity.class, tag);
                 break;
             default:

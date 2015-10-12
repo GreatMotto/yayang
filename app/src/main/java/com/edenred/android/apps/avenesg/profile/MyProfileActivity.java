@@ -108,38 +108,38 @@ public class MyProfileActivity extends BaseActivity implements View.OnFocusChang
 
     private void initView() {
         tv_bonus_text = (TextView) findViewById(R.id.tv_bonus_text);
-        tvProgressLeft = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_progress_left);
-        progress = (ProgressBar) findViewById(com.edenred.android.apps.avenesg.R.id.progress);
-        tvProgressRight = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_progress_right);
-        etFirstName = (EditText) findViewById(com.edenred.android.apps.avenesg.R.id.et_first_name);
-        etLastName = (EditText) findViewById(com.edenred.android.apps.avenesg.R.id.et_last_name);
-        tvSex = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_sex);
-        etEmail = (EditText) findViewById(com.edenred.android.apps.avenesg.R.id.et_email);
-        etEmailRight = (EditText) findViewById(com.edenred.android.apps.avenesg.R.id.et_email_right);
-        tvAreaCode = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_area_code);
-        tvMobile = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_mobile);
-        tvBirthday = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_birthday);
-        ivCalendar = (ImageView) findViewById(com.edenred.android.apps.avenesg.R.id.iv_calendar);
-        etAddress = (EditText) findViewById(com.edenred.android.apps.avenesg.R.id.et_address);
-        etPostalCode = (EditText) findViewById(com.edenred.android.apps.avenesg.R.id.et_postal_code);
-        tvCity = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_city);
-        tv_occupation = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_occupation);
-        tvMtatus = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_mtatus);
-        tvRange = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_range);
-        tvNationality = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_nationality);
-        tvTyle = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_tyle);
-        tvConcerns = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_concerns);
-        tvSensitivity = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_sensitivity);
-        tvSeclect = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_seclect);
-        tvRetailer = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_retailer);
-        tvArea = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_area);
-        tvLocation = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_location);
-        tvUpdate = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_update);
-        iv_orange_left = (ImageView) findViewById(com.edenred.android.apps.avenesg.R.id.iv_orange_left);
-        iv_orange_right = (ImageView) findViewById(com.edenred.android.apps.avenesg.R.id.iv_orange_right);
-        ll_retailer = (RelativeLayout) findViewById(com.edenred.android.apps.avenesg.R.id.ll_retailer);
-        ll_area = (RelativeLayout) findViewById(com.edenred.android.apps.avenesg.R.id.ll_area);
-        ll_location = (RelativeLayout) findViewById(com.edenred.android.apps.avenesg.R.id.ll_location);
+        tvProgressLeft = (TextView) findViewById(R.id.tv_progress_left);
+        progress = (ProgressBar) findViewById(R.id.progress);
+        tvProgressRight = (TextView) findViewById(R.id.tv_progress_right);
+        etFirstName = (EditText) findViewById(R.id.et_first_name);
+        etLastName = (EditText) findViewById(R.id.et_last_name);
+        tvSex = (TextView) findViewById(R.id.tv_sex);
+        etEmail = (EditText) findViewById(R.id.et_email);
+        etEmailRight = (EditText) findViewById(R.id.et_email_right);
+        tvAreaCode = (TextView) findViewById(R.id.tv_area_code);
+        tvMobile = (TextView) findViewById(R.id.tv_mobile);
+        tvBirthday = (TextView) findViewById(R.id.tv_birthday);
+        ivCalendar = (ImageView) findViewById(R.id.iv_calendar);
+        etAddress = (EditText) findViewById(R.id.et_address);
+        etPostalCode = (EditText) findViewById(R.id.et_postal_code);
+        tvCity = (TextView) findViewById(R.id.tv_city);
+        tv_occupation = (TextView) findViewById(R.id.tv_occupation);
+        tvMtatus = (TextView) findViewById(R.id.tv_mtatus);
+        tvRange = (TextView) findViewById(R.id.tv_range);
+        tvNationality = (TextView) findViewById(R.id.tv_nationality);
+        tvTyle = (TextView) findViewById(R.id.tv_tyle);
+        tvConcerns = (TextView) findViewById(R.id.tv_concerns);
+        tvSensitivity = (TextView) findViewById(R.id.tv_sensitivity);
+        tvSeclect = (TextView) findViewById(R.id.tv_seclect);
+        tvRetailer = (TextView) findViewById(R.id.tv_retailer);
+        tvArea = (TextView) findViewById(R.id.tv_area);
+        tvLocation = (TextView) findViewById(R.id.tv_location);
+        tvUpdate = (TextView) findViewById(R.id.tv_update);
+        iv_orange_left = (ImageView) findViewById(R.id.iv_orange_left);
+        iv_orange_right = (ImageView) findViewById(R.id.iv_orange_right);
+        ll_retailer = (RelativeLayout) findViewById(R.id.ll_retailer);
+        ll_area = (RelativeLayout) findViewById(R.id.ll_area);
+        ll_location = (RelativeLayout) findViewById(R.id.ll_location);
 
         ivCalendar.setOnClickListener(this);
 //        etPostalCode.setOnClickListener(this);
@@ -197,10 +197,10 @@ public class MyProfileActivity extends BaseActivity implements View.OnFocusChang
     public void onClick(View v) {
         super.onClick(v);
         switch (v.getId()) {
-            case com.edenred.android.apps.avenesg.R.id.iv_calendar:
+            case R.id.iv_calendar:
                 BirthDayDlg(this, tvBirthday, tvBirthday.getText().toString());
                 break;
-            case com.edenred.android.apps.avenesg.R.id.tv_update:
+            case R.id.tv_update:
                 if (isOK()) {
                     per = (int) Math.round(sum / 20 * 100);
                     memberInfoRatio = String.valueOf((double) per / 100.00);
@@ -211,7 +211,7 @@ public class MyProfileActivity extends BaseActivity implements View.OnFocusChang
                 }
 
                 break;
-            case com.edenred.android.apps.avenesg.R.id.tv_sex:
+            case R.id.tv_sex:
                 if (sexlist.size() <= 0) {
                     for (int i = 0; i < Constant.Gender.length; i++) {
                         StringBean db = new StringBean();
@@ -221,7 +221,7 @@ public class MyProfileActivity extends BaseActivity implements View.OnFocusChang
                 }
                 showPopWindow(0, 0, tvSex, sexlist, 2);
                 break;
-//            case com.edenred.android.apps.avenesg.R.id.et_postal_code:
+//            case R.id.et_postal_code:
 //                if (postalcodelist.size() <= 0) {
 //                    MyAsy myAsy = new MyAsy();
 //                    myAsy.setFlag("7");
@@ -230,7 +230,7 @@ public class MyProfileActivity extends BaseActivity implements View.OnFocusChang
 //                    showPopWindow(0, 0, etPostalCode, postalcodelist, 7);
 //                }
 //                break;
-            case com.edenred.android.apps.avenesg.R.id.tv_city:
+            case R.id.tv_city:
                 if (citylist.size() <= 0) {
                     MyAsy1 myAsy1 = new MyAsy1();
                     myAsy1.setFlag("3");
@@ -239,7 +239,7 @@ public class MyProfileActivity extends BaseActivity implements View.OnFocusChang
                     showPopWindow(0, 0, tvCity, citylist, 8);
                 }
                 break;
-            case com.edenred.android.apps.avenesg.R.id.tv_occupation:
+            case R.id.tv_occupation:
                 if (occupationlist.size() <= 0) {
                     MyAsy myAsy = new MyAsy();
                     myAsy.setFlag("9");
@@ -248,7 +248,7 @@ public class MyProfileActivity extends BaseActivity implements View.OnFocusChang
                     showPopWindow(0, 0, tv_occupation, occupationlist, 9);
                 }
                 break;
-            case com.edenred.android.apps.avenesg.R.id.tv_mtatus://Marital status
+            case R.id.tv_mtatus://Marital status
                 if (statuslist.size() <= 0) {
                     MyAsy myAsy = new MyAsy();
                     myAsy.setFlag("10");
@@ -257,7 +257,7 @@ public class MyProfileActivity extends BaseActivity implements View.OnFocusChang
                     showPopWindow(0, 0, tvMtatus, statuslist, 10);
                 }
                 break;
-            case com.edenred.android.apps.avenesg.R.id.tv_range://Income Range
+            case R.id.tv_range://Income Range
                 if (rangelist.size() <= 0) {
                     MyAsy myAsy = new MyAsy();
                     myAsy.setFlag("11");
@@ -266,7 +266,7 @@ public class MyProfileActivity extends BaseActivity implements View.OnFocusChang
                     showPopWindow(0, 0, tvRange, rangelist, 11);
                 }
                 break;
-            case com.edenred.android.apps.avenesg.R.id.tv_nationality:
+            case R.id.tv_nationality:
                 if (countrylist.size() <= 0) {
                     MyAsy1 myAsy1 = new MyAsy1();
                     myAsy1.setFlag("4");
@@ -275,7 +275,7 @@ public class MyProfileActivity extends BaseActivity implements View.OnFocusChang
                     showPopWindow(0, 0, tvNationality, countrylist, 12);
                 }
                 break;
-            case com.edenred.android.apps.avenesg.R.id.tv_tyle://Skin Type
+            case R.id.tv_tyle://Skin Type
                 if (typeslist.size() <= 0) {
                     MyAsy myAsy = new MyAsy();
                     myAsy.setFlag("13");
@@ -284,7 +284,7 @@ public class MyProfileActivity extends BaseActivity implements View.OnFocusChang
                     showPopWindow(0, 0, tvTyle, typeslist, 13);
                 }
                 break;
-            case com.edenred.android.apps.avenesg.R.id.tv_concerns:
+            case R.id.tv_concerns:
                 if (concernslist.size() <= 0) {
                     MyAsy myAsy = new MyAsy();
                     myAsy.setFlag("14");
@@ -293,7 +293,7 @@ public class MyProfileActivity extends BaseActivity implements View.OnFocusChang
                     showPopWindow(0, 0, tvConcerns, concernslist, 14);
                 }
                 break;
-            case com.edenred.android.apps.avenesg.R.id.tv_sensitivity:
+            case R.id.tv_sensitivity:
                 if (sensitivitylist.size() <= 0) {
                     MyAsy myAsy = new MyAsy();
                     myAsy.setFlag("15");
@@ -302,7 +302,7 @@ public class MyProfileActivity extends BaseActivity implements View.OnFocusChang
                     showPopWindow(0, 0, tvSensitivity, sensitivitylist, 15);
                 }
                 break;
-            case com.edenred.android.apps.avenesg.R.id.tv_seclect:
+            case R.id.tv_seclect:
                 if (selectlist.size() <= 0) {
                     MyAsy myAsy = new MyAsy();
                     myAsy.setFlag("16");
@@ -311,7 +311,7 @@ public class MyProfileActivity extends BaseActivity implements View.OnFocusChang
                     showPopWindow(0, 0, tvSeclect, selectlist, 16);
                 }
                 break;
-            case com.edenred.android.apps.avenesg.R.id.ll_retailer://Retailer Type
+            case R.id.ll_retailer://Retailer Type
                 chainText = tvRetailer.getText().toString();
                 if (chainlist.size() <= 0) {
                     MyAsy1 myAsy1 = new MyAsy1();
@@ -321,13 +321,13 @@ public class MyProfileActivity extends BaseActivity implements View.OnFocusChang
                     showPopWindow(0, 0, tvRetailer, chainlist, 17);
                 }
                 break;
-            case com.edenred.android.apps.avenesg.R.id.ll_area:
+            case R.id.ll_area:
                 areaText = tvArea.getText().toString();
                 MyAsy1 myAsy1 = new MyAsy1();
                 myAsy1.setFlag("1");
                 myAsy1.execute();
                 break;
-            case com.edenred.android.apps.avenesg.R.id.ll_location:
+            case R.id.ll_location:
                 MyAsy1 myAsy2 = new MyAsy1();
                 myAsy2.setFlag("2");
                 myAsy2.execute();
@@ -492,7 +492,7 @@ public class MyProfileActivity extends BaseActivity implements View.OnFocusChang
     public void showPopWindow(int x, int y, final TextView tv, final List<StringBean> list, final int current) {
         CloseKeyboard();
         clearFoucs();
-        View popv1 = LayoutInflater.from(this).inflate(com.edenred.android.apps.avenesg.R.layout.pop, null);
+        View popv1 = LayoutInflater.from(this).inflate(R.layout.pop, null);
         FontManager.applyFont(this, popv1, Constant.TTFNAME);
 
         if (popSort == null) {
@@ -512,7 +512,7 @@ public class MyProfileActivity extends BaseActivity implements View.OnFocusChang
                 popSort = null;
             }
         });
-        ListView listview = (ListView) popv1.findViewById(com.edenred.android.apps.avenesg.R.id.lv_choice);
+        ListView listview = (ListView) popv1.findViewById(R.id.lv_choice);
         sortAdapter = new PopAdapter(this, list);
         listview.setAdapter(sortAdapter);
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -590,17 +590,17 @@ public class MyProfileActivity extends BaseActivity implements View.OnFocusChang
     }
 
     private void BirthDayDlg(Context mContext, TextView tv, String candler) {
-        final Dialog alertDialog = new Dialog(mContext, com.edenred.android.apps.avenesg.R.style.MyDialogStyle);
+        final Dialog alertDialog = new Dialog(mContext, R.style.MyDialogStyle);
         Window window = alertDialog.getWindow();
         window.setGravity(Gravity.CENTER);
         alertDialog.show();
         alertDialog.setCanceledOnTouchOutside(true);
-        alertDialog.getWindow().setContentView(com.edenred.android.apps.avenesg.R.layout.dlg_date);
+        alertDialog.getWindow().setContentView(R.layout.dlg_date);
         FontManager.applyFont(mContext, alertDialog.getWindow().getDecorView().findViewById(android.R.id.content), Constant.TTFNAME);
 
-        DatePicker date = (DatePicker) window.findViewById(com.edenred.android.apps.avenesg.R.id.date_picker);
-        ImageView iv_cancle = (ImageView) window.findViewById(com.edenred.android.apps.avenesg.R.id.iv_cancle);
-        ImageView iv_commit = (ImageView) window.findViewById(com.edenred.android.apps.avenesg.R.id.iv_commit);
+        DatePicker date = (DatePicker) window.findViewById(R.id.date_picker);
+        ImageView iv_cancle = (ImageView) window.findViewById(R.id.iv_cancle);
+        ImageView iv_commit = (ImageView) window.findViewById(R.id.iv_commit);
 
         setDatePickerDividerColor(date);
         //初始化事件控件数据
@@ -619,13 +619,13 @@ public class MyProfileActivity extends BaseActivity implements View.OnFocusChang
             }
         });
         //确定
-        iv_commit.setTag(com.edenred.android.apps.avenesg.R.id.pop1, date);
-        iv_commit.setTag(com.edenred.android.apps.avenesg.R.id.pop2, tv);
+        iv_commit.setTag(R.id.pop1, date);
+        iv_commit.setTag(R.id.pop2, tv);
         iv_commit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DatePicker picker = (DatePicker) v.getTag(com.edenred.android.apps.avenesg.R.id.pop1);
-                TextView textView = (TextView) v.getTag(com.edenred.android.apps.avenesg.R.id.pop2);
+                DatePicker picker = (DatePicker) v.getTag(R.id.pop1);
+                TextView textView = (TextView) v.getTag(R.id.pop2);
                 int year = picker.getYear();
                 int month = picker.getMonth() + 1;
                 int day = picker.getDayOfMonth();
@@ -652,7 +652,7 @@ public class MyProfileActivity extends BaseActivity implements View.OnFocusChang
     @Override
     public void onFocusChange(View v, boolean hasFocus) {
         switch (v.getId()) {
-            case com.edenred.android.apps.avenesg.R.id.et_first_name:
+            case R.id.et_first_name:
                 if (!hasFocus) {
                     if (TextUtils.isEmpty(etFirstName.getText().toString()) && is_select[0]) {
                         is_select[0] = false;
@@ -665,7 +665,7 @@ public class MyProfileActivity extends BaseActivity implements View.OnFocusChang
                     }
                 }
                 break;
-            case com.edenred.android.apps.avenesg.R.id.et_last_name:
+            case R.id.et_last_name:
                 if (!hasFocus) {
                     if (TextUtils.isEmpty(etLastName.getText().toString()) && is_select[1]) {
                         is_select[1] = false;
@@ -1034,7 +1034,7 @@ public class MyProfileActivity extends BaseActivity implements View.OnFocusChang
                 etEmail.setText(str[0]);
                 etEmailRight.setText(str[1]);
             } else {
-                etEmail.setText(getResources().getString(com.edenred.android.apps.avenesg.R.string.app_name));
+                etEmail.setText(getResources().getString(R.string.app_name));
                 etEmailRight.setText("yahoo.com");
             }
 

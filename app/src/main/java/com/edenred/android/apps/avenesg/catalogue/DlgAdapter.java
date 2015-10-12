@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.edenred.android.apps.avenesg.R;
 import com.edenred.android.apps.avenesg.bean.StringBean;
 import com.edenred.android.apps.avenesg.constant.Constant;
 import com.edenred.android.apps.avenesg.utils.FontManager;
@@ -50,21 +51,21 @@ public class DlgAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = View.inflate(mContext, com.edenred.android.apps.avenesg.R.layout.item_menu, null);
+            convertView = View.inflate(mContext, R.layout.item_menu, null);
         }
 
-        TextView tv_item = ViewHolder.get(convertView, com.edenred.android.apps.avenesg.R.id.tv_item);
+        TextView tv_item = ViewHolder.get(convertView, R.id.tv_item);
         if (flag == 1){
             tv_item.setText(NumbersFormat.thousand(list.get(position).text));
         }else {
             tv_item.setText(list.get(position).text);
         }
-        tv_item.setTextColor(mContext.getResources().getColor(com.edenred.android.apps.avenesg.R.color.black_dark));
+        tv_item.setTextColor(mContext.getResources().getColor(R.color.black_dark));
 
         if (position == current) {
-            convertView.setBackgroundColor(mContext.getResources().getColor(com.edenred.android.apps.avenesg.R.color.grey_light));
+            convertView.setBackgroundColor(mContext.getResources().getColor(R.color.grey_light));
         } else {
-            convertView.setBackgroundColor(mContext.getResources().getColor(com.edenred.android.apps.avenesg.R.color.white));
+            convertView.setBackgroundColor(mContext.getResources().getColor(R.color.white));
         }
 
         FontManager.applyFont(mContext, convertView, Constant.TTFNAME);

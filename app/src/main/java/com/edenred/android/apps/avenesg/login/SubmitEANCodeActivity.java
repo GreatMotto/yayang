@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.edenred.android.apps.avenesg.AveneApplication;
 import com.edenred.android.apps.avenesg.BaseActivity;
+import com.edenred.android.apps.avenesg.R;
 import com.edenred.android.apps.avenesg.constant.Constant;
 import com.edenred.android.apps.avenesg.home.SweepActivity;
 import com.edenred.android.apps.avenesg.utils.FontManager;
@@ -30,7 +31,7 @@ public class SubmitEANCodeActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.edenred.android.apps.avenesg.R.layout.ac_submit_product_barcode);
+        setContentView(R.layout.ac_submit_product_barcode);
         FontManager.applyFont(this, getWindow().getDecorView().findViewById(android.R.id.content), Constant.TTFNAME);
         AveneApplication.getInstance().addActivity(this);
         flag = getIntent().getIntExtra(Constant.FLAG, 0);//0,注册跳转  1,菜单跳转  2,首页跳转
@@ -40,10 +41,10 @@ public class SubmitEANCodeActivity extends BaseActivity {
     }
 
     private void initView() {
-        iv_scan = (ImageView) findViewById(com.edenred.android.apps.avenesg.R.id.iv_scan);
-        btn_to_manual = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.btn_to_manual);
-        ll_header = (LinearLayout) findViewById(com.edenred.android.apps.avenesg.R.id.ll_header);
-        view_header = findViewById(com.edenred.android.apps.avenesg.R.id.view_header);
+        iv_scan = (ImageView) findViewById(R.id.iv_scan);
+        btn_to_manual = (TextView) findViewById(R.id.btn_to_manual);
+        ll_header = (LinearLayout) findViewById(R.id.ll_header);
+        view_header = findViewById(R.id.view_header);
 
         iv_scan.setOnClickListener(this);
         btn_to_manual.setOnClickListener(this);
@@ -55,7 +56,7 @@ public class SubmitEANCodeActivity extends BaseActivity {
             initTitle("Registration Process");
             ll_header.setVisibility(View.VISIBLE);
             view_header.setVisibility(View.VISIBLE);
-            hlv_guide = (HorizontalListView) findViewById(com.edenred.android.apps.avenesg.R.id.hlv_guide);
+            hlv_guide = (HorizontalListView) findViewById(R.id.hlv_guide);
             adapter = new BarcodeAdapter(this);
             hlv_guide.setAdapter(adapter);
         } else {
@@ -75,11 +76,11 @@ public class SubmitEANCodeActivity extends BaseActivity {
         super.onClick(v);
         switch (v.getId()) {
 
-            case com.edenred.android.apps.avenesg.R.id.iv_scan:
+            case R.id.iv_scan:
                 goto2OtherActivity(SweepActivity.class, flag, tag);
                 break;
 
-            case com.edenred.android.apps.avenesg.R.id.btn_to_manual:
+            case R.id.btn_to_manual:
                 goto2OtherActivity(ManualInputBarcodeActivity.class, flag, tag);
                 break;
         }

@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 
 import com.edenred.android.apps.avenesg.AveneApplication;
 import com.edenred.android.apps.avenesg.BaseActivity;
+import com.edenred.android.apps.avenesg.R;
 import com.edenred.android.apps.avenesg.constant.Constant;
 import com.edenred.android.apps.avenesg.constant.Urls;
 import com.edenred.android.apps.avenesg.login.BarcodeAdapter;
@@ -67,7 +68,7 @@ public class SweepActivity extends BaseActivity implements SurfaceHolder.Callbac
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.edenred.android.apps.avenesg.R.layout.ac_sweep);
+        setContentView(R.layout.ac_sweep);
         FontManager.applyFont(this, getWindow().getDecorView().findViewById(android.R.id.content), Constant.TTFNAME);
         flag = getIntent().getIntExtra(Constant.FLAG, 0);
         tag = getIntent().getIntExtra(Constant.TAG, 0);
@@ -80,18 +81,18 @@ public class SweepActivity extends BaseActivity implements SurfaceHolder.Callbac
 		 * } });
 		 */
         initView();
-        viewfinderView = (ViewfinderView) findViewById(com.edenred.android.apps.avenesg.R.id.viewfinder_view);
+        viewfinderView = (ViewfinderView) findViewById(R.id.viewfinder_view);
         hasSurface = false;
         inactivityTimer = new InactivityTimer(this);// activity静止一段时间会自动关闭
 
     }
 
     private void initView() {
-        ll_header = (LinearLayout) findViewById(com.edenred.android.apps.avenesg.R.id.ll_header);
+        ll_header = (LinearLayout) findViewById(R.id.ll_header);
         if (flag == 0) {
             initTitle("Registration Process");
             ll_header.setVisibility(View.VISIBLE);
-            HorizontalListView hlv_guide = (HorizontalListView) findViewById(com.edenred.android.apps.avenesg.R.id.hlv_guide);
+            HorizontalListView hlv_guide = (HorizontalListView) findViewById(R.id.hlv_guide);
             BarcodeAdapter adapter = new BarcodeAdapter(this);
             hlv_guide.setAdapter(adapter);
         } else {
@@ -108,7 +109,7 @@ public class SweepActivity extends BaseActivity implements SurfaceHolder.Callbac
     @Override
     protected void onResume() {
         super.onResume();
-        SurfaceView surfaceView = (SurfaceView) findViewById(com.edenred.android.apps.avenesg.R.id.preview_view);
+        SurfaceView surfaceView = (SurfaceView) findViewById(R.id.preview_view);
         SurfaceHolder surfaceHolder = surfaceView.getHolder();
         if (hasSurface) {
             initCamera(surfaceHolder);

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
+import com.edenred.android.apps.avenesg.R;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
 /**
@@ -21,11 +22,11 @@ public class HomeActivity extends BaseViewActivity{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.edenred.android.apps.avenesg.R.layout.ac_main);
+        setContentView(R.layout.ac_main);
         instanceHomeAc = this;
         // check if the content frame contains the menu frame
-        if (findViewById(com.edenred.android.apps.avenesg.R.id.menu_frame) == null) {
-            setBehindContentView(com.edenred.android.apps.avenesg.R.layout.menu_frame);
+        if (findViewById(R.id.menu_frame) == null) {
+            setBehindContentView(R.layout.menu_frame);
             getSlidingMenu().setSlidingEnabled(true);
             getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
         }
@@ -46,22 +47,22 @@ public class HomeActivity extends BaseViewActivity{
             // mContent = new ContentFragment();
             mContent = new HomeFragment();
         }
-        getSupportFragmentManager().beginTransaction().replace(com.edenred.android.apps.avenesg.R.id.content_frame, mContent)
+        getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, mContent)
                 .commit();
 
         // set the Behind View Fragment
         getSupportFragmentManager().beginTransaction()
-                .replace(com.edenred.android.apps.avenesg.R.id.menu_frame, new HomeMenuFragment()).commit();
+                .replace(R.id.menu_frame, new HomeMenuFragment()).commit();
 
         // customize the SlidingMenu
         sm = getSlidingMenu();
-        sm.setBehindOffsetRes(com.edenred.android.apps.avenesg.R.dimen.dim289);//设置侧滑后主页的大小
+        sm.setBehindOffsetRes(R.dimen.dim289);//设置侧滑后主页的大小
         sm.setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);//设置边界滑动
         sm.setFadeEnabled(false);
         sm.setBehindScrollScale(0.25f);
         sm.setFadeDegree(0.25f);
 
-        sm.setBackgroundImage(com.edenred.android.apps.avenesg.R.color.grey_dark);//设置背景图片或颜色
+        sm.setBackgroundImage(R.color.grey_dark);//设置背景图片或颜色
         sm.setBehindCanvasTransformer(new SlidingMenu.CanvasTransformer()
         {
 

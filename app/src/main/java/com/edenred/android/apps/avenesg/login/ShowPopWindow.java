@@ -10,6 +10,7 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.edenred.android.apps.avenesg.R;
 import com.edenred.android.apps.avenesg.bean.StringBean;
 import com.edenred.android.apps.avenesg.constant.Constant;
 import com.edenred.android.apps.avenesg.utils.FontManager;
@@ -33,7 +34,7 @@ public class ShowPopWindow {
      */
     public static void showPopWindow(Context mContext, final View v, int x, int y, final TextView tv,
                                        final List<StringBean> list, final PopListener listener) {
-        View popv1 = LayoutInflater.from(mContext).inflate(com.edenred.android.apps.avenesg.R.layout.pop, null);
+        View popv1 = LayoutInflater.from(mContext).inflate(R.layout.pop, null);
         FontManager.applyFont(mContext, popv1, Constant.TTFNAME);
         if (popSort == null) {
             popSort = new PopupWindow(popv1, tv.getWidth(),
@@ -52,7 +53,7 @@ public class ShowPopWindow {
                 popSort = null;
             }
         });
-        ListView listview = (ListView) popv1.findViewById(com.edenred.android.apps.avenesg.R.id.lv_choice);
+        ListView listview = (ListView) popv1.findViewById(R.id.lv_choice);
         sortAdapter = new PopAdapter(mContext, list);
         listview.setAdapter(sortAdapter);
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {

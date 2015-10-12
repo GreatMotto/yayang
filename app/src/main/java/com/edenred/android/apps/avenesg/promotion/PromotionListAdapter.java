@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.edenred.android.apps.avenesg.AveneApplication;
+import com.edenred.android.apps.avenesg.R;
 import com.edenred.android.apps.avenesg.bean.NotifyMessageBean;
 import com.edenred.android.apps.avenesg.constant.Constant;
 import com.edenred.android.apps.avenesg.constant.Urls;
@@ -56,13 +57,13 @@ public class PromotionListAdapter extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = View.inflate(mContext, com.edenred.android.apps.avenesg.R.layout.item_detail, null);
+            convertView = View.inflate(mContext, R.layout.item_detail, null);
         }
         FontManager.applyFont(mContext, convertView, Constant.TTFNAME);
-        TextView tv_name = ViewHolder.get(convertView, com.edenred.android.apps.avenesg.R.id.tv_name);
-        TextView tv_prase = ViewHolder.get(convertView, com.edenred.android.apps.avenesg.R.id.tv_prase);
+        TextView tv_name = ViewHolder.get(convertView, R.id.tv_name);
+        TextView tv_prase = ViewHolder.get(convertView, R.id.tv_prase);
 //        SimpleDraweeView my_image_view = ViewHolder.get(convertView, R.id.my_image_view);
-        ImageView iv_image_view = ViewHolder.get(convertView, com.edenred.android.apps.avenesg.R.id.iv_image_view);
+        ImageView iv_image_view = ViewHolder.get(convertView, R.id.iv_image_view);
 
         if (TextUtils.isEmpty(AveneApplication.getInstance().dialogBean.title)) {
             title = Integer.parseInt(AveneApplication.getInstance().dialogBean.title);

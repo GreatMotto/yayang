@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.edenred.android.apps.avenesg.AveneApplication;
 import com.edenred.android.apps.avenesg.BaseActivity;
+import com.edenred.android.apps.avenesg.R;
 import com.edenred.android.apps.avenesg.constant.Constant;
 import com.edenred.android.apps.avenesg.constant.Urls;
 import com.edenred.android.apps.avenesg.home.HomeActivity;
@@ -41,7 +42,7 @@ public class ChangePwActivity extends BaseActivity{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.edenred.android.apps.avenesg.R.layout.ac_changepw);
+        setContentView(R.layout.ac_changepw);
         FontManager.applyFont(this, getWindow().getDecorView().findViewById(android.R.id.content), Constant.TTFNAME);
         AveneApplication.getInstance().addActivity(this);
         initLogo();
@@ -51,13 +52,13 @@ public class ChangePwActivity extends BaseActivity{
     }
 
     private void initView() {
-        et_current_password = (EditText) findViewById(com.edenred.android.apps.avenesg.R.id.et_current_password);
+        et_current_password = (EditText) findViewById(R.id.et_current_password);
 
-        et_new_password = (EditText) findViewById(com.edenred.android.apps.avenesg.R.id.et_new_password);
+        et_new_password = (EditText) findViewById(R.id.et_new_password);
 
-        et_confirm_new_password = (EditText) findViewById(com.edenred.android.apps.avenesg.R.id.et_confirm_new_password);
+        et_confirm_new_password = (EditText) findViewById(R.id.et_confirm_new_password);
 
-        btn_submit = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.btn_submit);
+        btn_submit = (TextView) findViewById(R.id.btn_submit);
         btn_submit.setOnClickListener(this);
     }
 
@@ -100,7 +101,7 @@ public class ChangePwActivity extends BaseActivity{
         super.onClick(v);
         switch (v.getId())
         {
-            case com.edenred.android.apps.avenesg.R.id.btn_submit:
+            case R.id.btn_submit:
                 if (canSubmit()) {
                     password=et_new_password.getText().toString().trim();
                     showPD("Requesting...");

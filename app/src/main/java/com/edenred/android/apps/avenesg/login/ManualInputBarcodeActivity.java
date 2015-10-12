@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.edenred.android.apps.avenesg.AveneApplication;
 import com.edenred.android.apps.avenesg.BaseActivity;
+import com.edenred.android.apps.avenesg.R;
 import com.edenred.android.apps.avenesg.constant.Constant;
 import com.edenred.android.apps.avenesg.constant.Urls;
 import com.edenred.android.apps.avenesg.utils.DialogUtils;
@@ -43,7 +44,7 @@ public class ManualInputBarcodeActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.edenred.android.apps.avenesg.R.layout.ac_manual_input);
+        setContentView(R.layout.ac_manual_input);
         FontManager.applyFont(this, getWindow().getDecorView().findViewById(android.R.id.content), Constant.TTFNAME);
         AveneApplication.getInstance().addActivity(this);
         flag = getIntent().getIntExtra(Constant.FLAG, 0);//0,注册跳转  1/2,首页跳转
@@ -53,10 +54,10 @@ public class ManualInputBarcodeActivity extends BaseActivity {
     }
 
     private void initView() {
-        et_barcode = (EditText) findViewById(com.edenred.android.apps.avenesg.R.id.et_barcode);
-        btn_submit = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.btn_submit);
-        ll_header = (LinearLayout) findViewById(com.edenred.android.apps.avenesg.R.id.ll_header);
-        view_header = findViewById(com.edenred.android.apps.avenesg.R.id.view_header);
+        et_barcode = (EditText) findViewById(R.id.et_barcode);
+        btn_submit = (TextView) findViewById(R.id.btn_submit);
+        ll_header = (LinearLayout) findViewById(R.id.ll_header);
+        view_header = findViewById(R.id.view_header);
 
         btn_submit.setOnClickListener(this);
 
@@ -68,7 +69,7 @@ public class ManualInputBarcodeActivity extends BaseActivity {
             initTitle("Registration Process");
             ll_header.setVisibility(View.VISIBLE);
             view_header.setVisibility(View.VISIBLE);
-            hlv_guide = (HorizontalListView) findViewById(com.edenred.android.apps.avenesg.R.id.hlv_guide);
+            hlv_guide = (HorizontalListView) findViewById(R.id.hlv_guide);
             adapter = new BarcodeAdapter(this);
             hlv_guide.setAdapter(adapter);
         } else {
@@ -96,7 +97,7 @@ public class ManualInputBarcodeActivity extends BaseActivity {
         super.onClick(v);
         switch (v.getId()) {
 
-            case com.edenred.android.apps.avenesg.R.id.btn_submit:
+            case R.id.btn_submit:
                 str = et_barcode.getText().toString().trim();
                 if (canSubmit()) {
                     showPD("Upload...");

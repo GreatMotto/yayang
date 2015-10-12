@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.edenred.android.apps.avenesg.AveneApplication;
+import com.edenred.android.apps.avenesg.R;
 import com.edenred.android.apps.avenesg.bean.ShoppingCarBean;
 import com.edenred.android.apps.avenesg.constant.Constant;
 import com.edenred.android.apps.avenesg.constant.Urls;
@@ -60,19 +61,19 @@ public class MyRewardAdapter extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = View.inflate(mContext, com.edenred.android.apps.avenesg.R.layout.item_myreward, null);
+            convertView = View.inflate(mContext, R.layout.item_myreward, null);
         }
 
-        TextView tv_title = ViewHolder.get(convertView, com.edenred.android.apps.avenesg.R.id.tv_productname);
-        ImageView iv_delete = ViewHolder.get(convertView, com.edenred.android.apps.avenesg.R.id.iv_delete);
-        LinearLayout ll_subtract = ViewHolder.get(convertView, com.edenred.android.apps.avenesg.R.id.ll_subtract);//数字减
-        LinearLayout ll_plus = ViewHolder.get(convertView, com.edenred.android.apps.avenesg.R.id.ll_plus);//数字加
-        TextView tv_calagolue_num = ViewHolder.get(convertView, com.edenred.android.apps.avenesg.R.id.tv_calagolue_num);//商品数量
-        TextView tv_point = ViewHolder.get(convertView, com.edenred.android.apps.avenesg.R.id.tv_point);//商品分数
-        TextView tv_point_true = ViewHolder.get(convertView, com.edenred.android.apps.avenesg.R.id.tv_point_true);
+        TextView tv_title = ViewHolder.get(convertView, R.id.tv_productname);
+        ImageView iv_delete = ViewHolder.get(convertView, R.id.iv_delete);
+        LinearLayout ll_subtract = ViewHolder.get(convertView, R.id.ll_subtract);//数字减
+        LinearLayout ll_plus = ViewHolder.get(convertView, R.id.ll_plus);//数字加
+        TextView tv_calagolue_num = ViewHolder.get(convertView, R.id.tv_calagolue_num);//商品数量
+        TextView tv_point = ViewHolder.get(convertView, R.id.tv_point);//商品分数
+        TextView tv_point_true = ViewHolder.get(convertView, R.id.tv_point_true);
 
 //        SimpleDraweeView iv_pic=ViewHolder.get(convertView,R.id.iv_pic);//商品图片
-        ImageView iv_image_view = ViewHolder.get(convertView, com.edenred.android.apps.avenesg.R.id.iv_image_view);
+        ImageView iv_image_view = ViewHolder.get(convertView, R.id.iv_image_view);
         tv_title.setText(list.get(position).title);
         tv_calagolue_num.setText(list.get(position).num);
         tv_point.setText(list.get(position).pointfirst);
@@ -100,13 +101,13 @@ public class MyRewardAdapter extends BaseAdapter {
 
         }
 
-        iv_delete.setTag(com.edenred.android.apps.avenesg.R.id.tv2, tv_point);
+        iv_delete.setTag(R.id.tv2, tv_point);
         iv_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 list.remove(position);
                 notifyDataSetChanged();
-                TextView tv2 = (TextView) v.getTag(com.edenred.android.apps.avenesg.R.id.tv2);
+                TextView tv2 = (TextView) v.getTag(R.id.tv2);
                 if (!TextUtils.isEmpty(tv2.getText().toString())) {
                     allnum -= Integer.parseInt(tv2.getText().toString());
                 }
@@ -115,8 +116,8 @@ public class MyRewardAdapter extends BaseAdapter {
             }
         });
 
-        ll_subtract.setTag(com.edenred.android.apps.avenesg.R.id.tv1, tv_calagolue_num);
-        ll_subtract.setTag(com.edenred.android.apps.avenesg.R.id.tv2, tv_point);
+        ll_subtract.setTag(R.id.tv1, tv_calagolue_num);
+        ll_subtract.setTag(R.id.tv2, tv_point);
         ll_subtract.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -124,8 +125,8 @@ public class MyRewardAdapter extends BaseAdapter {
                 int num = 0;
                 int pointfirst = 0;
                 int pointnum = 0;
-                TextView tv1 = (TextView) v.getTag(com.edenred.android.apps.avenesg.R.id.tv1);
-                TextView tv2 = (TextView) v.getTag(com.edenred.android.apps.avenesg.R.id.tv2);
+                TextView tv1 = (TextView) v.getTag(R.id.tv1);
+                TextView tv2 = (TextView) v.getTag(R.id.tv2);
                 if (!TextUtils.isEmpty(tv1.getText().toString())) {
                     num = Integer.parseInt(tv1.getText().toString());
                 }
@@ -146,8 +147,8 @@ public class MyRewardAdapter extends BaseAdapter {
                 }
             }
         });
-        ll_plus.setTag(com.edenred.android.apps.avenesg.R.id.tv1, tv_calagolue_num);
-        ll_plus.setTag(com.edenred.android.apps.avenesg.R.id.tv2, tv_point);
+        ll_plus.setTag(R.id.tv1, tv_calagolue_num);
+        ll_plus.setTag(R.id.tv2, tv_point);
         ll_plus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -155,8 +156,8 @@ public class MyRewardAdapter extends BaseAdapter {
                 int num = 0;
                 int pointfirst = 0;
                 int pointnum = 0;
-                TextView tv1 = (TextView) v.getTag(com.edenred.android.apps.avenesg.R.id.tv1);
-                TextView tv2 = (TextView) v.getTag(com.edenred.android.apps.avenesg.R.id.tv2);
+                TextView tv1 = (TextView) v.getTag(R.id.tv1);
+                TextView tv2 = (TextView) v.getTag(R.id.tv2);
                 if (!TextUtils.isEmpty(tv1.getText().toString())) {
                     num = Integer.parseInt(tv1.getText().toString());
                 }

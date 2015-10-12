@@ -8,6 +8,7 @@ import android.widget.RelativeLayout;
 
 import com.edenred.android.apps.avenesg.AveneApplication;
 import com.edenred.android.apps.avenesg.BaseActivity;
+import com.edenred.android.apps.avenesg.R;
 import com.edenred.android.apps.avenesg.constant.Constant;
 import com.edenred.android.apps.avenesg.constant.Urls;
 import com.edenred.android.apps.avenesg.utils.ErrorUtils;
@@ -43,7 +44,7 @@ public class SettingsActivity extends BaseActivity{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.edenred.android.apps.avenesg.R.layout.ac_settings);
+        setContentView(R.layout.ac_settings);
         FontManager.applyFont(this, getWindow().getDecorView().findViewById(android.R.id.content), Constant.TTFNAME);
         AveneApplication.getInstance().addActivity(this);
         initLogo();
@@ -56,15 +57,15 @@ public class SettingsActivity extends BaseActivity{
     }
 
     private void initView() {
-        rl_push = (RelativeLayout) findViewById(com.edenred.android.apps.avenesg.R.id.rl_push);
-        rl_SMS = (RelativeLayout) findViewById(com.edenred.android.apps.avenesg.R.id.rl_SMS);
-        rl_email = (RelativeLayout) findViewById(com.edenred.android.apps.avenesg.R.id.rl_email);
-        rl_push_on = (RelativeLayout) findViewById(com.edenred.android.apps.avenesg.R.id.rl_push_on);
-        rl_push_off = (RelativeLayout) findViewById(com.edenred.android.apps.avenesg.R.id.rl_push_off);
-        rl_SMS_on = (RelativeLayout) findViewById(com.edenred.android.apps.avenesg.R.id.rl_SMS_on);
-        rl_SMS_off = (RelativeLayout) findViewById(com.edenred.android.apps.avenesg.R.id.rl_SMS_off);
-        rl_email_on = (RelativeLayout) findViewById(com.edenred.android.apps.avenesg.R.id.rl_email_on);
-        rl_email_off = (RelativeLayout) findViewById(com.edenred.android.apps.avenesg.R.id.rl_email_off);
+        rl_push = (RelativeLayout) findViewById(R.id.rl_push);
+        rl_SMS = (RelativeLayout) findViewById(R.id.rl_SMS);
+        rl_email = (RelativeLayout) findViewById(R.id.rl_email);
+        rl_push_on = (RelativeLayout) findViewById(R.id.rl_push_on);
+        rl_push_off = (RelativeLayout) findViewById(R.id.rl_push_off);
+        rl_SMS_on = (RelativeLayout) findViewById(R.id.rl_SMS_on);
+        rl_SMS_off = (RelativeLayout) findViewById(R.id.rl_SMS_off);
+        rl_email_on = (RelativeLayout) findViewById(R.id.rl_email_on);
+        rl_email_off = (RelativeLayout) findViewById(R.id.rl_email_off);
 
         rl_push.setOnClickListener(this);
         rl_SMS.setOnClickListener(this);
@@ -114,7 +115,7 @@ public class SettingsActivity extends BaseActivity{
     public void onClick(View v) {
         super.onClick(v);
         switch (v.getId()){
-            case com.edenred.android.apps.avenesg.R.id.rl_push:
+            case R.id.rl_push:
                 if (!isReceive1){
                     rl_push_on.setVisibility(View.VISIBLE);
                     rl_push_off.setVisibility(View.GONE);
@@ -132,7 +133,7 @@ public class SettingsActivity extends BaseActivity{
                 myAsy1.setFlag("1");
                 myAsy1.execute();
                 break;
-            case com.edenred.android.apps.avenesg.R.id.rl_SMS:
+            case R.id.rl_SMS:
                 if (!isReceive2){
                     rl_SMS_on.setVisibility(View.VISIBLE);
                     rl_SMS_off.setVisibility(View.GONE);
@@ -149,7 +150,7 @@ public class SettingsActivity extends BaseActivity{
                 myAsy2.setFlag("1");
                 myAsy2.execute();
                 break;
-            case com.edenred.android.apps.avenesg.R.id.rl_email:
+            case R.id.rl_email:
                 if (!isReceive3){
                     rl_email_on.setVisibility(View.VISIBLE);
                     rl_email_off.setVisibility(View.GONE);
