@@ -3,12 +3,14 @@ package com.edenred.android.apps.avenesg.utils;
 import java.text.DecimalFormat;
 
 /**
- * Created by Administrator on 2015/10/9.
+ * Created by wangwm on 2015/10/10.
  */
 public class NumbersFormat {
-    public static String thousand(String number) {
-        int data = Integer.parseInt(number);
-        DecimalFormat df = new DecimalFormat();
-        return df.format(data);
+    public static String thousand(String number){
+        return new DecimalFormat().format(Double.parseDouble(number));
+    }
+
+    public static String noThousand(String thousandnumber){
+        return thousandnumber.replace(",", "");
     }
 }

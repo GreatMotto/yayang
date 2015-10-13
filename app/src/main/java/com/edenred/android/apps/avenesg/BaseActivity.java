@@ -22,6 +22,7 @@ import android.view.animation.ScaleAnimation;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.TextView;
@@ -45,6 +46,7 @@ public class BaseActivity extends SlidingFragmentActivity implements View.OnClic
 
     private int x, y;
     private LinearLayout ll_back, ll_to_home;
+    private ImageView iv_to_home;
     private TextView tv_content;
     private ProgressDialog pd;
     private String str;
@@ -80,6 +82,11 @@ public class BaseActivity extends SlidingFragmentActivity implements View.OnClic
     public void initLogo() {
         ll_to_home = (LinearLayout) findViewById(R.id.ll_to_home);
         ll_to_home.setOnClickListener(this);
+    }
+
+    public void initLogo2() {
+        iv_to_home = (ImageView) findViewById(R.id.iv_to_home);
+        iv_to_home.setOnClickListener(this);
     }
 
     // 返回时关闭软键盘
@@ -181,6 +188,22 @@ public class BaseActivity extends SlidingFragmentActivity implements View.OnClic
         startActivity(intent);
     }
 
+    // 带两个参数跳转到其他Activity
+    public void goto2OtherActivity(Class<?> cls, int flag, int tag) {
+        Intent intent = new Intent();
+        intent.setClass(this, cls);
+        intent.putExtra(Constant.FLAG, flag);
+        intent.putExtra(Constant.TAG, tag);
+        startActivity(intent);
+    }
+
+    public void goto1AnotherActivity(Class<?> cls, int tag) {
+        Intent intent = new Intent();
+        intent.setClass(this, cls);
+        intent.putExtra(Constant.TAG, tag);
+        startActivity(intent);
+    }
+
     /**
      * 改变字体大小
      *
@@ -252,31 +275,33 @@ public class BaseActivity extends SlidingFragmentActivity implements View.OnClic
      */
     public void setDatePickerDividerColor(DatePicker datePicker) {
         // Divider changing:
-
-        // 获取 mSpinners
         LinearLayout llFirst = (LinearLayout) datePicker.getChildAt(0);
-        // 获取 NumberPicker
+        // 获取 mSpinners
         LinearLayout mSpinners = (LinearLayout) llFirst.getChildAt(0);
-        for (int i = 0; i < mSpinners.getChildCount(); i++) {
-            NumberPicker picker = (NumberPicker) mSpinners.getChildAt(i);
-
-            Field[] pickerFields = NumberPicker.class.getDeclaredFields();
-            for (Field pf : pickerFields) {
-                if (pf.getName().equals("mSelectionDivider")) {
-                    pf.setAccessible(true);
-                    try {
-                        pf.set(picker, new ColorDrawable(getResources().getColor(R.color.normal_orange)));
-                    } catch (IllegalArgumentException e) {
-                        e.printStackTrace();
-                    } catch (Resources.NotFoundException e) {
-                        e.printStackTrace();
-                    } catch (IllegalAccessException e) {
-                        e.printStackTrace();
+//        if (flag == 1) {
+//            mSpinners.setBackgroundColor(getResources().getColor(R.color.normal_orange));
+//        } else {
+            for (int i = 0; i < mSpinners.getChildCount(); i++) {
+                // 获取 NumberPicker
+                NumberPicker picker = (NumberPicker) mSpinners.getChildAt(i);
+                Field[] pickerFields = NumberPicker.class.getDeclaredFields();
+                for (Field pf : pickerFields) {
+                    if (pf.getName().equals("mSelectionDivider")) {
+                        pf.setAccessible(true);
+                        try {
+                            pf.set(picker, new ColorDrawable(getResources().getColor(R.color.normal_orange)));
+                        } catch (IllegalArgumentException e) {
+                            e.printStackTrace();
+                        } catch (Resources.NotFoundException e) {
+                            e.printStackTrace();
+                        } catch (IllegalAccessException e) {
+                            e.printStackTrace();
+                        }
+                        break;
                     }
-                    break;
                 }
             }
-        }
+//        }
     }
 
     /**
@@ -371,10 +396,7 @@ public class BaseActivity extends SlidingFragmentActivity implements View.OnClic
                 onBackPressed();
                 break;
             case R.id.ll_to_home:
-//                getSlidingMenu().isShown();
-//                if (getSlidingMenu().isShown()){
                 HomeActivity.instanceHomeAc.toggleMenu();
-//                }
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -385,6 +407,13 @@ public class BaseActivity extends SlidingFragmentActivity implements View.OnClic
 //                startActivity(new Intent(this, HomeActivity.class));
 //                this.finish();
                 break;
+            case R.id.iv_to_home:
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        AveneApplication.getInstance().finishActivity();
+                    }
+                }, 350);
             default:
                 break;
         }

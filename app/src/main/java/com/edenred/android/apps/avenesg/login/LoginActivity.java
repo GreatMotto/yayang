@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.edenred.android.apps.avenesg.AveneApplication;
 import com.edenred.android.apps.avenesg.BaseActivity;
+import com.edenred.android.apps.avenesg.R;
 import com.edenred.android.apps.avenesg.bean.AccountInfoBean;
 import com.edenred.android.apps.avenesg.bean.DialogBean;
 import com.edenred.android.apps.avenesg.bean.StringBean;
@@ -56,7 +57,7 @@ public class LoginActivity extends BaseActivity implements ShowPopWindow.PopList
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.edenred.android.apps.avenesg.R.layout.ac_login);
+        setContentView(R.layout.ac_login);
         AveneApplication.getInstance().addActivity(this);
         FontManager.applyFont(this, getWindow().getDecorView().findViewById(android.R.id.content), Constant.TTFNAME);
         sp = AveneApplication.getInstance().getSp();
@@ -67,20 +68,20 @@ public class LoginActivity extends BaseActivity implements ShowPopWindow.PopList
 
     private void initView() {
         // 国家区号
-        rl_country_code = (RelativeLayout) findViewById(com.edenred.android.apps.avenesg.R.id.rl_country_code);
-        tv_country_code = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_country_code);
+        rl_country_code = (RelativeLayout) findViewById(R.id.rl_country_code);
+        tv_country_code = (TextView) findViewById(R.id.tv_country_code);
         // 手机号
-        et_mobile = (EditText) findViewById(com.edenred.android.apps.avenesg.R.id.et_mobile);
+        et_mobile = (EditText) findViewById(R.id.et_mobile);
         // 密码
-        et_password = (EditText) findViewById(com.edenred.android.apps.avenesg.R.id.et_password);
+        et_password = (EditText) findViewById(R.id.et_password);
         // 登录
-        btn_login = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.btn_login);
+        btn_login = (TextView) findViewById(R.id.btn_login);
         // 忘记密码
-        tv_forgot_password = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_forgot_password);
+        tv_forgot_password = (TextView) findViewById(R.id.tv_forgot_password);
         // 不是会员
-        tv_not_member = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_not_member);
+        tv_not_member = (TextView) findViewById(R.id.tv_not_member);
         // 联系我们
-        tv_contact_us = (TextView) findViewById(com.edenred.android.apps.avenesg.R.id.tv_contact_us);
+        tv_contact_us = (TextView) findViewById(R.id.tv_contact_us);
         tv_contact_us.setOnClickListener(this);
 
         tv_forgot_password.setOnClickListener(this);
@@ -114,7 +115,6 @@ public class LoginActivity extends BaseActivity implements ShowPopWindow.PopList
                     new TypeToken<List<StringBean>>() {
                     }.getType());
         }
-        Log.e("ffffffffffffff", NumbersFormat.thousand("3000000"));
     }
 
     public boolean canLogin() {
@@ -136,7 +136,7 @@ public class LoginActivity extends BaseActivity implements ShowPopWindow.PopList
     public void onClick(View v) {
         switch (v.getId()) {
 
-            case com.edenred.android.apps.avenesg.R.id.btn_login:
+            case R.id.btn_login:
                 if (canLogin()) {
                     showPD("Logging...");
                     MyAsy myAsy = new MyAsy();
@@ -150,7 +150,7 @@ public class LoginActivity extends BaseActivity implements ShowPopWindow.PopList
                 }
                 break;
 
-            case com.edenred.android.apps.avenesg.R.id.tv_forgot_password:
+            case R.id.tv_forgot_password:
                 DialogUtils.HttpListener listener = new DialogUtils.HttpListener() {
                     @Override
                     public void sendPassword(String areacode, String phone) {
@@ -177,11 +177,11 @@ public class LoginActivity extends BaseActivity implements ShowPopWindow.PopList
                         "Retrieve Password", this, mlist, listener);
                 break;
 
-            case com.edenred.android.apps.avenesg.R.id.tv_not_member:
+            case R.id.tv_not_member:
                 gotoOtherActivity(RegistrationProcessActivity.class);
                 break;
 
-            case com.edenred.android.apps.avenesg.R.id.rl_country_code:
+            case R.id.rl_country_code:
                 et_password.clearFocus();
                 et_mobile.clearFocus();
                 CloseKeyboard();
@@ -193,7 +193,7 @@ public class LoginActivity extends BaseActivity implements ShowPopWindow.PopList
                     ShowPopWindow.showPopWindow(LoginActivity.this, rl_country_code, 0, 0, tv_country_code, mlist,this);
                 }
                 break;
-            case com.edenred.android.apps.avenesg.R.id.tv_contact_us:
+            case R.id.tv_contact_us:
                 DialogUtils.contactUsDialog(this);
                 break;
             default:
