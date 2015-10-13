@@ -275,31 +275,33 @@ public class BaseActivity extends SlidingFragmentActivity implements View.OnClic
      */
     public void setDatePickerDividerColor(DatePicker datePicker) {
         // Divider changing:
-
-        // 获取 mSpinners
         LinearLayout llFirst = (LinearLayout) datePicker.getChildAt(0);
-        // 获取 NumberPicker
+        // 获取 mSpinners
         LinearLayout mSpinners = (LinearLayout) llFirst.getChildAt(0);
-        for (int i = 0; i < mSpinners.getChildCount(); i++) {
-            NumberPicker picker = (NumberPicker) mSpinners.getChildAt(i);
-
-            Field[] pickerFields = NumberPicker.class.getDeclaredFields();
-            for (Field pf : pickerFields) {
-                if (pf.getName().equals("mSelectionDivider")) {
-                    pf.setAccessible(true);
-                    try {
-                        pf.set(picker, new ColorDrawable(getResources().getColor(R.color.normal_orange)));
-                    } catch (IllegalArgumentException e) {
-                        e.printStackTrace();
-                    } catch (Resources.NotFoundException e) {
-                        e.printStackTrace();
-                    } catch (IllegalAccessException e) {
-                        e.printStackTrace();
+//        if (flag == 1) {
+//            mSpinners.setBackgroundColor(getResources().getColor(R.color.normal_orange));
+//        } else {
+            for (int i = 0; i < mSpinners.getChildCount(); i++) {
+                // 获取 NumberPicker
+                NumberPicker picker = (NumberPicker) mSpinners.getChildAt(i);
+                Field[] pickerFields = NumberPicker.class.getDeclaredFields();
+                for (Field pf : pickerFields) {
+                    if (pf.getName().equals("mSelectionDivider")) {
+                        pf.setAccessible(true);
+                        try {
+                            pf.set(picker, new ColorDrawable(getResources().getColor(R.color.normal_orange)));
+                        } catch (IllegalArgumentException e) {
+                            e.printStackTrace();
+                        } catch (Resources.NotFoundException e) {
+                            e.printStackTrace();
+                        } catch (IllegalAccessException e) {
+                            e.printStackTrace();
+                        }
+                        break;
                     }
-                    break;
                 }
             }
-        }
+//        }
     }
 
     /**
@@ -332,6 +334,7 @@ public class BaseActivity extends SlidingFragmentActivity implements View.OnClic
 
     /**
      * 获取系统当前月份并转换成英文
+     *
      * @return
      */
     public void ChangeMonth2English(TextView tv, String points, String date) {

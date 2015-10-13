@@ -219,14 +219,16 @@ public class DialogUtils {
         void getHttp(View v, TextView tv);
     }
 
+
+
     /**
      * 日历对话框
      *
      * @param mContext
      * @param tv       显示日期的textview
-     * @param candler  当前textview时间
+     * @param calendar  当前textview时间
      */
-    public static void DateDlg(Context mContext, TextView tv, String candler, final int flag, final DataListener dataListener) {
+    public static void DateDlg(Context mContext, TextView tv, String calendar, final int flag, final DataListener dataListener) {
         final Dialog alertDialog = new Dialog(mContext, R.style.MyDialogStyle);
         Window window = alertDialog.getWindow();
         window.setGravity(Gravity.CENTER);
@@ -236,13 +238,19 @@ public class DialogUtils {
         FontManager.applyFont(mContext, alertDialog.getWindow().getDecorView().findViewById(android.R.id.content), Constant.TTFNAME);
 
         DatePicker date = (DatePicker) window.findViewById(R.id.date_picker);
+
         ImageView iv_cancle = (ImageView) window.findViewById(R.id.iv_cancle);
         ImageView iv_commit = (ImageView) window.findViewById(R.id.iv_commit);
 
-        ((BaseActivity) mContext).setDatePickerDividerColor(date);
+//        if (Integer.valueOf(android.os.Build.VERSION.SDK)
+//                >= Build.VERSION_CODES.LOLLIPOP){
+//            ((BaseActivity) mContext).setDatePickerDividerColor(date, 1);
+//        }else {
+            ((BaseActivity) mContext).setDatePickerDividerColor(date);
+//        }
         //初始化事件控件数据
-        if (!TextUtils.isEmpty(candler)) {
-            String[] str = candler.split("/");
+        if (!TextUtils.isEmpty(calendar)) {
+            String[] str = calendar.split("/");
             int day = Integer.parseInt(str[0]);
             int month = Integer.parseInt(str[1]) - 1;
             int year = Integer.parseInt(str[2]);

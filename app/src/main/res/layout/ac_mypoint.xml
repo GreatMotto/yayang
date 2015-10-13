@@ -57,7 +57,7 @@
                 android:layout_height="wrap_content"
                 android:background="@mipmap/field"
                 android:gravity="center"
-                android:hint="dd/mm/yy"
+                android:hint="dd/mm/yyyy"
                 android:textColor="@color/grey_dark"
                 android:textSize="@dimen/small_text_size" />
 
@@ -85,7 +85,7 @@
                 android:layout_marginLeft="@dimen/magin"
                 android:background="@mipmap/field"
                 android:gravity="center"
-                android:hint="dd/mm/yy"
+                android:hint="dd/mm/yyyy"
                 android:textColor="@color/grey_dark"
                 android:textSize="@dimen/small_text_size" />
 

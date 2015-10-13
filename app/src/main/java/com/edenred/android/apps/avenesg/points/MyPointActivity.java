@@ -52,7 +52,7 @@ public class MyPointActivity extends BaseActivity {
     private ListView lv_data;
     private PointAdapter adapter;
     private int current = 1;
-    private int width = 0, diswidth = 0, flag = 0;
+    private int width = 0, diswidth = 0, flag = 0, tag = 0;
     private String id = "0", startTime = "", endTime = "";
     private SharedPreferencesHelper sp;
     private List<PointBean> list = new ArrayList<PointBean>();
@@ -68,7 +68,8 @@ public class MyPointActivity extends BaseActivity {
         AveneApplication.getInstance().addActivity(this);
         sp = AveneApplication.getInstance().getSp();
         flag = getIntent().getIntExtra(Constant.FLAG, 0);
-        if (flag == 0) {
+        tag = getIntent().getIntExtra(Constant.TAG, 0);
+        if (tag == 8) {
             initLogo();
         } else {
             initLogo2();
@@ -322,6 +323,13 @@ public class MyPointActivity extends BaseActivity {
 //                adapter.notifyDataSetChanged();
                 break;
             case R.id.iv_left:
+//                DatePickerDialog pickerDialog = new DatePickerDialog(this, R.style.DialogTheme, new DatePickerDialog.OnDateSetListener() {
+//                    @Override
+//                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+//
+//                    }
+//                }, 2013,1,1);
+//                pickerDialog.show();
                 DialogUtils.DateDlg(this, tv_data_left, tv_data_left.getText().toString(), 0, new DialogUtils.DataListener() {
                     @Override
                     public void getDataHttp(String time) {

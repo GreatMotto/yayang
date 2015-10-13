@@ -89,7 +89,7 @@ public class MenuAdapter extends BaseAdapter {
                         ((BaseActivity) mContext).gotoOtherActivity(MyProfileActivity.class);
                         break;
                     case 1://My Points
-                        ((BaseActivity) mContext).goto1OtherActivity(MyPointActivity.class, 0);
+                        ((BaseActivity) mContext).goto2OtherActivity(MyPointActivity.class, 1, 8);
                         break;
                     case 2://Rewards catalogue
                         ((BaseActivity) mContext).goto1AnotherActivity(CatalogueActivity.class, 8);

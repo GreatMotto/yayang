@@ -3,40 +3,42 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/comment_round_corners_white_sp"
-    android:padding="@dimen/double_magin"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="@dimen/double_magin">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <ImageView
             android:id="@+id/iv_cancle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/cuo"
             android:scaleType="centerCrop"
-            />
+            android:src="@mipmap/cuo" />
+
         <ImageView
             android:id="@+id/iv_commit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:src="@mipmap/dui"
             android:scaleType="centerCrop"
-            />
+            android:src="@mipmap/dui" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:textColor="@color/orange"
             android:text="Select Date"
-            android:textSize="@dimen/big_text_size"
-            />
+            android:textColor="@color/orange"
+            android:textSize="@dimen/big_text_size" />
 
     </RelativeLayout>
+
     <DatePicker
         android:id="@+id/date_picker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:calendarViewShown="false" />
+        android:calendarViewShown="false"
+        android:theme="@android:style/Theme.Holo.Light" />
 </LinearLayout>

@@ -182,14 +182,15 @@ public class ManualInputBarcodeActivity extends BaseActivity {
                                 if (flag == 0) {
                                     DialogUtils.oneButtonDialog(
                                             "Invalid EAN Code",
-                                            "You have entered an invalid EAN code. Please note that bundle packs and kits are not eligible to Avene points. " +
-                                                    "Please try again or kindly contact our customer service.",
-                                            "Close", 150, 166, this);
+                                            "You have entered an invalid EAN code. Please note that bundle packs and kits are not eligible to Eau Thermale Avene points. " +
+                                                    "Try again or kindly contact our customer service.",
+                                            "Close", 156, 172, this);
                                 } else {
                                     DialogUtils.oneButtonDialog(
                                             "Invalid EAN Code",
-                                            "You have scanned an invalid EAN code. Make sure you have selected the right code. Please try again or kindly contact our customer service.",
-                                            "Close", 0, 0, this);
+                                            "You have entered an invalid EAN code. Please note that bundle packs and kits are not eligible to Eau Thermale Avene points. " +
+                                                    "Try again or kindly contact our customer service.",
+                                            "Close", 156, 172, this);
                                 }
                                 return;
                             }

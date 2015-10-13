@@ -59,7 +59,7 @@ import java.util.List;
  */
 public class MyProfileActivity extends BaseActivity implements View.OnFocusChangeListener {
 
-    private TextView tv_bonus_text,tvProgressLeft, tvProgressRight, tvAreaCode, tvBirthday, tvCity,
+    private TextView tv_bonus_text, tvProgressLeft, tvProgressRight, tvAreaCode, tvBirthday, tvCity,
             tvMtatus, tvRange, tvNationality, tvTyle, tvConcerns, tvSensitivity, tvSeclect,
             tvRetailer, tvArea, tvLocation, tvUpdate, tvSex, tvMobile, tv_occupation;
     private ProgressBar progress;
@@ -602,7 +602,13 @@ public class MyProfileActivity extends BaseActivity implements View.OnFocusChang
         ImageView iv_cancle = (ImageView) window.findViewById(R.id.iv_cancle);
         ImageView iv_commit = (ImageView) window.findViewById(R.id.iv_commit);
 
-        setDatePickerDividerColor(date);
+
+//        if (Integer.valueOf(android.os.Build.VERSION.SDK)
+//                >= Build.VERSION_CODES.LOLLIPOP) {
+//            setDatePickerDividerColor(date, 1);
+//        } else {
+            setDatePickerDividerColor(date);
+//        }
         //初始化事件控件数据
         if (!TextUtils.isEmpty(candler)) {
             String[] str = candler.split("/");
