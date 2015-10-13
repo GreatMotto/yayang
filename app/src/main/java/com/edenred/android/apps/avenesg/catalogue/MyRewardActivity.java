@@ -59,8 +59,8 @@ public class MyRewardActivity extends BaseActivity {
         initLogo();
         sp = AveneApplication.getInstance().getSp();
         initTitle("My Rewards");
-        collection=AveneApplication.getInstance().dialogBean.redemption.collection;
-        contact=AveneApplication.getInstance().dialogBean.redemption.contact;
+        collection=AveneApplication.getInstance().dialogBean.collection;
+        contact=AveneApplication.getInstance().dialogBean.contact;
         initView();
         initData();
     }

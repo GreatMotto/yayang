@@ -33,8 +33,8 @@ public class ContactUsActivity extends BaseActivity{
     }
 
     private void initData() {
-        tv_email.setText(AveneApplication.getInstance().dialogBean.contact_us.email);
-        tv_address.setText(AveneApplication.getInstance().dialogBean.contact_us.address);
-        tv_phone.setText(AveneApplication.getInstance().dialogBean.contact_us.phone);
+        tv_email.setText(AveneApplication.getInstance().dialogBean.email);
+        tv_address.setText(AveneApplication.getInstance().dialogBean.address);
+        tv_phone.setText(AveneApplication.getInstance().dialogBean.phone);
     }
 }

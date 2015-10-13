@@ -34,6 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/magin"
             android:layout_marginTop="@dimen/magin"
+            android:text="You have"
             android:singleLine="true"
             android:textColor="@color/white"
             android:textSize="@dimen/small_text_size" />

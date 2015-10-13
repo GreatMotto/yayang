@@ -22,6 +22,7 @@ import com.edenred.android.apps.avenesg.utils.ErrorUtils;
 import com.edenred.android.apps.avenesg.utils.FontManager;
 import com.edenred.android.apps.avenesg.utils.HttpPostUtil;
 import com.edenred.android.apps.avenesg.utils.HttpUtils;
+import com.edenred.android.apps.avenesg.utils.NumbersFormat;
 import com.edenred.android.apps.avenesg.utils.SharedPreferencesHelper;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -113,6 +114,7 @@ public class LoginActivity extends BaseActivity implements ShowPopWindow.PopList
                     new TypeToken<List<StringBean>>() {
                     }.getType());
         }
+        Log.e("ffffffffffffff", NumbersFormat.thousand("3000000"));
     }
 
     public boolean canLogin() {

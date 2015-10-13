@@ -83,16 +83,16 @@ public class RecylerAdapter extends RecyclerView.Adapter<RecylerAdapter.ViewHold
         // 绑定数据到ViewHolder上
 
 
-        if (TextUtils.isEmpty(AveneApplication.getInstance().dialogBean.max_lenth.title)) {
-            title = Integer.parseInt(AveneApplication.getInstance().dialogBean.max_lenth.title);
+        if (TextUtils.isEmpty(AveneApplication.getInstance().dialogBean.title)) {
+            title = Integer.parseInt(AveneApplication.getInstance().dialogBean.title);
             if (title > 30) {
                 title = 30;
             }
             viewHolder.tv_name.setFilters(new InputFilter[]{new InputFilter.LengthFilter(title)});
 
         }
-        if (TextUtils.isEmpty(AveneApplication.getInstance().dialogBean.max_lenth.subtitle)) {
-            subtitle = Integer.parseInt(AveneApplication.getInstance().dialogBean.max_lenth.subtitle);
+        if (TextUtils.isEmpty(AveneApplication.getInstance().dialogBean.subtitle)) {
+            subtitle = Integer.parseInt(AveneApplication.getInstance().dialogBean.subtitle);
             if (subtitle > 55) {
                 subtitle = 55;
             }

@@ -29,6 +29,7 @@ import android.widget.TextView;
 import com.edenred.android.apps.avenesg.constant.Constant;
 import com.edenred.android.apps.avenesg.home.HomeActivity;
 import com.edenred.android.apps.avenesg.utils.DisplayUtil;
+import com.edenred.android.apps.avenesg.utils.NumbersFormat;
 import com.edenred.android.apps.avenesg.utils.SpantoActivity;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.jeremyfeinstein.slidingmenu.lib.app.SlidingFragmentActivity;
@@ -75,6 +76,7 @@ public class BaseActivity extends SlidingFragmentActivity implements View.OnClic
         ll_back.setOnClickListener(this);
         tv_content.setText(content);
     }
+
     public void initLogo() {
         ll_to_home = (LinearLayout) findViewById(R.id.ll_to_home);
         ll_to_home.setOnClickListener(this);
@@ -358,7 +360,7 @@ public class BaseActivity extends SlidingFragmentActivity implements View.OnClic
             default:
                 break;
         }
-        tv.setText("You have " + points + " points expiring in " + str);
+        tv.setText("You have " + NumbersFormat.thousand(points) + " points expiring in " + str);
     }
 
     @Override
@@ -371,14 +373,14 @@ public class BaseActivity extends SlidingFragmentActivity implements View.OnClic
             case R.id.ll_to_home:
 //                getSlidingMenu().isShown();
 //                if (getSlidingMenu().isShown()){
-                    HomeActivity.instanceHomeAc.toggleMenu();
+                HomeActivity.instanceHomeAc.toggleMenu();
 //                }
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
                         AveneApplication.getInstance().finishActivity();
                     }
-                },350);
+                }, 350);
 //                AveneApplication.getInstance().finishActivity();
 //                startActivity(new Intent(this, HomeActivity.class));
 //                this.finish();
